@@ -1,0 +1,10 @@
+*.userprefs
+UnityLockFile
+
+Library/ShaderCache/
+Library/metadata/
+Temp/
+.git/
+.vs/
+obj/
+bin/
