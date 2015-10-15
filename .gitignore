@@ -8,3 +8,4 @@ Temp/
 .vs/
 obj/
 bin/
+*.log
