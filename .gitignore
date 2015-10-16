@@ -33,7 +33,6 @@ UnityLockFile
 *.pfx
 *.exe
 *.pdb
-*.obj
 *.aps
 *.pch
 *.vspscc
