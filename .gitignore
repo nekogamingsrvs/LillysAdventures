@@ -2,18 +2,24 @@
 # Unity generated #
 # =============== #
 Temp/
-Obj/
-UnityGenerated/
+[Oo]bj/
 Library/
 Assets/AssetStoreTools*
-Bin/
+[Bb]in/
+UnityGenerated/
 
-# ===================================== #
-# Visual Studio / MonoDevelop generated #
-# ===================================== #
+# ========================= #
+# Developer Tools generated #
+# ========================= #
 .git/
-ExportedObj/
 .vs/
+ExportedObj/
+[Dd]ebug*/
+[Rr]elease*/
+_ReSharper*/
+.zedstate
+UnityLockFile
+[Tt]est[Rr]esult*
 *.svd
 *.userprefs
 *.csproj
@@ -23,9 +29,24 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
-.zedstate
 *.log
-UnityLockFile
+*.pfx
+*.exe
+*.pdb
+*.obj
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.lib
+*.sbr
 
 # ============ #
 # OS generated #
