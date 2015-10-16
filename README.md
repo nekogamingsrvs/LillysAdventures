@@ -14,4 +14,4 @@ Version: `v0.1.0-alpha`
 
 ## Info ##
 \- Repo Owner Contact   
-    - [voidinc@outlook.com](mailto:voidinc@outlook.com?subject=Regarding%20Lillys%20Wonderful%20Adventures)
+    - [voidinc@outlook.com](mailto:voidinc@outlook.com?subject=Regarding%20Lilly%27s%20Wonderful%20Adventures)
