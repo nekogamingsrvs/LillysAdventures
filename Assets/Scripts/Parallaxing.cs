@@ -56,22 +56,22 @@ public class Parallaxing : MonoBehaviour
 
         //update 4 object positions
         obj1p.x = center.x + size.x / 2;
-        obj1p.y = -2.65f;
+        obj1p.y = -2.88f;
         //obj1p.y = center.y + size.y / 2;
         obj1.transform.position = obj1p;
 
         obj2p.x = center.x - size.x / 2;
-        obj2p.y = -2.65f;
+        obj2p.y = -2.88f;
         //obj2p.y = center.y + size.y / 2;
         obj2.transform.position = obj2p;
 
         obj3p.x = center.x - size.x / 2;
-        obj3p.y = -2.65f;
+        obj3p.y = -2.88f;
         //obj3p.y = center.y - size.y / 2;
         obj3.transform.position = obj3p;
 
         obj4p.x = center.x + size.x / 2;
-        obj4p.y = -2.65f;
+        obj4p.y = -2.88f;
         //obj4p.y = center.y - size.y / 2;
         obj4.transform.position = obj4p;
     }

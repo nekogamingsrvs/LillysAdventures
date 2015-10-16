@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Parallaxing.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\RemoveDebugPanel.cs" />
@@ -61,6 +62,7 @@
      <None Include="Assets\Tiled2Unity\Materials\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Textures\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Imported\testlevel.tiled2unity.xml" />
+     <None Include="Assets\Tiled2Unity\Imported\menu.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\License.txt" />
      <None Include="Assets\Tiled2Unity\Imported\level1.tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />

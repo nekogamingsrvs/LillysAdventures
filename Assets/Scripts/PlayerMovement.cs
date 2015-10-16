@@ -5,10 +5,11 @@
 public class PlayerMovement : MonoBehaviour
 {
 	public float jumpForce;
+	public float jumpForceLadder;
 	public float moveForce;
 	public float maxSpeed;
 	public float maxRunSpeed;
-    public Transform groundCheck;
+	public Transform groundCheck;
 	public GameObject gameController;
 
 	[HideInInspector]
@@ -18,26 +19,35 @@ public class PlayerMovement : MonoBehaviour
 
 	private float currentMaxSpeed;
 	private bool grounded;
+	private bool touchingLadder;
+	private float currentJumpForce;
 	private Animator anim;
 	private Rigidbody2D rb2d;
 	private UnityEngine.UI.Text debugText;
-    private Rect levelBoundries;
+	private Rect levelBoundries;
 
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
 		rb2d = GetComponent<Rigidbody2D>();
-		debugText = gameController.GetComponent<GameManager>().debugText;
+		debugText = gameController.GetComponent<GameManager>().debugTextPanel.GetComponentInChildren<UnityEngine.UI.Text>();
 		levelBoundries = gameController.GetComponent<GameManager>().levelBoundries;
 	}
 
 	void Update()
 	{
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Foreground"));
+		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("tiles"));
+		touchingLadder = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("ladders"));
 
 		if (Input.GetButtonDown("Jump") && grounded)
 		{
 			jump = true;
+			currentJumpForce = jumpForce;
+		}
+		else if (Input.GetButtonDown("Jump") && grounded && touchingLadder)
+		{
+			jump = true;
+			currentJumpForce = jumpForceLadder;
 		}
 	}
 
@@ -77,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
 		if (jump)
 		{
-			rb2d.AddForce(new Vector2(0f, jumpForce));
+			rb2d.AddForce(new Vector2(0f, currentJumpForce));
 			jump = false;
 		}
 
@@ -105,18 +115,18 @@ public class PlayerMovement : MonoBehaviour
 		{
 			debugText.text = "Jump=" + jump + " Grounded=" + grounded + " Speed=" + rb2d.velocity.x;
 		}
-    }
+	}
 
-    void LateUpdate()
-    {
-        Vector3 vectorClamp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+	void LateUpdate()
+	{
+		Vector3 vectorClamp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        vectorClamp.x = Mathf.Clamp(vectorClamp.x, levelBoundries.xMin, levelBoundries.xMax / 2);
-		vectorClamp.y = Mathf.Clamp(vectorClamp.y, levelBoundries.yMin, levelBoundries.yMax);
+		vectorClamp.x = Mathf.Clamp(vectorClamp.x, levelBoundries.xMin, levelBoundries.xMax);
+		vectorClamp.y = Mathf.Clamp(vectorClamp.y, -levelBoundries.yMax, levelBoundries.yMin);
 
 
-        transform.position = vectorClamp;
-    }
+		transform.position = vectorClamp;
+	}
 
 	void Flip()
 	{
