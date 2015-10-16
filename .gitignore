@@ -1,11 +1,14 @@
 *.userprefs
 UnityLockFile
+.zedstate
+*.log
+*.suo
+.suo
 
-Library/ShaderCache/
-Library/metadata/
+Library/
 Temp/
 .git/
 .vs/
 obj/
 bin/
-*.log
+ProjectSettings/
