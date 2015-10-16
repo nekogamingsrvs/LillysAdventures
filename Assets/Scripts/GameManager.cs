@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
 	public bool isDebugActive;
-	public UnityEngine.UI.Text debugText;
+	public UnityEngine.UI.Image debugTextPanel;
 	public GameObject level;
 
 	[HideInInspector]
@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		debugText.gameObject.SetActive(isDebugActive);
+		debugTextPanel.gameObject.SetActive(isDebugActive);
 		levelBoundries = new Rect();
 		levelBoundries.xMin = 0;
-		levelBoundries.xMax = 100;
-		levelBoundries.yMin = -10;
+		levelBoundries.xMax = level.GetComponent<Tiled2Unity.TiledMap>().MapWidthInPixels;
+		levelBoundries.yMin = -level.GetComponent<Tiled2Unity.TiledMap>().MapHeightInPixels;
 		levelBoundries.yMax = 0;
 	}
-	
+
 	// Update is called once per frame
 	void Update()
 	{
