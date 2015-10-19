@@ -1,4 +1,4 @@
-﻿// Code provided by: Nick Gravelyn
+// Code provided by: Nick Gravelyn
 // from: https://gist.github.com/nickgravelyn/7460288
 
 using UnityEngine;

@@ -1,4 +1,4 @@
-﻿// Make sure we don't compile it in builds
+// Make sure we don't compile it in builds
 // It's only needed for the Editor and Unity Remote
 #if UNITY_EDITOR
 

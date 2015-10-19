@@ -1,4 +1,4 @@
-﻿#define DEBUG_CC2D_RAYS
+#define DEBUG_CC2D_RAYS
 using UnityEngine;
 using System;
 using System.Collections.Generic;

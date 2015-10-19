@@ -1,4 +1,4 @@
-﻿namespace CnControls
+namespace CnControls
 {
     /// <summary>
     /// Virtual axis class
