@@ -46,6 +46,9 @@ UnityLockFile
 *.ilk
 *.lib
 *.sbr
+Assets/WSATestCertificate.pfx.meta
+Assets/WSATestCertificate.pfx
+Assets/WSATestCertificate.pfx.meta
 
 # ============ #
 # OS generated #
@@ -58,4 +61,3 @@ UnityLockFile
 Icon?
 ehthumbs.db
 Thumbs.db
-Assets/WSATestCertificate.pfx.meta

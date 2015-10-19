@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="53" height="33" tilewidth="16" tileheight="16" nextobjectid="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="53" height="33" tilewidth="16" tileheight="16" nextobjectid="51">
  <tileset firstgid="1" source="kenney_16x16.tsx"/>
  <layer name="caveBackdropTiles" width="53" height="33">
   <properties>
    <property name="unity:ignore" value="collision"/>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -15,8 +14,7 @@
  <layer name="caveBackdropTilesOverlay" width="53" height="33">
   <properties>
    <property name="unity:ignore" value="collision"/>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64">
@@ -25,8 +23,7 @@
  </layer>
  <layer name="caveBackdropOverlay" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="2"/>
   </properties>
   <data encoding="base64">
@@ -35,8 +32,7 @@
  </layer>
  <layer name="backgroundObjects 2" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="3"/>
   </properties>
   <data encoding="base64">
@@ -45,8 +41,7 @@
  </layer>
  <layer name="backgroundObjects" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="4"/>
   </properties>
   <data encoding="base64">
@@ -55,8 +50,8 @@
  </layer>
  <layer name="tiles" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="tiles"/>
-   <property name="unity:sortingLayerName" value="tiles"/>
+   <property name="unity:layer" value="Tiles"/>
+   <property name="unity:sortingLayerName" value="Tiles"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -65,8 +60,8 @@
  </layer>
  <layer name="tileOverlay" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="tiles"/>
-   <property name="unity:sortingLayerName" value="tiles"/>
+   <property name="unity:layer" value="Tiles"/>
+   <property name="unity:sortingLayerName" value="Tiles"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64">
@@ -75,9 +70,8 @@
  </layer>
  <layer name="ladders" width="53" height="33">
   <properties>
-   <property name="unity:ignore" value="collision"/>
-   <property name="unity:layer" value="ladders"/>
-   <property name="unity:sortingLayerName" value="ladders"/>
+   <property name="unity:layer" value="Ladders"/>
+   <property name="unity:sortingLayerName" value="Ladders"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -86,8 +80,8 @@
  </layer>
  <layer name="yellowLocks" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="locks"/>
-   <property name="unity:sortingLayerName" value="yellowLocks"/>
+   <property name="unity:layer" value="Locks"/>
+   <property name="unity:sortingLayerName" value="YellowLocks"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -96,8 +90,8 @@
  </layer>
  <layer name="yellowKeys" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="keys"/>
-   <property name="unity:sortingLayerName" value="yellowKeys"/>
+   <property name="unity:layer" value="Keys"/>
+   <property name="unity:sortingLayerName" value="YellowKeys"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -106,8 +100,8 @@
  </layer>
  <layer name="coins1" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="coins"/>
-   <property name="unity:sortingLayerName" value="coin1"/>
+   <property name="unity:layer" value="Coins"/>
+   <property name="unity:sortingLayerName" value="Coin1"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -116,8 +110,8 @@
  </layer>
  <layer name="coins5" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="coins"/>
-   <property name="unity:sortingLayerName" value="coin5"/>
+   <property name="unity:layer" value="Coins"/>
+   <property name="unity:sortingLayerName" value="Coin5"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -126,8 +120,8 @@
  </layer>
  <layer name="coins10" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="coins"/>
-   <property name="unity:sortingLayerName" value="coin10"/>
+   <property name="unity:layer" value="Coins"/>
+   <property name="unity:sortingLayerName" value="Coin10"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -136,8 +130,7 @@
  </layer>
  <layer name="houses" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="objects"/>
-   <property name="unity:sortingLayerName" value="house"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -146,8 +139,7 @@
  </layer>
  <layer name="houseWindows" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="objects"/>
-   <property name="unity:sortingLayerName" value="house"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64">
@@ -156,8 +148,8 @@
  </layer>
  <layer name="doorsOpen" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="doors"/>
-   <property name="unity:sortingLayerName" value="doors"/>
+   <property name="unity:layer" value="Doors"/>
+   <property name="unity:sortingLayerName" value="Doors"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -166,8 +158,8 @@
  </layer>
  <layer name="doors" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="doors"/>
-   <property name="unity:sortingLayerName" value="doors"/>
+   <property name="unity:layer" value="Doors"/>
+   <property name="unity:sortingLayerName" value="Doors"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64">
@@ -176,8 +168,8 @@
  </layer>
  <layer name="redJems" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="jems"/>
-   <property name="unity:sortingLayerName" value="redJems"/>
+   <property name="unity:layer" value="Jems"/>
+   <property name="unity:sortingLayerName" value="RedJems"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -186,8 +178,8 @@
  </layer>
  <layer name="yellowJems" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="jems"/>
-   <property name="unity:sortingLayerName" value="yellowJems"/>
+   <property name="unity:layer" value="Jems"/>
+   <property name="unity:sortingLayerName" value="YellowJems"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -196,8 +188,8 @@
  </layer>
  <layer name="greenJems" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="jems"/>
-   <property name="unity:sortingLayerName" value="greenJems"/>
+   <property name="unity:layer" value="Jems"/>
+   <property name="unity:sortingLayerName" value="GreenJems"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -206,8 +198,8 @@
  </layer>
  <layer name="flagPole" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="flagPoles"/>
-   <property name="unity:sortingLayerName" value="flagPoles"/>
+   <property name="unity:layer" value="FlagPoles"/>
+   <property name="unity:sortingLayerName" value="FlagPoles"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -216,8 +208,7 @@
  </layer>
  <layer name="signs" width="53" height="33">
   <properties>
-   <property name="unity:layer" value="signs"/>
-   <property name="unity:sortingLayerName" value="signs"/>
+   <property name="unity:sortingLayerName" value="Signs"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">

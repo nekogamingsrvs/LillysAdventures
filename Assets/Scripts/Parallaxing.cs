@@ -33,7 +33,7 @@ public class Parallaxing : MonoBehaviour
     void Awake()
     {
         size = layerSprite.GetComponent<Renderer>().bounds.size;
-        center = new Vector2(parent.transform.position.x, parent.transform.position.y);
+        center = new Vector2(parent.position.x, parent.position.y);
 
         //instantiate all 4 objects
         obj1 = layerSprite;
@@ -47,32 +47,32 @@ public class Parallaxing : MonoBehaviour
         obj4p = new Vector3();
     }
 
-    void LateUpdate()
+    void Update()
     {
 
         //compute our new position
-        center.x = f(parent.transform.position.x, depth, size.x);
+        center.x = f(parent.position.x, depth, size.x);
         center.y = f(parent.transform.position.y, depth, size.y);
 
         //update 4 object positions
         obj1p.x = center.x + size.x / 2;
-        obj1p.y = -2.88f;
-        //obj1p.y = center.y + size.y / 2;
+        //obj1p.y = -2.88f;
+        obj1p.y = parent.transform.position.y + 16;
         obj1.transform.position = obj1p;
 
         obj2p.x = center.x - size.x / 2;
-        obj2p.y = -2.88f;
-        //obj2p.y = center.y + size.y / 2;
+        //obj2p.y = -2.88f;
+        obj2p.y = parent.transform.position.y + 16;
         obj2.transform.position = obj2p;
 
         obj3p.x = center.x - size.x / 2;
-        obj3p.y = -2.88f;
-        //obj3p.y = center.y - size.y / 2;
+        //obj3p.y = -2.88f;
+        obj3p.y = parent.transform.position.y + 16;
         obj3.transform.position = obj3p;
 
         obj4p.x = center.x + size.x / 2;
-        obj4p.y = -2.88f;
-        //obj4p.y = center.y - size.y / 2;
+        //obj4p.y = -2.88f;
+        obj4p.y = parent.transform.position.y + 16;
         obj4.transform.position = obj4p;
     }
 

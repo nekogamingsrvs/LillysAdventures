@@ -21,6 +21,16 @@
    <object id="0" x="0" y="0" width="16" height="16"/>
   </objectgroup>
  </tile>
+ <tile id="1024">
+  <objectgroup draworder="index">
+   <object id="0" x="0" y="0" width="16" height="16"/>
+  </objectgroup>
+ </tile>
+ <tile id="1088">
+  <objectgroup draworder="index">
+   <object id="0" x="0" y="0" width="16" height="16"/>
+  </objectgroup>
+ </tile>
  <tile id="3629">
   <objectgroup draworder="index">
    <object id="0" x="0" y="0">

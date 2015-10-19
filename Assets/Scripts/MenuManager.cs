@@ -1,20 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using CnControls;
 
+/// <summary>
+/// Manages the main menu.
+/// </summary>
 public class MenuManager : MonoBehaviour
 {
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyUp(KeyCode.Space))
+		if (Application.platform == RuntimePlatform.WindowsEditor)
 		{
-			Application.LoadLevel("level1");
+			// Start the game when pressing space.
+			if (Input.GetKeyUp(KeyCode.Space))
+			{
+				Application.LoadLevel("level1");
+			}
+		}
+		else if (Application.platform == RuntimePlatform.Android)
+		{
+			if (CnInputManager.GetButtonUp("Jump"))
+			{
+				Application.LoadLevel("level1");
+			}
 		}
 	}
 }
