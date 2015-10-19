@@ -1,4 +1,4 @@
-﻿// Based on code provided by: Nick Gravelyn
+// Based on code provided by: Nick Gravelyn
 // from: https://gist.github.com/nickgravelyn/7460288
 using System;
 using System.Collections;
