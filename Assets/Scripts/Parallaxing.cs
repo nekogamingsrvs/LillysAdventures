@@ -49,7 +49,6 @@ public class Parallaxing : MonoBehaviour
 
     void Update()
     {
-
         //compute our new position
         center.x = f(parent.position.x, depth, size.x);
         center.y = f(parent.transform.position.y, depth, size.y);
