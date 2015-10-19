@@ -30,5 +30,13 @@ public class GameManager : MonoBehaviour
 		levelBoundries.xMax = level.GetComponent<Tiled2Unity.TiledMap>().MapWidthInPixels * 2;
 		levelBoundries.yMin = -level.GetComponent<Tiled2Unity.TiledMap>().MapHeightInPixels * 2;
 		levelBoundries.yMax = 0;
+
+		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+		{
+			foreach (GameObject go in GameObject.FindGameObjectsWithTag("MobileControls"))
+            {
+				go.SetActive(false);
+			}
+		}
 	}
 }
