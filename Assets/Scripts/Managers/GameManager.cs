@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 	/// <summary>
 	/// The level of the game.
 	/// </summary>
-	public GameObject level;
+	public GameObject Level;
 
 	/// <summary>
 	/// Gets or sets if the game is in debug mode.
@@ -14,17 +14,24 @@ public class GameManager : MonoBehaviour
 	public bool isDebugActive;
 
 	/// <summary>
-	/// The boundries of the map.
+	/// Gets or sets the score of the game.
+	/// </summary>
+	public int Score
+	{
+		get;
+		set;
+	}
+
+	/// <summary>
+	/// The boundaries of the map.
 	/// </summary>
 	[HideInInspector]
-	public Rect levelBoundries;
-
-	private Vector2 mouse;
+	public Rect LevelBoundries;
 
 	// Use this for initialization
 	void Start()
 	{
-		// Calulates the level's boundries.
+		// Calculates the levels boundaries.
 		levelBoundries = new Rect();
 		levelBoundries.xMin = 0;
 		levelBoundries.xMax = level.GetComponent<Tiled2Unity.TiledMap>().MapWidthInPixels * 2;
@@ -38,5 +45,7 @@ public class GameManager : MonoBehaviour
 				go.SetActive(false);
 			}
 		}
+
+		GameObject.FindObjectWithTag("GameController").GetComponent<GameManager>().AddToDatabase("Score", Score);
 	}
 }

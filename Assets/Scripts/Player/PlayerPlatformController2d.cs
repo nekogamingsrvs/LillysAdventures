@@ -141,7 +141,7 @@ class PlayerPlatformController2d : PlayerController2d
 		else if (Application.platform == RuntimePlatform.Android)
 		{
 			moving = CnInputManager.GetAxis("Horizontal");
-			if (CnInputManager.GetButton("RunKey"))
+			if (CnInputManager.GetButtonUp("RunKey"))
 			{
 				running = !running;
 			}

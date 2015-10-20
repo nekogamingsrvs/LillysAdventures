@@ -101,27 +101,27 @@ namespace CnControls
             return isRaw ? Input.GetAxisRaw(axisName) : Input.GetAxis(axisName);
         }
 
-        /// <summary>
-        /// Method for retrieval of the desired button pressed state
-        /// </summary>
-        /// <param name="buttonName">The name of the desired button</param>
-        /// <returns>Is the button being currently pressed?</returns>
-        public static bool GetButton(string buttonName)
-        {
-            // We first check the stadard Button behaviour
-            var standardInputButtonState = Input.GetButton(buttonName);
-            // If the stadard Unity Input button is being pressed, we just retur true
-            if (standardInputButtonState == true) return true;
+		/// <summary>
+		/// Method for retrieval of the desired button pressed state
+		/// </summary>
+		/// <param name="buttonName">The name of the desired button</param>
+		/// <returns>Is the button being currently pressed?</returns>
+		public static bool GetButton(string buttonName)
+		{
+			// We first check the stadard Button behaviour
+			var standardInputButtonState = Input.GetButton(buttonName);
+			// If the stadard Unity Input button is being pressed, we just retur true
+			if (standardInputButtonState == true) return true;
 
-            // If not, we check our virtual buttons
-            if (ButtonExists(buttonName))
-            {
-                return GetAnyVirtualButton(Instance._virtualButtonsDictionary[buttonName]);;
-            }
+			// If not, we check our virtual buttons
+			if (ButtonExists(buttonName))
+			{
+				return GetAnyVirtualButton(Instance._virtualButtonsDictionary[buttonName]);
+			}
 
-            // If there is no such button registered, we return false;
-            return false;
-        }
+			// If there is no such button registered, we return false;
+			return false;
+		}
 
         /// <summary>
         /// Method for retrieval of the desired button "has just been pressed" state
@@ -332,7 +332,6 @@ namespace CnControls
 
             return false;
         }
-
     }
 }
 

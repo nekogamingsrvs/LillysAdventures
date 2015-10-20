@@ -127,7 +127,7 @@ class PlayerLadderController2d : PlayerController2d
 		}
 
 		// Move our character up/down the ladder
-		// Note: There is no graivty applied while on the ladder
+		// Note: There is no gravity applied while on the ladder
 		if (climbing != 0)
 		{
 			Vector2 velocity = new Vector2(0, Mathf.Sign(climbing) * LadderVelocityPerSecond * Time.deltaTime);

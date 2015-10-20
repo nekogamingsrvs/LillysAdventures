@@ -3,8 +3,7 @@
  <tileset firstgid="1" source="kenney_16x16.tsx"/>
  <layer name="backgroundObjects 2" width="20" height="17">
   <properties>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -13,8 +12,7 @@
  </layer>
  <layer name="backgroundObjects" width="20" height="17">
   <properties>
-   <property name="unity:layer" value="background"/>
-   <property name="unity:sortingLayerName" value="background"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64">
@@ -23,8 +21,7 @@
  </layer>
  <layer name="tiles" width="20" height="17">
   <properties>
-   <property name="unity:layer" value="tiles"/>
-   <property name="unity:sortingLayerName" value="tiles"/>
+   <property name="unity:sortingLayerName" value="Tiles"/>
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64">
@@ -33,8 +30,7 @@
  </layer>
  <layer name="tilesOverlay" width="20" height="17">
   <properties>
-   <property name="unity:layer" value="tiles"/>
-   <property name="unity:sortingLayerName" value="tiles"/>
+   <property name="unity:sortingLayerName" value="Tiles"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64">

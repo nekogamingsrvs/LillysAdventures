@@ -12,14 +12,17 @@ abstract class PlayerController2d : PlayerController2d_ForSealing
 	{
 		get; private set;
 	}
+
 	protected Animator Animator
 	{
 		get; private set;
 	}
+
 	protected CharacterController2D Controller2d
 	{
 		get; private set;
 	}
+
 	protected bool PlayerControllerEnabled
 	{
 		get; private set;

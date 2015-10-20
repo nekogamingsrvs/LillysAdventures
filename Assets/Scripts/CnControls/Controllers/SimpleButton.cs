@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace CnControls
 {
@@ -20,10 +21,17 @@ namespace CnControls
         /// </summary>
         public string ButtonName = "Jump";
 
-        /// <summary>
-        /// Utility object that is registered in the system
-        /// </summary>
-        private VirtualButton _virtualButton;
+		public Sprite DownSprite;
+		public Sprite UpSprite;
+
+		public bool Toggleable;
+
+		private bool ToggleState = false;
+
+		/// <summary>
+		/// Utility object that is registered in the system
+		/// </summary>
+		private VirtualButton _virtualButton;
 
         // Again some Unity Remote supporting stuff
         // if we are in the editor, add an input helper component
@@ -54,22 +62,47 @@ namespace CnControls
 
         /// <summary>
         /// uGUI Event system stuff
-        /// It's also utilised by the editor input helper
+        /// It's also utilized by the editor input helper
         /// </summary>
         /// <param name="eventData">Data of the passed event</param>
         public void OnPointerUp(PointerEventData eventData)
         {
             _virtualButton.Release();
-        }
-
-        /// <summary>
-        /// uGUI Event system stuff
-        /// It's also utilised by the editor input helper
-        /// </summary>
-        /// <param name="eventData">Data of the passed event</param>
-        public void OnPointerDown(PointerEventData eventData)
+			if (Toggleable)
+			{
+				ToggleState = !ToggleState;
+				Pressed(ToggleState);
+			}
+			else
+			{
+				Pressed(false);
+			}
+		}
+		
+		/// <summary>
+		/// uGUI Event system stuff
+		/// It's also utilized by the editor input helper
+		/// </summary>
+		/// <param name="eventData">Data of the passed event</param>
+		public void OnPointerDown(PointerEventData eventData)
         {
             _virtualButton.Press();
-        }
-    }
+			if (!Toggleable)
+			{
+				Pressed(true);
+			}
+		}
+
+		public void Pressed(bool isPressed)
+		{
+			if (isPressed)
+			{
+				GetComponent<Image>().sprite = DownSprite;
+			}
+			else
+			{
+				GetComponent<Image>().sprite = UpSprite;
+			}
+		}
+	}
 }

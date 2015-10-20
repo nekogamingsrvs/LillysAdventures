@@ -1,11 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class MenuParallaxing : MonoBehaviour
+public class Parallaxing : MonoBehaviour
 {
-	public Vector2 uvAnimationSpeed;
-	
-	//object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport
+	/// <summary>
+	/// The object to track. Generally a camera.
+	/// </summary>
+	public Transform parent;
+
+	/// <summary>
+	/// Generally 0-1. <0 moves as foreground.
+	/// </summary>
+	public float depth;
+
+	/// <summary>
+	/// Object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport.
+	/// </summary>
 	public GameObject layerSprite;
 
 	//size of the layerSprite
@@ -18,54 +28,57 @@ public class MenuParallaxing : MonoBehaviour
 	private GameObject obj1;
 	private GameObject obj2;
 	private GameObject obj3;
+	private GameObject obj4;
 
 	//our 4 layerSprite positions
 	private Vector2 obj1p;
 	private Vector2 obj2p;
 	private Vector2 obj3p;
+	private Vector2 obj4p;
 
 	void Awake()
 	{
 		size = layerSprite.GetComponent<Renderer>().bounds.size;
-		center = new Vector2(160, -170);
+		center = new Vector2(parent.position.x, parent.position.y);
 
 		//instantiate all 4 objects
 		obj1 = layerSprite;
 		obj2 = Instantiate(layerSprite);
 		obj3 = Instantiate(layerSprite);
+		obj4 = Instantiate(layerSprite);
 
 		obj1p = new Vector3();
 		obj2p = new Vector3();
 		obj3p = new Vector3();
+		obj4p = new Vector3();
 	}
 
 	void Update()
 	{
-		center += (uvAnimationSpeed * Time.deltaTime);
-
 		//compute our new position
-		//center.x = f(parent.position.x, -uvAnimationSpeed.x / 6, size.x);
+		center.x = f(parent.position.x, depth, size.x);
+		center.y = f(parent.transform.position.y, depth, size.y);
 
 		//update 4 object positions
 		obj1p.x = center.x + size.x / 2;
 		//obj1p.y = -2.88f;
-		obj1p.y = -170;
+		obj1p.y = parent.transform.position.y + 16;
 		obj1.transform.position = obj1p;
 
 		obj2p.x = center.x - size.x / 2;
 		//obj2p.y = -2.88f;
-		obj2p.y = -170;
+		obj2p.y = parent.transform.position.y + 16;
 		obj2.transform.position = obj2p;
-		
-		obj3p.x = (center.x - size.x / 2) + size.x * 2;
-		//obj2p.y = -2.88f;
-		obj3p.y = -170;
+
+		obj3p.x = center.x - size.x / 2;
+		//obj3p.y = -2.88f;
+		obj3p.y = parent.transform.position.y + 16;
 		obj3.transform.position = obj3p;
 
-		if (center.x < -size.x / 2)
-		{
-			center = new Vector2(160, -170);
-		}
+		obj4p.x = center.x + size.x / 2;
+		//obj4p.y = -2.88f;
+		obj4p.y = parent.transform.position.y + 16;
+		obj4.transform.position = obj4p;
 	}
 
 	//p = position, in this scenario, x or y
