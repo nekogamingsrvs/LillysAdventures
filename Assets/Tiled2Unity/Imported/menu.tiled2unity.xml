@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 10/18/2015 7:06:32 PM-->
+<!--Last exported: 10/19/2015 3:05:44 PM-->
 <Tiled2Unity version="0.9.13.0">
-  <AssignMaterial mesh="mesh_[00]_[00]" material="kenney_16x16" sortingLayerName="background" sortingOrder="0" />
-  <AssignMaterial mesh="mesh_[01]_[00]" material="kenney_16x16" sortingLayerName="background" sortingOrder="1" />
-  <AssignMaterial mesh="mesh_[02]_[00]" material="kenney_16x16" sortingLayerName="tiles" sortingOrder="0" />
-  <AssignMaterial mesh="mesh_[03]_[00]" material="kenney_16x16" sortingLayerName="tiles" sortingOrder="1" />
+  <AssignMaterial mesh="mesh_[00]_[00]" material="kenney_16x16" sortingLayerName="Background" sortingOrder="0" />
+  <AssignMaterial mesh="mesh_[01]_[00]" material="kenney_16x16" sortingLayerName="Background" sortingOrder="1" />
+  <AssignMaterial mesh="mesh_[02]_[00]" material="kenney_16x16" sortingLayerName="Tiles" sortingOrder="0" />
+  <AssignMaterial mesh="mesh_[03]_[00]" material="kenney_16x16" sortingLayerName="Tiles" sortingOrder="1" />
   <Prefab name="menu" numTilesWide="20" numTilesHigh="17" tileWidth="16" tileHeight="16" exportScale="1" mapWidthInPixels="320" mapHeightInPixels="272">
-    <GameObject name="backgroundObjects_2_00" x="0" y="0" layer="background">
+    <GameObject name="backgroundObjects_2_00" x="0" y="0">
       <GameObject copy="mesh_[00]_[00]" opacity="1" />
     </GameObject>
-    <GameObject name="backgroundObjects_01" x="0" y="0" layer="background">
+    <GameObject name="backgroundObjects_01" x="0" y="0">
       <GameObject copy="mesh_[01]_[00]" opacity="1" />
     </GameObject>
-    <GameObject name="tiles_02" x="0" y="0" layer="tiles">
+    <GameObject name="tiles_02" x="0" y="0">
       <GameObject copy="mesh_[02]_[00]" opacity="1" />
       <GameObject name="Collision">
         <PolygonCollider2D>
@@ -22,7 +22,7 @@
         </PolygonCollider2D>
       </GameObject>
     </GameObject>
-    <GameObject name="tilesOverlay_03" x="0" y="0" layer="tiles">
+    <GameObject name="tilesOverlay_03" x="0" y="0">
       <GameObject copy="mesh_[03]_[00]" opacity="1" />
     </GameObject>
   </Prefab>
