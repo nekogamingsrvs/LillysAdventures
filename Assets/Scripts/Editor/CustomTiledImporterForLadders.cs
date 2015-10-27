@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 
 /// <summary>
-/// Inports the ladders' controller objects
+/// Imports the ladders' controller objects
 /// </summary>
 [Tiled2Unity.CustomTiledImporter]
 class CustomTiledImporterForLadders : Tiled2Unity.ICustomTiledImporter
 {
 	/// <summary>
-	/// Handtles custom properties, does nothing.
+	/// Handles custom properties, does nothing.
 	/// </summary>
 	/// <param name="gameObject">The game object to change</param>
 	/// <param name="props">The properties to change</param>
@@ -27,7 +27,7 @@ class CustomTiledImporterForLadders : Tiled2Unity.ICustomTiledImporter
 	/// <param name="prefab">The prefab of the level.</param>
     public void CustomizePrefab(GameObject prefab)
     {
-        // Find all the polygon colliders in the pefab
+        // Find all the polygon colliders in the prefab
         var polygon2Ds = prefab.GetComponentsInChildren<PolygonCollider2D>();
         if (polygon2Ds == null)
             return;

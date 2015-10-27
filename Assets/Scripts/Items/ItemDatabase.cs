@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ItemDatabase : MonoBehaviour
+namespace VoidInc
 {
-	public Sprite Coin1Texture;
-	public Sprite Coin5Texture;
-	public Sprite Coin10Texture;
+	public class ItemDatabase : MonoBehaviour
+	{
+		public Sprite Coin1Texture;
+		public Sprite Coin5Texture;
+		public Sprite Coin10Texture;
+		public Sprite GemTexture;
+		public Sprite KeyTexture;
+		public Sprite LockTexture;
+	}
 }

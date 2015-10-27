@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 /// <summary>
-/// Handles the main camera's moevement.
+/// Handles the main camera's movement.
 /// </summary>
 public class CameraMovementManager : MonoBehaviour
 {
@@ -31,7 +31,7 @@ public class CameraMovementManager : MonoBehaviour
 	void Start()
 	{
 		// Get the LevelBounds from game GameManager.
-		LevelBounds = FindObjectOfType<GameManager>().levelBoundries;
+		LevelBounds = FindObjectOfType<GameManager>().LevelBoundries;
 
 		// Calculate the extents of the camera.
 		float VertExtent = GetComponent<Camera>().orthographicSize;
@@ -54,13 +54,13 @@ public class CameraMovementManager : MonoBehaviour
 	// Update is called once per frame later than Update
 	void LateUpdate()
 	{
-		// Clauclates the clamp for the camera's position.
-		Vector3 VectorClamp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		// Classmates the clamp for the camera's position.
+		Vector3 vectorClamp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 		// Clamps the camera.
-		VectorClamp.x = Mathf.Clamp(vectorClamp.x, LeftBound, RightBound);
-		VectorClamp.y = Mathf.Clamp(vectorClamp.y, BottomBound, TopBound);
-		VectorClamp.z = -100;
+		vectorClamp.x = Mathf.Clamp(vectorClamp.x, LeftBound, RightBound);
+		vectorClamp.y = Mathf.Clamp(vectorClamp.y, BottomBound, TopBound);
+		vectorClamp.z = -100;
 
 		// Sets the clamp to the camera.
 		transform.position = vectorClamp;

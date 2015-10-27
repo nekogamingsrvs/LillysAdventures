@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Parallaxing : MonoBehaviour
+public class GameParallaxManager : MonoBehaviour
 {
 	/// <summary>
 	/// The object to track. Generally a camera.

@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CoinIdentifier : MonoBehaviour
+namespace VoidInc
 {
-	public int CoinScore;
-
-	public void RemoveCoin()
+	public class CoinIdentifier : MonoBehaviour
 	{
-		var gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+		public int CoinScore;
 
-		Destroy(gameObject);
+		public void RemoveCoin()
+		{
+			var gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
-		gameController.Score += CoinScore;
+			Destroy(gameObject);
+
+			gameController.Score += CoinScore;
+		}
 	}
 }
