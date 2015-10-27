@@ -1,18 +1,18 @@
 fileFormatVersion: 2
 guid: 0076b26508360f7488f1c65202b3c53a
-timeCreated: 1445188826
+timeCreated: 1445644819
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: flatshadow_0
-    21300002: flatshadow_1
-    21300004: flatshadow_2
-    21300006: flatshadow_3
-    21300008: flatshadow_4
-    21300010: flatshadow_5
-    21300012: flatshadow_6
-    21300014: flatshadow_7
-    21300016: flatshadow_8
+    21300000: Medal_3
+    21300002: Medal_8
+    21300004: Medal_10
+    21300006: Medal_1
+    21300008: Medal_2
+    21300010: Medal_9
+    21300012: Medal_6
+    21300014: Medal_7
+    21300016: Medal_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: flatshadow_0
+    - name: Medal_3
       rect:
         serializedVersion: 2
         x: 0
@@ -67,9 +67,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_1
+    - name: Medal_8
       rect:
         serializedVersion: 2
         x: 42
@@ -77,9 +77,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_2
+    - name: Medal_10
       rect:
         serializedVersion: 2
         x: 84
@@ -87,9 +87,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_3
+    - name: Medal_1
       rect:
         serializedVersion: 2
         x: 126
@@ -97,9 +97,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_4
+    - name: Medal_2
       rect:
         serializedVersion: 2
         x: 168
@@ -107,9 +107,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_5
+    - name: Medal_9
       rect:
         serializedVersion: 2
         x: 0
@@ -117,9 +117,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_6
+    - name: Medal_6
       rect:
         serializedVersion: 2
         x: 42
@@ -127,9 +127,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_7
+    - name: Medal_7
       rect:
         serializedVersion: 2
         x: 84
@@ -137,9 +137,9 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: flatshadow_8
+    - name: Medal_4
       rect:
         serializedVersion: 2
         x: 126
@@ -147,7 +147,7 @@ TextureImporter:
         width: 42
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

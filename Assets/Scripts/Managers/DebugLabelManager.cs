@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Manages debug labels.
@@ -11,7 +12,7 @@ public class DebugLabelManager : MonoBehaviour
 	/// <summary>
 	/// The debug string struct.
 	/// </summary>
-	protected struct DebugString
+	protected class DebugString
 	{
 		public string id;
 		public object variable;
@@ -36,12 +37,12 @@ public class DebugLabelManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		UpdateString();
+		UpdateStrings();
 		
 		GetComponentInChildren<UnityEngine.UI.Text>().text = debugText;
 	}
 	
-	void AddString()
+	void AddStrings()
 	{
 		foreach (DebugString debugString in _DebugStrings)
 		{
@@ -50,13 +51,11 @@ public class DebugLabelManager : MonoBehaviour
         }
 	}
 	
-	void UpdateString()
+	void UpdateStrings()
 	{
-		tempStringText = "";
-		
 		foreach (DebugString debugString in _DebugStrings)
 		{
-			debugText.Replace(FindStringFormat(debugString), FormatString(debugString));
+			ReplaceStringFormat(debugString);
 		}
 	}
 	
@@ -65,9 +64,11 @@ public class DebugLabelManager : MonoBehaviour
 		return string.Format("{0}: {1} | ", debugString.id, debugString.variable.ToString());
 	}
 	
-	string FindStringFormat(DebugString)
+	void ReplaceStringFormat(DebugString debugString)
 	{
-		return string.Format("{0}\:\ ([A-Za-z0-9\-]+) \| ", debugString.id);
+		Regex tempRegex = new Regex(@"\" + debugString.id + @"\:\ ([A-Za-z0-9\-\.]+) \| ");
+
+		debugText = tempRegex.Replace(debugText, FormatString(debugString));
 	}
 
 	/// <summary>
@@ -77,10 +78,15 @@ public class DebugLabelManager : MonoBehaviour
 	/// <param name="variable">The value or the variable it's self.</param>
 	public void AddToDatabase(string id, object variable)
 	{
-		DebugString TempDebugString = new DebugString();
-		TempDebugString.id = id;
-		TempDebugString.variable = variable;
+		DebugString tempDebugString = new DebugString();
+		tempDebugString.id = id;
+		tempDebugString.variable = variable;
 
 		_DebugStrings.Add(tempDebugString);
+	}
+
+	public void UpdateToDatabase(string id, object variable)
+	{
+		_DebugStrings.Find(x => x.id.Contains(id)).variable = variable;
 	}
 }
