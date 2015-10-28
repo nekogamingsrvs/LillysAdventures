@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 	/// <summary>
 	/// The DebugLabelManager for debuging the game.
 	/// </summary>
+	[HideInInspector]
 	public DebugLabelManager DebugLabelController;
 
 	/// <summary>
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
 	void Start()
 	{
 		Level = GameObject.Find("level" + CurrentLevel);
+		DebugLabelController = GameObject.Find("DebugPanel").GetComponent<DebugLabelManager>();
 
 		// Calculates the levels boundaries.
 		LevelBoundries = new Rect();
