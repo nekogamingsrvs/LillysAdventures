@@ -13,6 +13,10 @@ public class GameParallaxManager : MonoBehaviour
 	/// </summary>
 	public float depth;
 
+	public bool isVerticalFixed;
+
+	public int PositionY;
+
 	/// <summary>
 	/// Object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport.
 	/// </summary>
@@ -59,26 +63,44 @@ public class GameParallaxManager : MonoBehaviour
 		center.x = f(parent.position.x, depth, size.x);
 		center.y = f(parent.transform.position.y, depth, size.y);
 
-		//update 4 object positions
-		obj1p.x = center.x + size.x / 2;
-		//obj1p.y = -2.88f;
-		obj1p.y = parent.transform.position.y + 16;
-		obj1.transform.position = obj1p;
+		if (isVerticalFixed)
+		{
+			//update 4 object positions
+			obj1p.x = center.x + size.x / 2;
+			obj1p.y = PositionY;
+			obj1.transform.position = obj1p;
 
-		obj2p.x = center.x - size.x / 2;
-		//obj2p.y = -2.88f;
-		obj2p.y = parent.transform.position.y + 16;
-		obj2.transform.position = obj2p;
+			obj2p.x = center.x - size.x / 2;
+			obj2p.y = PositionY;
+			obj2.transform.position = obj2p;
 
-		obj3p.x = center.x - size.x / 2;
-		//obj3p.y = -2.88f;
-		obj3p.y = parent.transform.position.y + 16;
-		obj3.transform.position = obj3p;
+			obj3p.x = (center.x - size.x / 2) - size.x;
+			obj3p.y = PositionY;
+			obj3.transform.position = obj3p;
 
-		obj4p.x = center.x + size.x / 2;
-		//obj4p.y = -2.88f;
-		obj4p.y = parent.transform.position.y + 16;
-		obj4.transform.position = obj4p;
+			obj4p.x = (center.x + size.x / 2) + size.x;
+			obj4p.y = PositionY;
+			obj4.transform.position = obj4p;
+		}
+		else
+		{
+			//update 4 object positions
+			obj1p.x = center.x + size.x / 2;
+			obj1p.y = center.y + size.y / 2;
+			obj1.transform.position = obj1p;
+
+			obj2p.x = center.x - size.x / 2;
+			obj2p.y = center.y - size.y / 2;
+			obj2.transform.position = obj2p;
+
+			obj3p.x = center.x - size.x / 2;
+			obj3p.y = center.y + size.y / 2;
+			obj3.transform.position = obj3p;
+
+			obj4p.x = center.x + size.x / 2;
+			obj4p.y = center.y - size.y / 2;
+			obj4.transform.position = obj4p;
+		}
 	}
 
 	//p = position, in this scenario, x or y
