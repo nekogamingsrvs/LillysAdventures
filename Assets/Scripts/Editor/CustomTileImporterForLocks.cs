@@ -12,7 +12,7 @@ using VoidInc;
 [Tiled2Unity.CustomTiledImporter]
 class CustomTileImportForLocks : Tiled2Unity.ICustomTiledImporter
 {
-	private Sprite _LockTexture;
+	public Sprite BlockLockTexture;
 
 	/// <summary>
 	/// Handles custom properties, does nothing.
@@ -21,35 +21,20 @@ class CustomTileImportForLocks : Tiled2Unity.ICustomTiledImporter
 	/// <param name="props">The properties to change</param>
 	public void HandleCustomProperties(GameObject gameObject, IDictionary<string, string> props)
 	{
-		// Do nothing
-	}
-
-	/// <summary>
-	/// Adds the spines and other colliders to the ladders.
-	/// </summary>
-	/// <param name="prefab">The prefab of the level.</param>
-	public void CustomizePrefab(GameObject prefab)
-	{
 		ItemDatabase itemDatabase = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
 
 		if (itemDatabase == null)
 			return;
 
-		_LockTexture = itemDatabase.LockTexture;
+		BlockLockTexture = itemDatabase.LockTexture;
 
-		var gameObj = GameObject.Find("Locks");
-		if (gameObj == null)
-			return;
-		
-		Collider2D[] colliderList = gameObj.GetComponentsInChildren<Collider2D>();
-
-		if (colliderList == null)
-			return;
-
-		foreach (Collider2D collider in colliderList)
+		if (props.ContainsKey("lockId"))
 		{
+			gameObject.AddComponent<LockIdentifier>();
+			gameObject.GetComponent<LockIdentifier>().Identifier = Convert.ToInt32(props["lockId"]);
+			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
-			for (int i = 0; i < (int)(collider.bounds.size.y / 16); i++)
+			for (int i = 0; i < gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 16; i++)
 			{
 				GameObject tempLock = new GameObject("Locks")
 				{
@@ -58,16 +43,22 @@ class CustomTileImportForLocks : Tiled2Unity.ICustomTiledImporter
 
 				tempLock.AddComponent<SpriteRenderer>();
 
-				tempLock.GetComponent<SpriteRenderer>().sprite = _LockTexture;
+				tempLock.GetComponent<SpriteRenderer>().sprite = BlockLockTexture;
 				tempLock.GetComponent<SpriteRenderer>().sortingLayerName = "Locks";
 				tempLock.GetComponent<SpriteRenderer>().sortingOrder = 0;
-				collider.gameObject.AddComponent<LockIdentifier>();
-				collider.GetComponent<BoxCollider2D>().isTrigger = true;
 
-				tempLock.transform.parent = collider.gameObject.transform;
+				tempLock.transform.parent = gameObject.transform;
 
 				tempLock.transform.localPosition = new Vector3(8, -(i * 16) + -8, 0);
 			}
 		}
+	}
+
+	/// <summary>
+	/// Adds the spines and other colliders to the ladders.
+	/// </summary>
+	/// <param name="prefab">The prefab of the level.</param>
+	public void CustomizePrefab(GameObject prefab)
+	{
 	}
 }

@@ -11,5 +11,9 @@ namespace VoidInc
 		public Sprite GemTexture;
 		public Sprite KeyTexture;
 		public Sprite LockTexture;
+		public Sprite ClosedDoorTextureTop;
+		public Sprite ClosedDoorTextureBottom;
+		public Sprite OpenDoorTextureTop;
+		public Sprite OpenDoorTextureBottom;
 	}
 }

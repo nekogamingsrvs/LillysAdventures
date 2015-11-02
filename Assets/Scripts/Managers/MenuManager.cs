@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
 		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
 		{
 			// Start the game when pressing space.
-			if (Input.GetKeyDown(KeyCode.Space))
+			if (Input.GetButton("Submit"))
 			{
 				Application.LoadLevel("level1");
 			}

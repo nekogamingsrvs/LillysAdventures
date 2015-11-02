@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 65d035aa892d8a24abb906e170c2b425
+timeCreated: 1446134319
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - InitialDoorTextureTop: {fileID: 21300056, guid: 39fe3120fc72ec8469be21fd1fa80dcc,
+      type: 3}
+  - InitialDoorTextureBottom: {fileID: 21300060, guid: 39fe3120fc72ec8469be21fd1fa80dcc,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
