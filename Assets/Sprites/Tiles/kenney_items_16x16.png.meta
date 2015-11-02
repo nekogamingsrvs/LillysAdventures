@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 39fe3120fc72ec8469be21fd1fa80dcc
-timeCreated: 1445644730
-licenseType: Free
+timeCreated: 1446131105
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: Key
@@ -29,6 +29,19 @@ TextureImporter:
     21300044: Lever_1
     21300046: Lever_2
     21300048: Lever_3
+    21300050: Key_1
+    21300052: Lock_1
+    21300054: Coin1_1
+    21300056: Door1_1
+    21300058: Coin5_1
+    21300060: Door1_2
+    21300062: Coin10_1
+    21300064: Door1_3
+    21300066: Door1_4
+    21300068: Door2_1
+    21300070: Door2_3
+    21300072: Door2_4
+    21300074: Door2_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -75,21 +88,21 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Key
+    - name: Key_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 80
         width: 16
         height: 16
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Lock
+    - name: Lock_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 64
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -99,7 +112,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -109,17 +122,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 64
+        y: 80
         width: 16
         height: 16
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Coin1
+    - name: Coin1_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door1_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 80
         width: 16
         height: 16
       alignment: 0
@@ -129,7 +152,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -139,7 +162,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -149,7 +172,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -159,17 +182,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 48
+        y: 64
         width: 16
         height: 16
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Coin5
+    - name: Coin5_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door1_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -179,7 +212,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -189,7 +222,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -199,7 +232,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -209,17 +242,27 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Coin10
+    - name: Coin10_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door1_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -229,7 +272,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -239,7 +282,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -249,7 +292,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -259,7 +302,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 16
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -269,7 +312,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door1_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -279,7 +332,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -289,7 +342,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -299,7 +352,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -309,7 +362,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 16
         width: 16
         height: 16
       alignment: 0
@@ -319,6 +372,46 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door2_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door2_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door2_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Door2_2
+      rect:
+        serializedVersion: 2
+        x: 80
         y: 0
         width: 16
         height: 16

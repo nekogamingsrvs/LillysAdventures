@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 0d5cc2dbcf5f13b49a246b5b3d36726c
-timeCreated: 1445444535
+timeCreated: 1446134348
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Coin1Texture: {fileID: 21300054, guid: 39fe3120fc72ec8469be21fd1fa80dcc, type: 3}
+  - Coin5Texture: {fileID: 21300058, guid: 39fe3120fc72ec8469be21fd1fa80dcc, type: 3}
+  - Coin10Texture: {fileID: 21300062, guid: 39fe3120fc72ec8469be21fd1fa80dcc, type: 3}
+  - GemTexture: {fileID: 21300004, guid: 39fe3120fc72ec8469be21fd1fa80dcc, type: 3}
+  - KeyTexture: {fileID: 21300050, guid: 39fe3120fc72ec8469be21fd1fa80dcc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

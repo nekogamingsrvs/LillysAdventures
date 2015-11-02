@@ -25,7 +25,6 @@ namespace VoidInc
 		private Vector3 _Velocity;
 		private bool _OnLadder;
 		private bool _IsRunning;
-		private bool _IsMeowing;
 
 		#region Platforms
 		private RuntimePlatform[] _PCPlatforms =
@@ -169,14 +168,27 @@ namespace VoidInc
 				_Animator.SetBool("Jumping", false);
 			}
 
-			if (_Controller.isGrounded && !_IsMeowing && (Input.GetButton("Meow") || CnInputManager.GetButton("Meow")))
+			if (_Controller.isGrounded && (Input.GetButton("Meow") || CnInputManager.GetButton("Meow")))
 			{
-				_IsMeowing = true;
+				gameObject.GetComponent<AudioSource>().Play();
+
+				_Animator.SetTrigger("Meowing");
 			}
 
 			if (InputControlsManager.TestInput(_PCPlatforms))
 			{
-				_IsRunning = Input.GetButton("Run");
+				if (Input.GetAxis("Run") == 0)
+				{
+					_IsRunning = false;
+				}
+				else if (Input.GetAxis("Run") == 1)
+				{
+					_IsRunning = true;
+				}
+				else
+				{
+					_IsRunning = Input.GetButton("Run");
+				}
 			}
 
 			if (InputControlsManager.TestInput(_MobilePlatforms) && CnInputManager.GetButtonUp("Run"))
@@ -249,15 +261,6 @@ namespace VoidInc
 			// grab our current _velocity to use as a base for all calculations
 			_Velocity = _Controller.velocity;
 			#endregion
-
-			if (_IsMeowing)
-			{
-				_Animator.SetBool("Meowing", true);
-
-				gameObject.GetComponent<AudioSource>().Play();
-
-				_IsMeowing = false;
-			}
 
 			if (GameObject.FindObjectOfType<GameManager>().isDebugActive)
 			{
