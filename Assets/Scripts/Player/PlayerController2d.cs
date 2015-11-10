@@ -26,32 +26,6 @@ namespace VoidInc
 		private bool _OnLadder;
 		private bool _IsRunning;
 
-		#region Platforms
-		private RuntimePlatform[] _PCPlatforms =
-		{
-			RuntimePlatform.OSXEditor,
-			RuntimePlatform.OSXPlayer,
-			RuntimePlatform.WindowsPlayer,
-			RuntimePlatform.OSXWebPlayer,
-			RuntimePlatform.OSXDashboardPlayer,
-			RuntimePlatform.WindowsWebPlayer,
-			RuntimePlatform.WindowsEditor,
-			RuntimePlatform.LinuxPlayer,
-			RuntimePlatform.WebGLPlayer,
-			RuntimePlatform.WSAPlayerX86,
-			RuntimePlatform.WSAPlayerX64,
-			RuntimePlatform.WSAPlayerARM,
-			RuntimePlatform.TizenPlayer
-		};
-
-		private RuntimePlatform[] _MobilePlatforms =
-		{
-			RuntimePlatform.IPhonePlayer,
-			RuntimePlatform.Android,
-			RuntimePlatform.WP8Player
-		};
-		#endregion
-
 		// Use this for initialization
 		void Awake()
 		{
@@ -96,36 +70,16 @@ namespace VoidInc
 		// Update when the trigger enters the event.
 		void onTriggerEnterEvent(Collider2D col)
 		{
-			// If the trigger collided with Coin1 layer then remove the coin and add score.
-			if (col.gameObject.layer == LayerMask.NameToLayer("Coins1"))
-			{
-				col.gameObject.GetComponent<CoinIdentifier>().RemoveCoin();
-			}
-			// If the trigger collided with Coin5 layer then remove the coin and add score.
-			if (col.gameObject.layer == LayerMask.NameToLayer("Coins5"))
-			{
-				col.gameObject.GetComponent<CoinIdentifier>().RemoveCoin();
-			}
-			// If the trigger collided with Coin10 layer then remove the coin and add score.
-			if (col.gameObject.layer == LayerMask.NameToLayer("Coins10"))
-			{
-				col.gameObject.GetComponent<CoinIdentifier>().RemoveCoin();
-			}
-			// If the trigger collided with Gems layer then remove the gem and add to the gem amount.
-			if (col.gameObject.layer == LayerMask.NameToLayer("Gems"))
-			{
-				col.gameObject.GetComponent<GemIdentifier>().RemoveGem();
-			}
-			// If the trigger collided with Keys layer then remove the key and add to the key amount.
-			if (col.gameObject.layer == LayerMask.NameToLayer("Keys"))
-			{
-				col.gameObject.GetComponent<KeyIdentifier>().RemoveKey();
-			}
-			// If the trigger collided with Locks layer then check if we have a key and unlock it if we do.
-			if (col.gameObject.layer == LayerMask.NameToLayer("Locks"))
-			{
-				col.gameObject.GetComponent<LockIdentifier>().CheckLock();
-			}
+			// If the trigger collided with an object with the tag "Coins1" then remove the coin and add score.
+			col.gameObject.SendMessage("RemoveCoin", SendMessageOptions.DontRequireReceiver);
+			// If the trigger collided with an object with the tag "Coins5" then remove the coin and add score.
+			col.gameObject.SendMessage("RemoveGem", SendMessageOptions.DontRequireReceiver);
+			// If the trigger collided with an object with the tag "Keys" then remove the key and add to the key amount.
+			col.gameObject.SendMessage("RemoveKey", SendMessageOptions.DontRequireReceiver);
+			// If the trigger collided with an object with the tag "Locks" then check if we have a key and unlock it if we do.
+			col.gameObject.SendMessage("CheckLock", SendMessageOptions.DontRequireReceiver);
+			// If the trigger collided with an object with the tag "Signs" then display the information about the sign.
+			col.gameObject.SendMessage("DisplayDialog", SendMessageOptions.DontRequireReceiver);
 
 			if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
 			{
@@ -175,7 +129,7 @@ namespace VoidInc
 				_Animator.SetTrigger("Meowing");
 			}
 
-			if (InputControlsManager.TestInput(_PCPlatforms))
+			if (InputControlsManager.TestInput(GameManager.PCPlatforms))
 			{
 				if (Input.GetAxis("Run") == 0)
 				{
@@ -191,18 +145,18 @@ namespace VoidInc
 				}
 			}
 
-			if (InputControlsManager.TestInput(_MobilePlatforms) && CnInputManager.GetButtonUp("Run"))
+			if (InputControlsManager.TestInput(GameManager.MobilePlatforms) && CnInputManager.GetButtonUp("Run"))
 			{
 				_IsRunning = !_IsRunning;
 			}
 
 			_Animator.SetBool("Running", _IsRunning);
 
-			if (InputControlsManager.TestInput(_PCPlatforms))
+			if (InputControlsManager.TestInput(GameManager.PCPlatforms))
 			{
 				NormalizedHorizontalSpeed = Input.GetAxis("Horizontal");
 			}
-			else if (InputControlsManager.TestInput(_MobilePlatforms))
+			else if (InputControlsManager.TestInput(GameManager.MobilePlatforms))
 			{
 				NormalizedHorizontalSpeed = CnInputManager.GetAxis("Horizontal");
 			}

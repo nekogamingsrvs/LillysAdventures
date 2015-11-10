@@ -40,10 +40,10 @@ namespace VoidInc
 			float HorzExtent = VertExtent * Screen.width / Screen.height;
 
 			// Calculate the camera's LevelBounds to the map.
-			LeftBound = (float)(HorzExtent - LevelBounds.width / 2.0f);
+			LeftBound = (float)(HorzExtent);
 			RightBound = (float)(LevelBounds.width / 2.0f - HorzExtent);
 			BottomBound = (float)(VertExtent - LevelBounds.height / 2.0f);
-			TopBound = (float)(LevelBounds.height / 2.0f - VertExtent);
+			TopBound = (float)(-VertExtent);
 		}
 
 		// Update is called once per frame

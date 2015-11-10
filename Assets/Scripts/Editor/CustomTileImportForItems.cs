@@ -12,12 +12,6 @@ using VoidInc;
 [Tiled2Unity.CustomTiledImporter]
 class CustomTileImportForItems : Tiled2Unity.ICustomTiledImporter
 {
-	public Sprite Coin1Texture;
-	public Sprite Coin5Texture;
-	public Sprite Coin10Texture;
-	public Sprite GemTexture;
-	public Sprite KeyTexture;
-
 	/// <summary>
 	/// Handles custom properties, does nothing.
 	/// </summary>
@@ -25,112 +19,125 @@ class CustomTileImportForItems : Tiled2Unity.ICustomTiledImporter
 	/// <param name="props">The properties to change</param>
 	public void HandleCustomProperties(GameObject gameObject, IDictionary<string, string> props)
 	{
-		ItemDatabase itemDatabaseObject = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
-
-		if (itemDatabaseObject == null)
-			return;
-
-		Coin1Texture = itemDatabaseObject.Coin1Texture;
-		Coin5Texture = itemDatabaseObject.Coin5Texture;
-		Coin10Texture = itemDatabaseObject.Coin10Texture;
-		GemTexture = itemDatabaseObject.GemTexture;
-		KeyTexture = itemDatabaseObject.KeyTexture;
-
-		if (props.ContainsKey("keyId"))
+		if (props.ContainsKey("lwa:key"))
 		{
-			gameObject.AddComponent<KeyIdentifier>();
-			gameObject.GetComponent<KeyIdentifier>().Identifier = Convert.ToInt32(props["keyId"]);
+			gameObject.AddComponent<KeyIdentifier>().Identifier = Convert.ToInt32(props["lwa:keyId"]);
 
-			GameObject item = new GameObject("Keys")
+			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+
+			foreach (Sprite sp in Resources.LoadAll<Sprite>("kenney_items_16x16"))
 			{
-				layer = LayerMask.NameToLayer("Keys")
-			};
+				if (sp.name == "Key_1")
+				{
+					spriteRenderer.sprite = sp;
+				}
+			}
 
-			item.AddComponent<SpriteRenderer>();
-			item.GetComponent<SpriteRenderer>().sprite = KeyTexture;
-			item.GetComponent<SpriteRenderer>().sortingLayerName = "Keys";
-			item.GetComponent<SpriteRenderer>().sortingOrder = 0;
-			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-
-			item.transform.parent = gameObject.transform;
-
-			item.transform.localPosition = new Vector3(8, -8, 0);
+			spriteRenderer.sortingLayerName = "Items";
+			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
 		}
-		if (props.ContainsKey("itemType") && props["itemType"] == "Coins1")
+		if (props.ContainsKey("lwa:coin1"))
 		{
 			gameObject.AddComponent<CoinIdentifier>().CoinScore = 100;
 
-			GameObject item = new GameObject("Coins1")
+			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+
+			foreach (Sprite sp in Resources.LoadAll<Sprite>("kenney_items_16x16"))
 			{
-				layer = LayerMask.NameToLayer("Coins1")
-			};
+				if (sp.name == "Coin1_1")
+				{
+					spriteRenderer.sprite = sp;
+				}
+			}
 
-			item.AddComponent<SpriteRenderer>();
-			item.GetComponent<SpriteRenderer>().sprite = Coin1Texture;
-			item.GetComponent<SpriteRenderer>().sortingLayerName = "Coins1";
-			item.GetComponent<SpriteRenderer>().sortingOrder = 0;
-			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-
-			item.transform.parent = gameObject.transform;
-
-			item.transform.localPosition = new Vector3(8, -8, 0);
+			spriteRenderer.sortingLayerName = "Items";
+			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
 		}
-		if (props.ContainsKey("itemType") && props["itemType"] == "Coins5")
+		if (props.ContainsKey("lwa:coin5"))
 		{
 			gameObject.AddComponent<CoinIdentifier>().CoinScore = 500;
-			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
-			GameObject item = new GameObject("Coins5")
+			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+
+			foreach (Sprite sp in Resources.LoadAll<Sprite>("kenney_items_16x16"))
 			{
-				layer = LayerMask.NameToLayer("Coins5")
-			};
+				if (sp.name == "Coin5_1")
+				{
+					spriteRenderer.sprite = sp;
+				}
+			}
 
-			item.AddComponent<SpriteRenderer>();
-			item.GetComponent<SpriteRenderer>().sprite = Coin5Texture;
-			item.GetComponent<SpriteRenderer>().sortingLayerName = "Coins5";
-			item.GetComponent<SpriteRenderer>().sortingOrder = 0;
-
-			item.transform.parent = gameObject.transform;
-
-			item.transform.localPosition = new Vector3(8, -8, 0);
+			spriteRenderer.sortingLayerName = "Items";
+			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
 		}
-		if (props.ContainsKey("itemType") && props["itemType"] == "Coins10")
+		if (props.ContainsKey("lwa:coin10"))
 		{
 			gameObject.AddComponent<CoinIdentifier>().CoinScore = 1000;
 
-			GameObject item = new GameObject("Coins10")
+			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+
+			foreach (Sprite sp in Resources.LoadAll<Sprite>("kenney_items_16x16"))
 			{
-				layer = LayerMask.NameToLayer("Coins10")
-			};
+				if (sp.name == "Coin10_1")
+				{
+					spriteRenderer.sprite = sp;
+				}
+			}
 
-			item.AddComponent<SpriteRenderer>();
-			item.GetComponent<SpriteRenderer>().sprite = Coin10Texture;
-			item.GetComponent<SpriteRenderer>().sortingLayerName = "Coins10";
-			item.GetComponent<SpriteRenderer>().sortingOrder = 0;
-			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-
-			item.transform.parent = gameObject.transform;
-
-			item.transform.localPosition = new Vector3(8, -8, 0);
+			spriteRenderer.sortingLayerName = "Items";
+			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
 		}
-		if (props.ContainsKey("itemType") && props["itemType"] == "Gems")
+		if (props.ContainsKey("lwa:gem"))
 		{
 			gameObject.AddComponent<GemIdentifier>().GemScore = 5000;
 
-			GameObject item = new GameObject("Gems")
+			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+
+			foreach (Sprite sp in Resources.LoadAll<Sprite>("kenney_items_16x16"))
 			{
-				layer = LayerMask.NameToLayer("Gems")
-			};
+				if (sp.name == "Gem_1")
+				{
+					spriteRenderer.sprite = sp;
+				}
+			}
 
-			item.AddComponent<SpriteRenderer>();
-			item.GetComponent<SpriteRenderer>().sprite = GemTexture;
-			item.GetComponent<SpriteRenderer>().sortingLayerName = "Gems";
-			item.GetComponent<SpriteRenderer>().sortingOrder = 0;
-			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+			spriteRenderer.sortingLayerName = "Items";
+			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
+		}
+		if (props.ContainsKey("lwa:torch"))
+		{
+			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 
-			item.transform.parent = gameObject.transform;
+			foreach (Sprite sp in Resources.LoadAll<Sprite>("torch"))
+			{
+				if (sp.name == "torch_0")
+				{
+					spriteRenderer.sprite = sp;
+				}
+			}
 
-			item.transform.localPosition = new Vector3(8, -8, 0);
+			spriteRenderer.sortingLayerName = "Objects";
+			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
+
+			var lightObj = new GameObject("Light");
+
+			var light = lightObj.AddComponent<Light>();
+			light.color = new Color(1, 1, 1);
+			light.range = 50;
+			light.intensity = 4;
+			light.bounceIntensity = 0;
+
+			lightObj.transform.SetParent(gameObject.transform);
+			lightObj.transform.localPosition = new Vector3(8, -4, -25);
+
+			var animator = gameObject.AddComponent<Animator>();
+			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("TorchAnimator");
 		}
 	}
 
