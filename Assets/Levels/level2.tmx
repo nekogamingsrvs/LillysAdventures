@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="106" height="33" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" source="kenney_16x16.tsx"/>
+ <layer name="Backgrounds_Layer" width="106" height="33">
+  <data encoding="base64" compression="zlib">
+   eJzt00EKgCAQQFE7Tjf2Al2gE4ZUECQtnBaK78EsB2Q+pgQAAAAAADCvLbC7//YKvpRGrbfOwf0ZrMs5EfmacufIn+Lt7vMc+lPrpFV/dBqDTmPQCQAAAICaA9Z7DDs=
+  </data>
+ </layer>
+ <layer name="Default-Layer" width="106" height="33">
+  <data encoding="base64" compression="zlib">
+   eJzt1kEOgzAQA0D4QLmT//+z1zYiEBJ2bQuP5CNtZUPKspiZmZmZmVmPbf3PvqJ/kR2pd/JWnI526tmqeM9UrZ16k+Xt94XCTsVnMv1OpfG9b9srY6eZ5wH9LLOI3mnmeWhdm33mMpjd6arv0c+52ijzzGUwu9PZVj1dR5+5T3TD6BPc7ZOJfJf4vcdYqW9VP8d396yvZ4buf3Svs7N29N2FVfT/iloYoDtQCAN0BwphgO5AIQzQHSiEAboDhTBAd6AQBugOFMIA3YFCGKA7UAgDdAcKYYDuQCEMvtyST8Y=
+  </data>
+ </layer>
+ <layer name="Grass_Layer" width="106" height="33">
+  <data encoding="base64" compression="zlib">
+   eJzt2MsNwyAQRdGXCtJB+u8ne2fSicUCyUH+4A8wOPdI7JA14gEeWwIAAAAA5Hgn49u2HGR4PiQTWfXCtJ3VkDEHdaR34nR8KtfCvvAvZBT2hYmsvIoZRSb6nVLCWtNP+nbmPAwlCtrJQw1XOHo+TOvfbWm+LXio4Sqm5az27MXwnJb95D8wtendS77r7nLfeWCaz2ratxzpXe5033lh+s1ibo3TOWu8ZvRKRtDjmTdt37Vxjqf/LLl6qhUAAAAAAAD1jJZuW8E=
+  </data>
+ </layer>
+</map>
