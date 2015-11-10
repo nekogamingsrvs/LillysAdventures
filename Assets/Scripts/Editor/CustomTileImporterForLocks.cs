@@ -12,8 +12,6 @@ using VoidInc;
 [Tiled2Unity.CustomTiledImporter]
 class CustomTileImportForLocks : Tiled2Unity.ICustomTiledImporter
 {
-	public Sprite BlockLockTexture;
-
 	/// <summary>
 	/// Handles custom properties, does nothing.
 	/// </summary>
@@ -21,35 +19,33 @@ class CustomTileImportForLocks : Tiled2Unity.ICustomTiledImporter
 	/// <param name="props">The properties to change</param>
 	public void HandleCustomProperties(GameObject gameObject, IDictionary<string, string> props)
 	{
-		ItemDatabase itemDatabase = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemDatabase>();
-
-		if (itemDatabase == null)
-			return;
-
-		BlockLockTexture = itemDatabase.LockTexture;
-
-		if (props.ContainsKey("lockId"))
+		if (props.ContainsKey("lwa:lock"))
 		{
-			gameObject.AddComponent<LockIdentifier>();
-			gameObject.GetComponent<LockIdentifier>().Identifier = Convert.ToInt32(props["lockId"]);
-			gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+			var lockIdentifier = gameObject.AddComponent<LockIdentifier>();
+			lockIdentifier.Identifier = Convert.ToInt32(props["lwa:lockId"]);
 
-			for (int i = 0; i < gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 16; i++)
+			for (int i = 0; i < (int)(gameObject.GetComponent<BoxCollider2D>().bounds.size.y / 16); i++)
 			{
-				GameObject tempLock = new GameObject("Locks")
+				var tempLock = new GameObject("Locks");
+				tempLock.layer = LayerMask.NameToLayer("Locks");
+
+				var spriteRenderer = tempLock.AddComponent<SpriteRenderer>();
+
+				foreach (Sprite sp in Resources.LoadAll<Sprite>("kenney_items_16x16"))
 				{
-					layer = LayerMask.NameToLayer("Locks")
-				};
+					if (sp.name == "Lock_1")
+					{
+						spriteRenderer.sprite = sp;
+					}
+				}
 
-				tempLock.AddComponent<SpriteRenderer>();
-
-				tempLock.GetComponent<SpriteRenderer>().sprite = BlockLockTexture;
-				tempLock.GetComponent<SpriteRenderer>().sortingLayerName = "Locks";
-				tempLock.GetComponent<SpriteRenderer>().sortingOrder = 0;
+				spriteRenderer.sortingLayerName = "Objects";
+				spriteRenderer.sortingOrder = 0;
+				spriteRenderer.material = Resources.Load<Material>("DiffuseSprite");
 
 				tempLock.transform.parent = gameObject.transform;
 
-				tempLock.transform.localPosition = new Vector3(8, -(i * 16) + -8, 0);
+				tempLock.transform.localPosition = new Vector3(0, -(i * 16), 0);
 			}
 		}
 	}

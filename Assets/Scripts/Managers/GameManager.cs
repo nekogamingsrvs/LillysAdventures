@@ -12,6 +12,7 @@ namespace VoidInc
 		/// <summary>
 		/// The current level of the game.
 		/// </summary>
+		[HideInInspector]
 		public TiledMap Level;
 
 		/// <summary>
@@ -67,9 +68,35 @@ namespace VoidInc
 		[HideInInspector]
 		public List<int> KeyIds;
 
-		// Use this for initialization
-		void Start()
+		public static RuntimePlatform[] PCPlatforms =
 		{
+			RuntimePlatform.OSXEditor,
+			RuntimePlatform.OSXPlayer,
+			RuntimePlatform.WindowsPlayer,
+			RuntimePlatform.OSXWebPlayer,
+			RuntimePlatform.OSXDashboardPlayer,
+			RuntimePlatform.WindowsWebPlayer,
+			RuntimePlatform.WindowsEditor,
+			RuntimePlatform.LinuxPlayer,
+			RuntimePlatform.WebGLPlayer,
+			RuntimePlatform.WSAPlayerX86,
+			RuntimePlatform.WSAPlayerX64,
+			RuntimePlatform.WSAPlayerARM,
+			RuntimePlatform.TizenPlayer
+		};
+
+		public static RuntimePlatform[] MobilePlatforms =
+		{
+			RuntimePlatform.IPhonePlayer,
+			RuntimePlatform.Android,
+			RuntimePlatform.WP8Player
+		};
+
+		// Use this for initialization
+		void Awake()
+		{
+			Level = GameObject.Find("level" + CurrentLevel).GetComponent<TiledMap>();
+
 			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
 			{
 				foreach (GameObject go in GameObject.FindGameObjectsWithTag("MobileControls"))
