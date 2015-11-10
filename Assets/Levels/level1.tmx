@@ -722,7 +722,7 @@
    <property name="unity:layer" value="Boundries"/>
    <property name="unity:tag" value="Colliders"/>
   </properties>
-  <object id="287" x="-8" y="0">
+  <object id="287" x="0" y="0">
    <polyline points="0,0 0,528"/>
   </object>
   <object id="288" x="0" y="0">
