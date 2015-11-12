@@ -33,7 +33,7 @@ public class CLAEoS : MonoBehaviour
 	/// <summary>
 	/// The level to go to.
 	/// </summary>
-    public string levelName;
+    public int levelNumber;
 
 	/// <summary>
 	/// The any other GameObject with this script on it.
@@ -108,7 +108,8 @@ public class CLAEoS : MonoBehaviour
 		// Check if player is in bounds, and load level.
         if (Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
         {
-            Application.LoadLevel(levelName);
+            Application.LoadLevel("level" + levelNumber);
+			PlayerPrefs.SetInt("CurrentLevel", levelNumber);
             PlayerPrefs.SetFloat("PlayerPositionWER_Y", Player.transform.position.y);
             PlayerPrefs.SetString("PlayerPositionWER_TeleTo", otherCLAEoSToGoTo);
         }
