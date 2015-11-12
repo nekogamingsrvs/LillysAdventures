@@ -16,11 +16,11 @@ namespace VoidInc
 			{
 				if (RequiresGems && GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().Gems == AmountGems)
 				{
-					GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().CurrentLevel = LeadsTo;
+					//GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().CurrentLevel = LeadsTo;
 				}
 				else
 				{
-					GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().CurrentLevel = LeadsTo;
+					//GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().CurrentLevel = LeadsTo;
 				}
 			}
 			else

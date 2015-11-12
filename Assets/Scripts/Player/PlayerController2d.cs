@@ -11,15 +11,15 @@ namespace VoidInc
 	{
 		public float RunMultiplierSpeed = 2.0f;
 
-		public static readonly float Gravity = -0.25f * 60.0f * 60.0f;
-		public static readonly float WalkSpeed = 1.375f * 60.0f;
-		public static readonly float InAirDamping = 1.3125f * 60.0f;
-		public static readonly float JumpHeight = 4.875f * 64.0f;
+		public float Gravity;
+		public float WalkSpeed;
+		public float InAirDamping;
+		public float JumpHeight;
 
 		//private static readonly float GravityModifierInWater = 0.375f;
 
-		public static readonly float AbsorbGroundedInputTime = 0.0675f;
-		public static readonly float LadderVelocityPerSecond = 1.0f * 60.0f;
+		public float AbsorbGroundedInputTime;
+		public float LadderVelocityPerSecond;
 
 		[HideInInspector]
 		private float NormalizedHorizontalSpeed = 0.0f;
@@ -154,7 +154,11 @@ namespace VoidInc
 				_IsClimbing = true;
 			}
 
-			if (InputControlsManager.TestInput(GameManager.PCPlatforms))
+			if (CnInputManager.GetButtonUp("Run"))
+			{
+				_IsRunning = !_IsRunning;
+			}
+			else
 			{
 				if (Input.GetAxis("Run") == 0)
 				{
@@ -164,27 +168,13 @@ namespace VoidInc
 				{
 					_IsRunning = true;
 				}
-				else
-				{
-					_IsRunning = Input.GetButton("Run");
-				}
-			}
-
-			if (InputControlsManager.TestInput(GameManager.MobilePlatforms) && CnInputManager.GetButtonUp("Run"))
-			{
-				_IsRunning = !_IsRunning;
+				
+				_IsRunning = Input.GetButton("Run");
 			}
 
 			_Animator.SetBool("Running", _IsRunning);
-
-			if (InputControlsManager.TestInput(GameManager.PCPlatforms))
-			{
-				NormalizedHorizontalSpeed = Input.GetAxis("Horizontal");
-			}
-			else if (InputControlsManager.TestInput(GameManager.MobilePlatforms))
-			{
-				NormalizedHorizontalSpeed = CnInputManager.GetAxis("Horizontal");
-			}
+			
+			NormalizedHorizontalSpeed = Input.GetAxis("Horizontal") + CnInputManager.GetAxis("Horizontal");
 
 			_Animator.SetFloat("Speed", Mathf.Abs(NormalizedHorizontalSpeed));
 
@@ -323,7 +313,7 @@ namespace VoidInc
 
 		private bool LadderCheck()
 		{
-			float climbing = InputControlsManager.TestInput(GameManager.MobilePlatforms) ? CnInputManager.GetAxis("Vertical") : Input.GetAxisRaw("Vertical");
+			float climbing = InputCheck.TestInput(InputCheck.MobilePlatforms) ? CnInputManager.GetAxis("Vertical") : Input.GetAxisRaw("Vertical");
 
 			if (climbing != 0)
 			{
@@ -387,29 +377,6 @@ namespace VoidInc
 		{
 			// Platform controller is now enabled. Other player controllers are disabled.
 			_IsClimbing = false;
-		}
-	}
-
-	public static class InputControlsManager
-	{
-		public static bool TestInput(RuntimePlatform currentPlatform)
-		{
-			if (Application.platform == currentPlatform)
-			{
-				return true;
-			}
-			
-			return false;
-		}
-		
-		public static bool TestInput(RuntimePlatform[] currentPlatform)
-		{
-			if (Array.Exists(currentPlatform, element => element == Application.platform))
-			{
-				return true;
-			}
-			
-			return false;
 		}
 	}
 }

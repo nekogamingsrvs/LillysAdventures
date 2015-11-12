@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
 			if (Input.GetButton("Submit"))
 			{
 				Application.LoadLevel("level1");
+				PlayerPrefs.SetInt("CurrentLevel", 1);
 			}
 		}
 		else if (Application.platform == RuntimePlatform.Android)
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
 			if (CnInputManager.GetButtonUp("Jump"))
 			{
 				Application.LoadLevel("level1");
+				PlayerPrefs.SetInt("CurrentLevel", 1);
 			}
 		}
 	}

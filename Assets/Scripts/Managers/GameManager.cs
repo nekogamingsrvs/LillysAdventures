@@ -54,13 +54,7 @@ namespace VoidInc
 		/// <summary>
 		/// Gets or sets the current level.
 		/// </summary>
-		[HideInInspector]
-		public string CurrentLevel = "0";
-
-		/// <summary>
-		/// Gets or sets the last level that was used.
-		/// </summary>
-		private string LastLevel;
+		public int CurrentLevel;
 
 		/// <summary>
 		/// Gets or sets the list of key id's.
@@ -68,35 +62,18 @@ namespace VoidInc
 		[HideInInspector]
 		public List<int> KeyIds;
 
-		public static RuntimePlatform[] PCPlatforms =
-		{
-			RuntimePlatform.OSXEditor,
-			RuntimePlatform.OSXPlayer,
-			RuntimePlatform.WindowsPlayer,
-			RuntimePlatform.OSXWebPlayer,
-			RuntimePlatform.OSXDashboardPlayer,
-			RuntimePlatform.WindowsWebPlayer,
-			RuntimePlatform.WindowsEditor,
-			RuntimePlatform.LinuxPlayer,
-			RuntimePlatform.WebGLPlayer,
-			RuntimePlatform.WSAPlayerX86,
-			RuntimePlatform.WSAPlayerX64,
-			RuntimePlatform.WSAPlayerARM,
-			RuntimePlatform.TizenPlayer
-		};
-
-		public static RuntimePlatform[] MobilePlatforms =
-		{
-			RuntimePlatform.IPhonePlayer,
-			RuntimePlatform.Android,
-			RuntimePlatform.WP8Player
-		};
+		/// <summary>
+		/// Gets or sets the last level that was used.
+		/// </summary>
+		private string _LastLevel;
 
 		// Use this for initialization
 		void Awake()
 		{
 			Level = GameObject.Find("level" + CurrentLevel).GetComponent<TiledMap>();
+			PlayerPrefs.SetInt("CurrentLevel", CurrentLevel);
 
+			// If this is not a mobile game then remove the mobile controls.
 			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
 			{
 				foreach (GameObject go in GameObject.FindGameObjectsWithTag("MobileControls"))
@@ -105,35 +82,26 @@ namespace VoidInc
 				}
 			}
 
+			// Sets the level boundries of the map for the camera.
 			LevelBoundries = new Rect();
 			LevelBoundries.xMin = 0;
 			LevelBoundries.xMax = Level.MapWidthInPixels * 2;
 			LevelBoundries.yMin = -Level.MapHeightInPixels * 2;
 			LevelBoundries.yMax = 0;
 
+			// Sets the score to be able to be seen from the debug panel.
 			if (isDebugActive)
 				DebugLabelController.AddToDatabase("Score", Score);
 		}
 
 		void Update()
 		{
+			// Updates the score box text.
 			ScoreTextBox.text = "Score : " + Score;
 
+			// Updates the score on the debug panel.
 			if (isDebugActive)
 				DebugLabelController.UpdateToDatabase("Score", Score);
-		}
-
-		void LateUpdate()
-		{
-			LastLevel = CurrentLevel;
-		}
-
-		public void ChangeLevel()
-		{
-			if (CurrentLevel != LastLevel)
-			{
-				Application.LoadLevel("level" + CurrentLevel);
-			}
 		}
 	}
 }
