@@ -16,7 +16,7 @@ namespace VoidInc
 		public static readonly float InAirDamping = 1.3125f * 60.0f;
 		public static readonly float JumpHeight = 4.875f * 64.0f;
 
-		private static readonly float GravityModifierInWater = 0.375f;
+		//private static readonly float GravityModifierInWater = 0.375f;
 
 		public static readonly float AbsorbGroundedInputTime = 0.0675f;
 		public static readonly float LadderVelocityPerSecond = 1.0f * 60.0f;

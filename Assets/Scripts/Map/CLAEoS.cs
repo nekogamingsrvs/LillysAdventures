@@ -5,34 +5,64 @@ using System.Collections;
 [System.Serializable]
 public class BounderyRect
 {
+	/// <summary>
+	/// The size of the bounding area.
+	/// </summary>
     public Vector2 size = new Vector2(1, 1);
+
+	/// <summary>
+	/// The bounds of the bounding area?
+	/// </summary>
     [HideInInspector]
     public Vector2 topLeft = new Vector2(-8, 8), topRight = new Vector2(8, 8), bottomLeft = new Vector2(-8, -8), bottomRight = new Vector2(8, -8);
 }
 
 [ExecuteInEditMode]
-public class CLAEoS : MonoBehaviour {
+public class CLAEoS : MonoBehaviour
+{
+	/// <summary>
+	/// The bounds of the area.
+	/// </summary>
     public BounderyRect bounds;
 
+	/// <summary>
+	/// The player's GameObject.
+	/// </summary>
     public GameObject Player;
-
+	
+	/// <summary>
+	/// The level to go to.
+	/// </summary>
     public string levelName;
 
+	/// <summary>
+	/// The any other GameObject with this script on it.
+	/// </summary>
     public string otherCLAEoSToGoTo;
 
+	/// <summary>
+	/// Spawn's the player at X position.
+	/// </summary>
     public float spawnPlayerAtX = 0;
 
+	/// <summary>
+	/// The Y position when entering the area.
+	/// </summary>
     [HideInInspector]
     public float yPositionWhileEntering;
 
+	// Start's the script.
     public void Start()
     {
+		// Get the setting to tell where to teleport to.
         if (PlayerPrefs.GetString("PlayerPositionWER_TeleTo") == gameObject.name)
         {
+			// Set the player's position.
             Player.transform.position = new Vector3(gameObject.transform.position.x + spawnPlayerAtX, PlayerPrefs.GetFloat("PlayerPositionWER_Y"), 0);
         }
     }
 
+	// Draw the objects.
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -62,6 +92,7 @@ public class CLAEoS : MonoBehaviour {
         Gizmos.DrawLine(new Vector3(transform.position.x + boundsActual.bottomLeft.x, transform.position.y + boundsActual.bottomLeft.y, 0), new Vector3(transform.position.x + boundsActual.topLeft.x, transform.position.y + boundsActual.topLeft.y, 0));
     }
 
+	// Runs when updating.
     public void Update()
     {
         var boundsActualWS = new BounderyRect();
@@ -74,6 +105,7 @@ public class CLAEoS : MonoBehaviour {
 
         boundsActualWS.bottomRight = new Vector2(((bounds.bottomRight.x * gameObject.transform.localScale.x) * bounds.size.x) + gameObject.transform.position.x, ((bounds.bottomRight.y * gameObject.transform.localScale.y) * bounds.size.y) + gameObject.transform.position.y);
 
+		// Check if player is in bounds, and load level.
         if (Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
         {
             Application.LoadLevel(levelName);
