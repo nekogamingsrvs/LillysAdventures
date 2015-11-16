@@ -22,12 +22,6 @@ public class DayNightManager : MonoBehaviour
 	/// The sun's inital intensity.
 	/// </summary>
 	private float sunInitialIntensity = 1.0f;
-
-	// Use this for initialization
-	void Start ()
-	{
-		_DayLength = 120.0f;
-	}
 	
 	// Update is called once per frame
 	void Update ()
