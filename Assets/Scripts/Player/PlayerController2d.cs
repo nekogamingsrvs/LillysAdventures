@@ -110,6 +110,11 @@ namespace VoidInc
 		// Update when the trigger exits the event.
 		void onTriggerExitEvent(Collider2D col)
 		{
+			if (col.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
+			{
+				GotoPlatformState();
+			}
+
 			if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
 			{
 				Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
@@ -248,7 +253,7 @@ namespace VoidInc
 
 						// We may be just above the ladder top and we don't want to fall for a split second
 						// So, move our character controller back down to the ground. He should collide with the ladder top we just popped past.
-						_Controller.move(new Vector3(0, -0.25f, 0));
+						_Controller.move(new Vector3(0, -0.0f, 0));
 
 						// Go back to the platform state
 						GotoPlatformState();
@@ -259,7 +264,7 @@ namespace VoidInc
 				if (climbing < 0)
 				{
 					// Check if the "top half" of our player is crossing a "LadderBottom"
-					RaycastHit2D ladderBottomRay = Physics2D.Linecast(_Linecast1.position, this.transform.position, 1 << LayerMask.NameToLayer("LadderBottoms"));
+					RaycastHit2D ladderBottomRay = Physics2D.Linecast(_Linecast2.position, this.transform.position, 1 << LayerMask.NameToLayer("LadderBottoms"));
 
 					if (ladderBottomRay)
 					{
@@ -295,8 +300,6 @@ namespace VoidInc
 
 			if (GameObject.FindObjectOfType<GameManager>().isDebugActive)
 			{
-				//GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("VelocityX", _Velocity.x);
-				//GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("VelocityY", _Velocity.y);
 				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("IsRunning", _IsRunning);
 				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("IsGrounded", _Controller.isGrounded);
 				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("IsClimbing", _IsClimbing);
@@ -367,7 +370,7 @@ namespace VoidInc
 			Vector3 pos = this.transform.position;
 			float ladder_x = ladderSpine.points[0].x;
 			float ladder_y = ladderSpine.points[1].y;
-			this.transform.position = new Vector3(ladder_x, ladder_y - 2.0f, pos.z);
+			this.transform.position = new Vector3(ladder_x + 8f, ladder_y, pos.z);
 
 			// The platform controller is not active while on a ladder, but our ladder controller is
 			_IsClimbing = true;

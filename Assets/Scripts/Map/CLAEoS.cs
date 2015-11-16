@@ -23,7 +23,7 @@ public class CLAEoS : MonoBehaviour
 	/// <summary>
 	/// The bounds of the area.
 	/// </summary>
-    public BounderyRect bounds;
+    public BounderyRect Bounds;
 
 	/// <summary>
 	/// The player's GameObject.
@@ -33,23 +33,28 @@ public class CLAEoS : MonoBehaviour
 	/// <summary>
 	/// The level to go to.
 	/// </summary>
-    public int levelNumber;
+    public int LevelNumber;
+
+	/// <summary>
+	/// If the player can go to the next area.
+	/// </summary>
+	public bool CanTransition;
 
 	/// <summary>
 	/// The any other GameObject with this script on it.
 	/// </summary>
-    public string otherCLAEoSToGoTo;
+    public string OtherCLAEoSToGoTo;
 
 	/// <summary>
 	/// Spawn's the player at X position.
 	/// </summary>
-    public float spawnPlayerAtX = 0;
+    public float SpawnPlayerAtX = 0;
 
 	/// <summary>
 	/// The Y position when entering the area.
 	/// </summary>
     [HideInInspector]
-    public float yPositionWhileEntering;
+    public float YPositionWhileEntering;
 
 	// Start's the script.
     public void Start()
@@ -58,7 +63,7 @@ public class CLAEoS : MonoBehaviour
         if (PlayerPrefs.GetString("PlayerPositionWER_TeleTo") == gameObject.name)
         {
 			// Set the player's position.
-            Player.transform.position = new Vector3(gameObject.transform.position.x + spawnPlayerAtX, PlayerPrefs.GetFloat("PlayerPositionWER_Y"), 0);
+            Player.transform.position = new Vector3(gameObject.transform.position.x + SpawnPlayerAtX, PlayerPrefs.GetFloat("PlayerPositionWER_Y"), 0);
         }
     }
 
@@ -69,17 +74,17 @@ public class CLAEoS : MonoBehaviour
 
         var boundsActual = new BounderyRect();
 
-        boundsActual.topLeft = new Vector2((bounds.topLeft.x * gameObject.transform.localScale.x) * bounds.size.x, (bounds.topLeft.y * gameObject.transform.localScale.y) * bounds.size.y);
+        boundsActual.topLeft = new Vector2((Bounds.topLeft.x * gameObject.transform.localScale.x) * Bounds.size.x, (Bounds.topLeft.y * gameObject.transform.localScale.y) * Bounds.size.y);
 
-        boundsActual.topRight = new Vector2((bounds.topRight.x * gameObject.transform.localScale.x) * bounds.size.x, (bounds.topRight.y * gameObject.transform.localScale.y) * bounds.size.y);
+        boundsActual.topRight = new Vector2((Bounds.topRight.x * gameObject.transform.localScale.x) * Bounds.size.x, (Bounds.topRight.y * gameObject.transform.localScale.y) * Bounds.size.y);
 
-        boundsActual.bottomLeft = new Vector2((bounds.bottomLeft.x * gameObject.transform.localScale.x) * bounds.size.x, (bounds.bottomLeft.y * gameObject.transform.localScale.y) * bounds.size.y);
+        boundsActual.bottomLeft = new Vector2((Bounds.bottomLeft.x * gameObject.transform.localScale.x) * Bounds.size.x, (Bounds.bottomLeft.y * gameObject.transform.localScale.y) * Bounds.size.y);
 
-        boundsActual.bottomRight = new Vector2((bounds.bottomRight.x * gameObject.transform.localScale.x) * bounds.size.x, (bounds.bottomRight.y * gameObject.transform.localScale.y) * bounds.size.y);
+        boundsActual.bottomRight = new Vector2((Bounds.bottomRight.x * gameObject.transform.localScale.x) * Bounds.size.x, (Bounds.bottomRight.y * gameObject.transform.localScale.y) * Bounds.size.y);
 
         Gizmos.color = Color.red;
         //Spheres
-        Gizmos.DrawSphere(new Vector3(spawnPlayerAtX + gameObject.transform.position.x, gameObject.transform.position.y, 0), 3);
+        Gizmos.DrawSphere(new Vector3(SpawnPlayerAtX + gameObject.transform.position.x, gameObject.transform.position.y, 0), 3);
 
         Gizmos.color = Color.green;
         //Lines
@@ -97,21 +102,21 @@ public class CLAEoS : MonoBehaviour
     {
         var boundsActualWS = new BounderyRect();
 
-        boundsActualWS.topLeft = new Vector2(((bounds.topLeft.x * gameObject.transform.localScale.x) * bounds.size.x) + gameObject.transform.position.x, ((bounds.topLeft.y * gameObject.transform.localScale.y) * bounds.size.y) + gameObject.transform.position.y);
+        boundsActualWS.topLeft = new Vector2(((Bounds.topLeft.x * gameObject.transform.localScale.x) * Bounds.size.x) + gameObject.transform.position.x, ((Bounds.topLeft.y * gameObject.transform.localScale.y) * Bounds.size.y) + gameObject.transform.position.y);
 
-        boundsActualWS.topRight = new Vector2(((bounds.topRight.x * gameObject.transform.localScale.x) * bounds.size.x) + gameObject.transform.position.x, ((bounds.topRight.y * gameObject.transform.localScale.y) * bounds.size.y) + gameObject.transform.position.y);
+        boundsActualWS.topRight = new Vector2(((Bounds.topRight.x * gameObject.transform.localScale.x) * Bounds.size.x) + gameObject.transform.position.x, ((Bounds.topRight.y * gameObject.transform.localScale.y) * Bounds.size.y) + gameObject.transform.position.y);
 
-        boundsActualWS.bottomLeft = new Vector2(((bounds.bottomLeft.x * gameObject.transform.localScale.x) * bounds.size.x) + gameObject.transform.position.x, ((bounds.bottomLeft.y * gameObject.transform.localScale.y) * bounds.size.y) + gameObject.transform.position.y);
+        boundsActualWS.bottomLeft = new Vector2(((Bounds.bottomLeft.x * gameObject.transform.localScale.x) * Bounds.size.x) + gameObject.transform.position.x, ((Bounds.bottomLeft.y * gameObject.transform.localScale.y) * Bounds.size.y) + gameObject.transform.position.y);
 
-        boundsActualWS.bottomRight = new Vector2(((bounds.bottomRight.x * gameObject.transform.localScale.x) * bounds.size.x) + gameObject.transform.position.x, ((bounds.bottomRight.y * gameObject.transform.localScale.y) * bounds.size.y) + gameObject.transform.position.y);
+        boundsActualWS.bottomRight = new Vector2(((Bounds.bottomRight.x * gameObject.transform.localScale.x) * Bounds.size.x) + gameObject.transform.position.x, ((Bounds.bottomRight.y * gameObject.transform.localScale.y) * Bounds.size.y) + gameObject.transform.position.y);
 
 		// Check if player is in bounds, and load level.
-        if (Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
+        if (CanTransition && Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
         {
-            Application.LoadLevel("level" + levelNumber);
-			PlayerPrefs.SetInt("CurrentLevel", levelNumber);
+            Application.LoadLevel("level" + LevelNumber);
+			PlayerPrefs.SetInt("CurrentLevel", LevelNumber);
             PlayerPrefs.SetFloat("PlayerPositionWER_Y", Player.transform.position.y);
-            PlayerPrefs.SetString("PlayerPositionWER_TeleTo", otherCLAEoSToGoTo);
+            PlayerPrefs.SetString("PlayerPositionWER_TeleTo", OtherCLAEoSToGoTo);
         }
     }
 }

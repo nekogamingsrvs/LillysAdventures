@@ -57,6 +57,11 @@ namespace VoidInc
 		public int CurrentLevel;
 
 		/// <summary>
+		/// Gets or sets the max amount of gems in the level.
+		/// </summary>
+		public int MaxGems;
+
+		/// <summary>
 		/// Gets or sets the list of key id's.
 		/// </summary>
 		[HideInInspector]
@@ -66,6 +71,8 @@ namespace VoidInc
 		/// Gets or sets the last level that was used.
 		/// </summary>
 		private string _LastLevel;
+
+		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
 
 		// Use this for initialization
 		void Awake()
@@ -91,7 +98,14 @@ namespace VoidInc
 
 			// Sets the score to be able to be seen from the debug panel.
 			if (isDebugActive)
+			{
 				DebugLabelController.AddToDatabase("Score", Score);
+			}
+
+			foreach (GameObject gameObj in DestroyedGameObjects)
+			{
+				GameObject.Destroy(gameObj);
+			}
 		}
 
 		void Update()
@@ -101,7 +115,17 @@ namespace VoidInc
 
 			// Updates the score on the debug panel.
 			if (isDebugActive)
+			{
 				DebugLabelController.UpdateToDatabase("Score", Score);
+			}
+
+			if (Gems == MaxGems)
+			{
+				foreach (CLAEoS claeos in GameObject.FindGameObjectWithTag("LevelChangerManager").GetComponentsInChildren<CLAEoS>())
+				{
+					claeos.CanTransition = true;
+				}
+			}
 		}
 	}
 }

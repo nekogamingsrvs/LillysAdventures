@@ -14,6 +14,8 @@ namespace VoidInc
 			Destroy(gameObject);
 
 			gameController.Score += GemScore;
+
+			gameController.Gems += 1;
 		}
 	}
 }
