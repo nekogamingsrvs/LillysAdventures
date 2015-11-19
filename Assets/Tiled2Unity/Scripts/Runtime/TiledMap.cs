@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tiled2Unity
 {
-    public class TiledMap : MonoBehaviour
+	public class TiledMap : MonoBehaviour
     {
         public int NumTilesWide = 0;
         public int NumTilesHigh = 0;

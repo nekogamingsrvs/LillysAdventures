@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-
 using UnityEditor;
-using UnityEngine;
 
 namespace Tiled2Unity
 {
-    class Tiled2UnityMenuItems
+	class Tiled2UnityMenuItems
     {
         // Convenience function for packaging this library
         [MenuItem("Tiled2Unity/Export Tiled2Unity Library ...")]

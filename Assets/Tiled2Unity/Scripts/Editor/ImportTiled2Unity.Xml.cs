@@ -1,19 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Xml;
 using System.Xml.Linq;
-
 using UnityEditor;
 using UnityEngine;
 
 
 namespace Tiled2Unity
 {
-    // Concentrates on the Xml file being imported
-    partial class ImportTiled2Unity
+	// Concentrates on the Xml file being imported
+	partial class ImportTiled2Unity
     {
         public static readonly string ThisVersion = "0.9.13.0";
 

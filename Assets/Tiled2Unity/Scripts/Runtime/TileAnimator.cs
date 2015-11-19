@@ -1,14 +1,11 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using UnityEngine;
 
 namespace Tiled2Unity
 {
-    public class TileAnimator : MonoBehaviour
+	public class TileAnimator : MonoBehaviour
     {
         [System.Serializable]
         public class Frame

@@ -1,6 +1,5 @@
+﻿using CnControls;
 using UnityEngine;
-using System.Collections;
-using CnControls;
 
 /// <summary>
 /// Manages the main menu.

@@ -1,18 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
-
 using UnityEditor;
 using UnityEngine;
 
 namespace Tiled2Unity
 {
-    // Handles a Mesh being imported.
-    // At this point we should have everything we need to build out any prefabs for the tiled map object
-    partial class ImportTiled2Unity
+	// Handles a Mesh being imported.
+	// At this point we should have everything we need to build out any prefabs for the tiled map object
+	partial class ImportTiled2Unity
     {
         // By the time this is called, our assets should be ready to create the map prefab
         public void MeshImported(string objPath)

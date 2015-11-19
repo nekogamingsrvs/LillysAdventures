@@ -1,9 +1,7 @@
+﻿using System.Collections.Generic;
+using Tiled2Unity;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
-using System;
-using Tiled2Unity;
 
 namespace VoidInc
 {
