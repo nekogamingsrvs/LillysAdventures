@@ -1,16 +1,11 @@
-using System.Collections;
-using System.IO;
-using System.Xml;
-using System.Xml.Linq;
-using System;
-
+﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
 
 namespace Tiled2Unity
 {
-    // Assets that are imported to "Tiled2Unity/..." will use this post processor
-    public class TiledAssetPostProcessor : AssetPostprocessor
+	// Assets that are imported to "Tiled2Unity/..." will use this post processor
+	public class TiledAssetPostProcessor : AssetPostprocessor
     {
         private static bool UseThisImporter(string assetPath)
         {

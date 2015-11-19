@@ -1,5 +1,4 @@
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 public class MenuParallaxManager : MonoBehaviour
 {
@@ -7,7 +6,7 @@ public class MenuParallaxManager : MonoBehaviour
 	/// The speed of the background.
 	/// </summary>
 	public Vector2 uvAnimationSpeed;
-	
+
 	/// <summary>
 	/// Object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport.
 	/// </summary>
@@ -22,7 +21,7 @@ public class MenuParallaxManager : MonoBehaviour
 	/// Position of parent, and the meeting of the 4 corners of our 4 layerSprites.
 	/// </summary>
 	private Vector2 center;
-	
+
 	//our 4 layerSprites
 	private GameObject obj1;
 	private GameObject obj2;
@@ -65,7 +64,7 @@ public class MenuParallaxManager : MonoBehaviour
 		//obj2p.y = -2.88f;
 		obj2p.y = -170;
 		obj2.transform.position = obj2p;
-		
+
 		obj3p.x = (center.x - size.x / 2) + size.x * 2;
 		//obj2p.y = -2.88f;
 		obj3p.y = -170;

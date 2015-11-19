@@ -1,14 +1,11 @@
-// Based on code provided by: Nick Gravelyn
+﻿// Based on code provided by: Nick Gravelyn
 // from: https://gist.github.com/nickgravelyn/7460288
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-
-using UnityEngine;
-using UnityEditor;
 using Tiled2Unity;
+using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(Tiled2Unity.SortingLayerExposed))]
 public class SortingLayerExposedEditor : UnityEditor.Editor

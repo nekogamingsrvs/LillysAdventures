@@ -1,18 +1,31 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace VoidInc
 {
 	public class ItemIdentifier : MonoBehaviour
 	{
+		public enum ItemType
+		{
+			Coin,
+			Gem,
+			Key,
+		}
+
+		[HideInInspector]
 		public int Score;
+
+		[HideInInspector]
+		public ItemType itemType;
+
+		[HideInInspector]
+		public int Identifier;
+
+		private GameManager gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
 		public void RemoveCoin(int layer)
 		{
-			if (layer == LayerMask.NameToLayer("Coins"))
+			if (itemType == ItemType.Coin)
 			{
-				var gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-
 				Destroy(gameObject);
 
 				gameController.Score += Score;
@@ -21,13 +34,24 @@ namespace VoidInc
 
 		public void RemoveGem(int layer)
 		{
-			if (layer == LayerMask.NameToLayer("Gems"))
+			if (itemType == ItemType.Gem)
 			{
-				var gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-
 				Destroy(gameObject);
 
 				gameController.Score += Score;
+			}
+		}
+
+
+		public void RemoveKey()
+		{
+			if (itemType == ItemType.Key)
+			{
+				Destroy(gameObject);
+
+				gameController.Keys += 1;
+
+				gameController.KeyIds.Add(Identifier);
 			}
 		}
 	}

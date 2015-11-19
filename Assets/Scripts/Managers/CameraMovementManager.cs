@@ -1,5 +1,4 @@
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 namespace VoidInc
 {
@@ -12,18 +11,22 @@ namespace VoidInc
 		/// The LevelBounds for the map.
 		/// </summary>
 		private Rect LevelBounds;
+
 		/// <summary>
 		/// The left most bound.
 		/// </summary>
 		private float LeftBound;
+
 		/// <summary>
 		/// The right most bound.
 		/// </summary>
 		private float RightBound;
+
 		/// <summary>
 		/// The highest bound.
 		/// </summary>
 		private float TopBound;
+
 		/// <summary>
 		/// The lowest bound.
 		/// </summary>

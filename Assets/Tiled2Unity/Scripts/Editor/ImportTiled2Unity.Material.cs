@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml;
 using System.Xml.Linq;
-
 using UnityEditor;
 using UnityEngine;
 
 
 namespace Tiled2Unity
 {
-    // Partial class for the importer that deals with Materials
-    partial class ImportTiled2Unity
+	// Partial class for the importer that deals with Materials
+	partial class ImportTiled2Unity
     {
         // We need to call this while the renderers on the model is having its material assigned to it
         public Material FixMaterialForMeshRenderer(string objName, Renderer renderer)

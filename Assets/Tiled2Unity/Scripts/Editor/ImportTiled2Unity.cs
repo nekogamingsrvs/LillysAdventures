@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.IO;
-using System.Text;
-using System.Xml;
-using System.Xml.Linq;
-
-using UnityEditor;
+using System.Linq;
 using UnityEngine;
 
 namespace Tiled2Unity
 {
-    partial class ImportTiled2Unity : IDisposable
+	partial class ImportTiled2Unity : IDisposable
     {
         private string fullPathToFile = "";
         private string pathToTiled2UnityRoot = "";

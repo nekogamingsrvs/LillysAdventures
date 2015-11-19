@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Tiled2Unity
 {
-    // Handled a texture being imported
-    partial class ImportTiled2Unity
+	// Handled a texture being imported
+	partial class ImportTiled2Unity
     {
         public void TextureImported(string texturePath)
         {

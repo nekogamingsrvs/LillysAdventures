@@ -1,56 +1,62 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using VoidInc;
+using System.Text;
 
-[System.Serializable]
-public class ConfigFileSetting
+namespace VoidInc
 {
-    public string settingName;
-    public int settingValue;
-    public bool useGMScore = false;
-}
+	public class ConfigFileSetting
+	{
+		public string settingName;
 
-public class ConfigFileManager : MonoBehaviour
-{
-    public List<ConfigFileSetting> settingsToSet = new List<ConfigFileSetting>();
+		public object settingValue;
+	}
 
-    void Start()
-    {
-        for (int a = 0; a < settingsToSet.Count; a++)
-        {
-            if (settingsToSet[a].useGMScore == true)
-            {
-                gameObject.GetComponent<GameManager>().Score = PlayerPrefs.GetInt(settingsToSet[a].settingName, 0);
-            }
-            else
-            {
-                settingsToSet[a].settingValue = PlayerPrefs.GetInt(settingsToSet[a].settingName, 0);
-            }
-        }
-    }
+	public class ConfigFileManager
+	{
+		private List<ConfigFileSetting> configFileSettings = new List<ConfigFileSetting>();
 
-    public void Update()
-    {
-        for (int a = 0; a < settingsToSet.Count; a++)
-        {
-            if (settingsToSet[a].useGMScore == true)
-            {
-                settingsToSet[a].settingValue = gameObject.GetComponent<GameManager>().Score;
-            }
-            if (PlayerPrefs.GetInt(settingsToSet[a].settingName, 0) == settingsToSet[a].settingValue)
-            {
+		public void AddSettingToList(ConfigFileSetting configFileSetting)
+		{
+			configFileSettings.Add(configFileSetting);
+		}
 
-            }
-            else
-            {
-                PlayerPrefs.SetInt(settingsToSet[a].settingName, settingsToSet[a].settingValue);
-            }
-            if (a >= settingsToSet.Count)
-            {
-                a = 0;
-            }
-        }
-    }
+		public void Save()
+		{
+			using (FileStream fileStream = new FileStream("save.config", FileMode.Create))
+			using (StreamWriter streamWriter = new StreamWriter(fileStream))
+			using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
+			{
+				jsonWriter.Formatting = Formatting.Indented;
+
+				JsonSerializer jsonSerializer = new JsonSerializer();
+
+				jsonSerializer.Serialize(jsonWriter, configFileSettings);
+
+				byte[] info = new UTF8Encoding(true).GetBytes(jsonSerializer.ToString());
+				fileStream.Write(info, 0, info.Length);
+
+				jsonWriter.Close();
+				streamWriter.Close();
+				fileStream.Close();
+			}
+		}
+
+		public T LoadPart<T>(string property)
+		{
+			using (FileStream fileStream = File.OpenRead("save.config"))
+			using (StreamReader streamReader = new StreamReader(fileStream))
+			{
+				List<ConfigFileSetting> prasedData = JsonConvert.DeserializeObject<List<ConfigFileSetting>>(streamReader.ToString());
+
+				streamReader.Close();
+				fileStream.Close();
+
+				ConfigFileSetting foundData = prasedData.Find(element => element.settingName == property);
+
+				return (T)Convert.ChangeType(foundData.settingValue, typeof(T));
+			}
+		}
+	}
 }

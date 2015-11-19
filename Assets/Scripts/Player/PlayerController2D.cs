@@ -1,8 +1,5 @@
 ﻿using CnControls;
 using Prime31;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace VoidInc
@@ -30,7 +27,7 @@ namespace VoidInc
 		private bool _IsRunning;
 		private bool _IsClimbing;
 		private float _Climb;
-		
+
 		private Transform _Linecast1
 		{
 			get;
@@ -86,7 +83,7 @@ namespace VoidInc
 			// logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
 			//Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
 		}
-		
+
 		// Update when the trigger enters the event.
 		void onTriggerEnterEvent(Collider2D col)
 		{
@@ -173,12 +170,12 @@ namespace VoidInc
 				{
 					_IsRunning = true;
 				}
-				
+
 				_IsRunning = Input.GetButton("Run");
 			}
 
 			_Animator.SetBool("Running", _IsRunning);
-			
+
 			NormalizedHorizontalSpeed = Input.GetAxis("Horizontal") + CnInputManager.GetAxis("Horizontal");
 
 			_Animator.SetFloat("Speed", Mathf.Abs(NormalizedHorizontalSpeed));
