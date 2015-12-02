@@ -45,9 +45,7 @@ UnityLockFile
 *.ilk
 *.lib
 *.sbr
-Assets/WSATestCertificate.pfx.meta
-Assets/WSATestCertificate.pfx
-Assets/WSATestCertificate.pfx.meta
+GitExtensions.settings
 
 # ============ #
 # OS generated #
@@ -61,5 +59,11 @@ Icon?
 ehthumbs.db
 Thumbs.db
 *.Z*
+
+# ============== #
+# Game Generated #
+# ============== #
 save.config
-GitExtensions.settings
+Assets/WSATestCertificate.pfx.meta
+Assets/WSATestCertificate.pfx
+Assets/WSATestCertificate.pfx.meta
