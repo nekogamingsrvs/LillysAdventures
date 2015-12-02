@@ -1,18 +1,18 @@
 fileFormatVersion: 2
 guid: 71ee2ccd4cb7ca94fb4cc4549e7b9cee
-timeCreated: 1446840871
-licenseType: Pro
+timeCreated: 1448040825
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: torch_0
-    21300002: torch_1
-    21300004: torch_2
-    21300006: torch_3
-    21300008: torch_4
-    21300010: torch_5
-    21300012: torch_6
-    21300014: torch_7
-    21300016: torch_8
+    21300000: Torch_0
+    21300002: Torch_1
+    21300004: Torch_2
+    21300006: Torch_3
+    21300008: Torch_4
+    21300010: Torch_5
+    21300012: Torch_6
+    21300014: Torch_7
+    21300016: Torch_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -59,7 +59,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: torch_0
+    - name: Torch_0
       rect:
         serializedVersion: 2
         x: 0
@@ -67,9 +67,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_1
+    - name: Torch_1
       rect:
         serializedVersion: 2
         x: 16
@@ -77,9 +77,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_2
+    - name: Torch_2
       rect:
         serializedVersion: 2
         x: 32
@@ -87,9 +87,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_3
+    - name: Torch_3
       rect:
         serializedVersion: 2
         x: 48
@@ -97,9 +97,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_4
+    - name: Torch_4
       rect:
         serializedVersion: 2
         x: 64
@@ -107,9 +107,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_5
+    - name: Torch_5
       rect:
         serializedVersion: 2
         x: 80
@@ -117,9 +117,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_6
+    - name: Torch_6
       rect:
         serializedVersion: 2
         x: 96
@@ -127,9 +127,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_7
+    - name: Torch_7
       rect:
         serializedVersion: 2
         x: 112
@@ -137,9 +137,9 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: torch_8
+    - name: Torch_8
       rect:
         serializedVersion: 2
         x: 128
@@ -147,7 +147,7 @@ TextureImporter:
         width: 16
         height: 25
       alignment: 9
-      pivot: {x: 0, y: .639999986}
+      pivot: {x: .5, y: .319999993}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

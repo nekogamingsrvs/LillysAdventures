@@ -1,28 +1,62 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using UnityEngine;
 
 namespace VoidInc
 {
-	public class ConfigFileSetting
+	public class PlayerData
 	{
-		public string settingName;
+		[JsonProperty("level")]
+		public int Level;
 
-		public object settingValue;
+		[JsonProperty("position")]
+		public Vector3 Position;
+
+		[JsonProperty("score")]
+		public int Score;
+
+		[JsonProperty("gems")]
+		public int Gems;
+
+		[JsonProperty("total gems")]
+		public int TotalGems;
+
+		[JsonProperty("keys")]
+		public int Keys;
+
+		[JsonProperty("key identifiers")]
+		public List<string> KeyIdentifiers;
+
+		[JsonProperty("PlayerPositionWER_TeleTo")]
+		public string PlayerPositionWER_TeleTo;
+
+		[JsonProperty("PlayerPositionWER_Y")]
+		public float PlayerPositionWER_Y;
+    }
+
+	public class SaveFile
+	{
+		[JsonProperty("version")]
+		public string SaveVersion;
+
+		[JsonProperty("player")]
+		public PlayerData PlayerData = new PlayerData();
+
+		[JsonProperty("destroyed")]
+		public List<string> DestroyedGameObjects;
+
+		[JsonProperty("dialog")]
+		public int DialogNumber;
 	}
 
 	public class ConfigFileManager
 	{
-		private List<ConfigFileSetting> configFileSettings = new List<ConfigFileSetting>();
+		public SaveFile SaveFile = new SaveFile();
 
-		public void AddSettingToList(ConfigFileSetting configFileSetting)
-		{
-			configFileSettings.Add(configFileSetting);
-		}
-
-		public void Save()
+		public void SaveGame()
 		{
 			using (FileStream fileStream = new FileStream("save.config", FileMode.Create))
 			using (StreamWriter streamWriter = new StreamWriter(fileStream))
@@ -30,12 +64,7 @@ namespace VoidInc
 			{
 				jsonWriter.Formatting = Formatting.Indented;
 
-				JsonSerializer jsonSerializer = new JsonSerializer();
-
-				jsonSerializer.Serialize(jsonWriter, configFileSettings);
-
-				byte[] info = new UTF8Encoding(true).GetBytes(jsonSerializer.ToString());
-				fileStream.Write(info, 0, info.Length);
+				JsonConvert.SerializeObject(SaveFile, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
 				jsonWriter.Close();
 				streamWriter.Close();
@@ -43,19 +72,24 @@ namespace VoidInc
 			}
 		}
 
-		public T LoadPart<T>(string property)
+		public void LoadSave()
 		{
-			using (FileStream fileStream = File.OpenRead("save.config"))
-			using (StreamReader streamReader = new StreamReader(fileStream))
+			if (!File.Exists("save.json"))
 			{
-				List<ConfigFileSetting> prasedData = JsonConvert.DeserializeObject<List<ConfigFileSetting>>(streamReader.ToString());
+				SaveGame();
+			}
 
+			using (FileStream fileStream = File.OpenRead("save.json"))
+			using (StreamReader streamReader = new StreamReader(fileStream))
+			using (JsonTextReader jsonTextReader = new JsonTextReader(streamReader))
+			{
+				JObject jsonSaveData = JObject.Load(jsonTextReader);
+
+				SaveFile = jsonSaveData.ToObject<SaveFile>();
+
+				jsonTextReader.Close();
 				streamReader.Close();
 				fileStream.Close();
-
-				ConfigFileSetting foundData = prasedData.Find(element => element.settingName == property);
-
-				return (T)Convert.ChangeType(foundData.settingValue, typeof(T));
 			}
 		}
 	}

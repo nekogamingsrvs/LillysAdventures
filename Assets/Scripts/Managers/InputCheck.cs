@@ -29,6 +29,51 @@ namespace VoidInc
 			RuntimePlatform.WP8Player
 		};
 
+		public static RuntimePlatform[] EditorPlatforms =
+		{
+			RuntimePlatform.OSXEditor,
+			RuntimePlatform.WindowsEditor
+		};
+
+		public static bool IsPCPlatforms
+		{
+			get
+			{
+				if (Array.Exists(PCPlatforms, element => element == Application.platform))
+				{
+					return true;
+				}
+
+				return false;
+			}
+		}
+
+		public static bool IsMobilePlatforms
+		{
+			get
+			{
+				if (Array.Exists(MobilePlatforms, element => element == Application.platform))
+				{
+					return true;
+				}
+
+				return false;
+			}
+		}
+
+		public static bool IsEditorPlatforms
+		{
+			get
+			{
+				if (Array.Exists(MobilePlatforms, element => element == Application.platform))
+				{
+					return true;
+				}
+
+				return false;
+			}
+		}
+
 		public static bool TestInput(RuntimePlatform currentPlatform)
 		{
 			if (Application.platform == currentPlatform)

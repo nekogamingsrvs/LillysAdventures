@@ -4,54 +4,106 @@ namespace VoidInc
 {
 	public class ItemIdentifier : MonoBehaviour
 	{
-		public enum ItemType
+		/// <summary>
+		/// The item type enum to determine the item function.
+		/// </summary>
+		public enum _ItemType
 		{
 			Coin,
 			Gem,
 			Key,
+			Lock
 		}
-
+		
+		/// <summary>
+		/// The score that the item will add to the player.
+		/// </summary>
 		[HideInInspector]
 		public int Score;
 
+		/// <summary>
+		/// If the item has been destroyed.
+		/// </summary>
 		[HideInInspector]
-		public ItemType itemType;
+		public bool Destroyed;
 
+		/// <summary>
+		/// What type of item is the item.
+		/// </summary>
 		[HideInInspector]
-		public int Identifier;
+		public _ItemType ItemType;
 
-		private GameManager gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+		/// <summary>
+		/// The identifier for keys to open locks and for locks to be opened by keys.
+		/// </summary>
+		[HideInInspector]
+		public string Identifier;
 
-		public void RemoveCoin(int layer)
+		/// <summary>
+		/// The GameManager class for the items.
+		/// </summary>
+		[HideInInspector]
+		private GameManager gameController;
+
+		void Awake()
 		{
-			if (itemType == ItemType.Coin)
-			{
-				Destroy(gameObject);
+			gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        }
 
-				gameController.Score += Score;
+		public void RemoveItem()
+		{
+			switch (ItemType)
+			{
+				case _ItemType.Coin:
+					RemoveCoin();
+					break;
+				case _ItemType.Gem:
+					RemoveGem();
+					break;
+				case _ItemType.Key:
+					RemoveKey();
+					break;
+				case _ItemType.Lock:
+					CheckLock();
+					break;
+				default:
+					break;
 			}
 		}
 
-		public void RemoveGem(int layer)
+		private void RemoveCoin()
 		{
-			if (itemType == ItemType.Gem)
-			{
-				Destroy(gameObject);
+			gameController.DestroyedGameObjects.Add(gameObject.name);
+			Destroy(gameObject);
+			gameController.Score += Score;
+		}
 
-				gameController.Score += Score;
-			}
+		private void RemoveGem()
+		{
+			gameController.DestroyedGameObjects.Add(gameObject.name);
+			Destroy(gameObject);
+			gameController.Score += Score;
+			gameController.Gems += 1;
+			gameController.TotalGems += 1;
 		}
 
 
-		public void RemoveKey()
+		private void RemoveKey()
 		{
-			if (itemType == ItemType.Key)
+			gameController.DestroyedGameObjects.Add(gameObject.name);
+			Destroy(gameObject);
+			gameController.Keys += 1;
+			gameController.KeyIdentifiers.Add(Identifier);
+		}
+
+		private void CheckLock()
+		{
+			if (gameController.Keys >= 1 && gameController.KeyIdentifiers.Contains(Identifier))
 			{
+				gameController.DestroyedGameObjects.Add(gameObject.name);
 				Destroy(gameObject);
-
-				gameController.Keys += 1;
-
-				gameController.KeyIds.Add(Identifier);
+				gameController.Keys -= 1;
+				gameController.KeyIdentifiers.Remove(Identifier);
 			}
 		}
 	}

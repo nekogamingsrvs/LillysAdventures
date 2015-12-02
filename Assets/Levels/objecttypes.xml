@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="Coin1" color="#aa5500"/>
+ <objecttype name="Coin5" color="#c2c2c6"/>
+ <objecttype name="Coin10" color="#ffaa00"/>
+ <objecttype name="Gem" color="#ff0000"/>
+ <objecttype name="Torch" color="#ffff7f"/>
+ <objecttype name="Key" color="#ffff00"/>
+ <objecttype name="Lock" color="#55aaff"/>
+ <objecttype name="Sign" color="#00ff00"/>
+</objecttypes>

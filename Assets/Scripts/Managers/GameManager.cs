@@ -8,46 +8,9 @@ namespace VoidInc
 	public class GameManager : MonoBehaviour
 	{
 		/// <summary>
-		/// The current level of the game.
-		/// </summary>
-		[HideInInspector]
-		public TiledMap Level;
-
-		/// <summary>
 		/// Gets or sets if the game is in debug mode.
 		/// </summary>
 		public bool isDebugActive;
-
-		/// <summary>
-		/// Gets or sets the score of the game.
-		/// </summary>
-		public int Score;
-
-		/// <summary>
-		/// Gets or sets the amount of keys the player has.
-		/// </summary>
-		public int Keys;
-
-		/// <summary>
-		/// Gets or sets the amount of gems the player has.
-		/// </summary>
-		public int Gems;
-
-		/// <summary>
-		/// The boundaries of the map.
-		/// </summary>
-		[HideInInspector]
-		public Rect LevelBoundries;
-
-		/// <summary>
-		/// The DebugLabelManager for debuging the game.
-		/// </summary>
-		public DebugLabelManager DebugLabelController;
-
-		/// <summary>
-		/// The text box for keeping score.
-		/// </summary>
-		public Text ScoreTextBox;
 
 		/// <summary>
 		/// Gets or sets the current level.
@@ -60,23 +23,86 @@ namespace VoidInc
 		public int MaxGems;
 
 		/// <summary>
+		/// Gets or sets the total number of gems from each level.
+		/// </summary>
+		public int TotalGems;
+
+		[HideInInspector]
+		public bool IsLoaded;
+
+		/// <summary>
+		/// Gets or sets the score of the game.
+		/// </summary>
+		[HideInInspector]
+		public int Score;
+
+		/// <summary>
+		/// Gets or sets the amount of keys the player has.
+		/// </summary>
+		[HideInInspector]
+		public int Keys;
+
+		/// <summary>
+		/// Gets or sets the amount of gems the player has.
+		/// </summary>
+		[HideInInspector]
+		public int Gems;
+
+		/// <summary>
+		/// The current level of the game.
+		/// </summary>
+		[HideInInspector]
+		public TiledMap Level;
+
+		/// <summary>
+		/// The text box for keeping score.
+		/// </summary>
+		[HideInInspector]
+		public Text ScorePanelText;
+
+		/// <summary>
+		/// The DebugLabelManager for debugging the game.
+		/// </summary>
+		[HideInInspector]
+		public DebugManagerWindow DebugWindowManager;
+
+		/// <summary>
+		/// The boundaries of the map.
+		/// </summary>
+		[HideInInspector]
+		public Rect LevelBoundries;
+
+		/// <summary>
 		/// Gets or sets the list of key id's.
 		/// </summary>
 		[HideInInspector]
-		public List<int> KeyIds;
+		public List<string> KeyIdentifiers = new List<string>();
 
 		/// <summary>
-		/// Gets or sets the last level that was used.
+		/// The list of destroyed game objects.
 		/// </summary>
-		private string _LastLevel;
+		[HideInInspector]
+		public List<string> DestroyedGameObjects = new List<string>();
 
-		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
+		[HideInInspector]
+		public ConfigFileManager ConfigFileManager = new ConfigFileManager();
+
+		[HideInInspector]
+		public int DialogNum;
+
+		[HideInInspector]
+		public Vector3 PlayersPosition;
 
 		// Use this for initialization
 		void Awake()
 		{
+			// Get the current level of the game.
 			Level = GameObject.Find("level" + CurrentLevel).GetComponent<TiledMap>();
-			PlayerPrefs.SetInt("CurrentLevel", CurrentLevel);
+
+			// Set the DebugPanelManager class for the GameManager.
+			DebugWindowManager = gameObject.GetComponent<DebugManagerWindow>();
+			// Set the ScorePanel's Textbox for the GameManafer.
+			ScorePanelText = GameObject.FindGameObjectWithTag("ScorePanel").GetComponent<Text>();
 
 			// If this is not a mobile game then remove the mobile controls.
 			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
@@ -87,7 +113,7 @@ namespace VoidInc
 				}
 			}
 
-			// Sets the level boundries of the map for the camera.
+			// Sets the level boundaries of the map for the camera.
 			LevelBoundries = new Rect();
 			LevelBoundries.xMin = 0;
 			LevelBoundries.xMax = Level.MapWidthInPixels * 2;
@@ -97,24 +123,43 @@ namespace VoidInc
 			// Sets the score to be able to be seen from the debug panel.
 			if (isDebugActive)
 			{
-				DebugLabelController.AddToDatabase("Score", Score);
+				//DebugWindowManager.AddToDatabase("Score", Score);
 			}
 
-			foreach (GameObject gameObj in DestroyedGameObjects)
+			if (IsLoaded)
 			{
-				GameObject.Destroy(gameObj);
+				GameObject.FindGameObjectWithTag("Player").transform.position = ConfigFileManager.SaveFile.PlayerData.Position;
+				Score = ConfigFileManager.SaveFile.PlayerData.Score;
+				TotalGems = ConfigFileManager.SaveFile.PlayerData.TotalGems;
+				Gems = ConfigFileManager.SaveFile.PlayerData.Gems;
+				Keys = ConfigFileManager.SaveFile.PlayerData.Keys;
+				KeyIdentifiers = ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers;
+				DialogNum = ConfigFileManager.SaveFile.DialogNumber;
+				DestroyedGameObjects = ConfigFileManager.SaveFile.DestroyedGameObjects;
+
+				foreach (string gameObj in DestroyedGameObjects)
+				{
+					if (GameObject.Find(gameObj).GetComponent<ItemIdentifier>().Destroyed == true)
+					{
+						Destroy(GameObject.Find(gameObj));
+					}
+				}
+
+				IsLoaded = false;
 			}
 		}
 
 		void Update()
 		{
 			// Updates the score box text.
-			ScoreTextBox.text = "Score : " + Score;
+			ScorePanelText.text = "Score:" + Score;
+			// Set the player's position.
+			PlayersPosition = GameObject.Find("Player").transform.position;
 
 			// Updates the score on the debug panel.
-			if (isDebugActive)
+			if (InputCheck.IsEditorPlatforms && isDebugActive)
 			{
-				DebugLabelController.UpdateToDatabase("Score", Score);
+				DebugWindowManager.PlayerPosition = PlayersPosition;
 			}
 
 			if (Gems == MaxGems)
@@ -123,7 +168,23 @@ namespace VoidInc
 				{
 					claeos.CanTransition = true;
 				}
+
+				Gems = 0;
 			}
+
+			ConfigFileManager.SaveFile.PlayerData.Score = Score;
+			ConfigFileManager.SaveFile.PlayerData.TotalGems = TotalGems;
+			ConfigFileManager.SaveFile.PlayerData.Gems = Gems;
+			ConfigFileManager.SaveFile.PlayerData.Keys = Keys;
+			ConfigFileManager.SaveFile.PlayerData.Level = CurrentLevel;
+			ConfigFileManager.SaveFile.PlayerData.Position = PlayersPosition;
+			ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers = KeyIdentifiers;
+			ConfigFileManager.SaveFile.DialogNumber = DialogNum;
+		}
+
+		void LateUpdate()
+		{
+			ConfigFileManager.SaveGame();
 		}
 	}
 }
