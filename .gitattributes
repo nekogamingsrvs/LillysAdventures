@@ -1,6 +1,8 @@
-*.meta text
-*.txt text
-*.shader text
+* text=auto
+*.meta text=auto
+*.txt text=auto
+*.shader text=auto
+*.cs text=auto
 *.sln binary
 *.asset binary
 *.csproj binary
@@ -13,6 +15,7 @@
 *.ttf binary
 *.physicsMaterial2D binary
 *.prefab binary
+*.wav binary
 *.unity binary
 *.ogg binary
 *.xcf binary
