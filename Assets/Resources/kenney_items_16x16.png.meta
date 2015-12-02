@@ -1,52 +1,33 @@
 fileFormatVersion: 2
 guid: 39fe3120fc72ec8469be21fd1fa80dcc
-timeCreated: 1446842019
-licenseType: Pro
+timeCreated: 1448042212
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Key
-    21300002: Lock
+    21300000: Key_1
+    21300002: Lock_1
     21300004: Gem_1
-    21300006: Gem_2
-    21300008: Coin1
-    21300010: Switch_1
-    21300012: Switch_2
-    21300014: Toggle_1
-    21300016: Toggle_2
-    21300018: Coin5
+    21300006: Coin1_1
+    21300008: Coin5_1
+    21300010: Button_1
+    21300012: Button_2
+    21300014: Switch_1
+    21300016: Switch_2
+    21300018: Coin10_1
     21300020: Flag_1
-    21300022: Bomb_1
-    21300024: Bomb_2
-    21300026: Bomb_3
-    21300028: Coin10
+    21300022: Flag_3
+    21300024: Bomb_1
+    21300026: Bomb_2
+    21300028: Bomb_3
     21300030: Flag_2
-    21300032: Flag_3
+    21300032: Rope_1
     21300034: Spring_1
     21300036: Spring_2
     21300038: Spring_3
-    21300040: Rope_1
-    21300042: Rope_2
-    21300044: Lever_1
-    21300046: Lever_2
-    21300048: Lever_3
-    21300050: Key_1
-    21300052: Lock_1
-    21300054: Coin1_1
-    21300056: Door1_1
-    21300058: Coin5_1
-    21300060: Door1_2
-    21300062: Coin10_1
-    21300064: Door1_3
-    21300066: Door1_4
-    21300068: Door2_1
-    21300070: Door2_3
-    21300072: Door2_4
-    21300074: Door2_2
-    21300076: Button_1
-    21300078: Button_2
-    21300080: Torch_1
-    21300082: Torch_2
-    21300084: Torch_3
+    21300040: Rope_2
+    21300042: Lever_1
+    21300044: Lever_2
+    21300046: Lever_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -97,7 +78,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 64
         width: 16
         height: 16
       alignment: 1
@@ -107,7 +88,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 80
+        y: 64
         width: 16
         height: 16
       alignment: 1
@@ -117,73 +98,13 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 80
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Gem_2
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 80
+        y: 64
         width: 16
         height: 16
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Coin1_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 80
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door1_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 80
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Button_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Button_2
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 64
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Toggle_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Toggle_2
       rect:
         serializedVersion: 2
         x: 48
@@ -203,17 +124,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door1_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 64
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Flag_1
+    - name: Button_1
       rect:
         serializedVersion: 2
         x: 0
@@ -223,7 +134,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_1
+    - name: Button_2
       rect:
         serializedVersion: 2
         x: 16
@@ -233,7 +144,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_2
+    - name: Switch_1
       rect:
         serializedVersion: 2
         x: 32
@@ -243,7 +154,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bomb_3
+    - name: Switch_2
       rect:
         serializedVersion: 2
         x: 48
@@ -263,17 +174,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door1_3
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 48
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Flag_2
+    - name: Flag_1
       rect:
         serializedVersion: 2
         x: 0
@@ -293,7 +194,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spring_1
+    - name: Bomb_1
       rect:
         serializedVersion: 2
         x: 32
@@ -303,7 +204,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spring_2
+    - name: Bomb_2
       rect:
         serializedVersion: 2
         x: 48
@@ -313,7 +214,7 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Spring_3
+    - name: Bomb_3
       rect:
         serializedVersion: 2
         x: 64
@@ -323,11 +224,11 @@ TextureImporter:
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door1_4
+    - name: Flag_2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 32
+        x: 0
+        y: 16
         width: 16
         height: 16
       alignment: 1
@@ -336,7 +237,37 @@ TextureImporter:
     - name: Rope_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spring_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spring_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Spring_3
+      rect:
+        serializedVersion: 2
+        x: 64
         y: 16
         width: 16
         height: 16
@@ -347,7 +278,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 0
         width: 16
         height: 16
       alignment: 1
@@ -357,7 +288,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 16
+        y: 0
         width: 16
         height: 16
       alignment: 1
@@ -367,7 +298,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 16
+        y: 0
         width: 16
         height: 16
       alignment: 1
@@ -377,46 +308,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 16
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door2_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door2_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door2_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Door2_2
-      rect:
-        serializedVersion: 2
-        x: 80
         y: 0
         width: 16
         height: 16

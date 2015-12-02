@@ -1,5 +1,6 @@
-﻿//CLAEoS - Change Level At End of Screen - Also a pretty noice name :3 - But the inspector really f's up the spacing >:|
+﻿//CLAEoS - Change Level At End of Screen - Also a pretty nice name :3 - But the inspector really f's up the spacing >:|
 using UnityEngine;
+using VoidInc;
 
 [System.Serializable]
 public class BounderyRect
@@ -55,11 +56,16 @@ public class CLAEoS : MonoBehaviour
 	[HideInInspector]
 	public float YPositionWhileEntering;
 
+	[HideInInspector]
+	public ConfigFileManager ConfigFileManager;
+
 	// Start's the script.
 	public void Start()
 	{
+		ConfigFileManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ConfigFileManager;
+
 		// Get the setting to tell where to teleport to.
-		if (PlayerPrefs.GetString("PlayerPositionWER_TeleTo") == gameObject.name)
+		if (ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_TeleTo == gameObject.name)
 		{
 			// Set the player's position.
 			Player.transform.position = new Vector3(gameObject.transform.position.x + SpawnPlayerAtX, PlayerPrefs.GetFloat("PlayerPositionWER_Y"), 0);
@@ -113,9 +119,9 @@ public class CLAEoS : MonoBehaviour
 		if (CanTransition && Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
 		{
 			Application.LoadLevel("level" + LevelNumber);
-			PlayerPrefs.SetInt("CurrentLevel", LevelNumber);
-			PlayerPrefs.SetFloat("PlayerPositionWER_Y", Player.transform.position.y);
-			PlayerPrefs.SetString("PlayerPositionWER_TeleTo", OtherCLAEoSToGoTo);
+			ConfigFileManager.SaveFile.PlayerData.Level = LevelNumber;
+			ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_Y = Player.transform.position.y;
+			ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_TeleTo = OtherCLAEoSToGoTo;
 		}
 	}
 }
