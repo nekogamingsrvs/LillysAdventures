@@ -53,17 +53,6 @@ namespace VoidInc
 
 			_Linecast1 = transform.Find("LadderLinecast1");
 			_Linecast2 = transform.Find("LadderLinecast2");
-
-			if (GameObject.FindObjectOfType<GameManager>().isDebugActive)
-			{
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("VelocityX", _Velocity.x);
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("VelocityY", _Velocity.y);
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("IsRunning", _IsRunning);
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("IsGrounded", _Controller.isGrounded);
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("IsClimbing", _IsClimbing);
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("Linecast1", _Linecast1 != null);
-				GameObject.FindObjectOfType<DebugLabelManager>().AddToDatabase("Linecast2", _Linecast2 != null);
-			}
 		}
 
 		#region Event Listeners
@@ -294,15 +283,6 @@ namespace VoidInc
 			// grab our current _velocity to use as a base for all calculations
 			_Velocity = _Controller.velocity;
 			#endregion
-
-			if (GameObject.FindObjectOfType<GameManager>().isDebugActive)
-			{
-				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("IsRunning", _IsRunning);
-				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("IsGrounded", _Controller.isGrounded);
-				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("IsClimbing", _IsClimbing);
-				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("Linecast1", _Linecast1 != null);
-				GameObject.FindObjectOfType<DebugLabelManager>().UpdateToDatabase("Linecast2", _Linecast2 != null);
-			}
 		}
 
 		void LateUpdate()

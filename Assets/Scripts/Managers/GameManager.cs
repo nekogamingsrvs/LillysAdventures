@@ -61,12 +61,6 @@ namespace VoidInc
 		public Text ScorePanelText;
 
 		/// <summary>
-		/// The DebugLabelManager for debugging the game.
-		/// </summary>
-		[HideInInspector]
-		public DebugManagerWindow DebugWindowManager;
-
-		/// <summary>
 		/// The boundaries of the map.
 		/// </summary>
 		[HideInInspector]
@@ -98,9 +92,6 @@ namespace VoidInc
 		{
 			// Get the current level of the game.
 			Level = GameObject.Find("level" + CurrentLevel).GetComponent<TiledMap>();
-
-			// Set the DebugPanelManager class for the GameManager.
-			DebugWindowManager = gameObject.GetComponent<DebugManagerWindow>();
 			// Set the ScorePanel's Textbox for the GameManafer.
 			ScorePanelText = GameObject.FindGameObjectWithTag("ScorePanel").GetComponent<Text>();
 
@@ -155,12 +146,6 @@ namespace VoidInc
 			ScorePanelText.text = "Score:" + Score;
 			// Set the player's position.
 			PlayersPosition = GameObject.Find("Player").transform.position;
-
-			// Updates the score on the debug panel.
-			if (InputCheck.IsEditorPlatforms && isDebugActive)
-			{
-				DebugWindowManager.PlayerPosition = PlayersPosition;
-			}
 
 			if (Gems == MaxGems)
 			{
