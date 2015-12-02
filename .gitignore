@@ -1,33 +1,36 @@
-# =============== #
-# Unity generated #
-# =============== #
+# ignore system files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ignore Unity files
 Temp/
 [Oo]bj/
 Library/
 Assets/AssetStoreTools*
 [Bb]in/
+[Dd]ebug/
+[Rr]elease/
 UnityGenerated/
-
-# ========================= #
-# Developer Tools generated #
-# ========================= #
-.vs/
-ExportedObj/
-[Dd]ebug*/
-[Rr]elease*/
-_ReSharper*/
-.zedstate
 UnityLockFile
 [Tt]est[Rr]esult*
+*.unityproj
+*.boopproj
+
+# ignore Visual Studio Files
+.vs/
+ExportedObj/
 *.svd
 *.userprefs
+*.cache
 *.csproj
 *.pidb
 *.suo
 *.sln
-*.user
-*.unityproj
-*.booproj
+*.suer
 *.log
 *.pfx
 *.exe
@@ -45,24 +48,13 @@ UnityLockFile
 *.ilk
 *.lib
 *.sbr
+
+# ignore Git files
 GitExtensions.settings
+.zedstate
+.git/
 
-# ============ #
-# OS generated #
-# ============ #
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
-Thumbs.db
-*.Z*
-
-# ============== #
-# Game Generated #
-# ============== #
+# ignore Game files
 save.config
 Assets/WSATestCertificate.pfx.meta
 Assets/WSATestCertificate.pfx
