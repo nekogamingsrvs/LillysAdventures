@@ -82,7 +82,7 @@ class CustomTileImportForItems : Tiled2Unity.ICustomTiledImporter
 			{
 				var itemIdentifier = gameObject.AddComponent<ItemIdentifier>();
 				itemIdentifier.Identifier = KeyUUIDs[props["lwa:lockId"]];
-				itemIdentifier.ItemType = ItemIdentifier._ItemType.Key;
+				itemIdentifier.ItemType = ItemIdentifier._ItemType.Lock;
 				spriteRenderer.sprite = Sprites["Lock_1"];
 				spriteRenderer.sortingLayerName = "Objects";
 				spriteRenderer.sortingOrder = 0;

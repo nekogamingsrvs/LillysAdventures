@@ -39,7 +39,6 @@ namespace VoidInc
 		/// <summary>
 		/// Gets or sets the amount of keys the player has.
 		/// </summary>
-		[HideInInspector]
 		public int Keys;
 
 		/// <summary>
@@ -69,7 +68,6 @@ namespace VoidInc
 		/// <summary>
 		/// Gets or sets the list of key id's.
 		/// </summary>
-		[HideInInspector]
 		public List<string> KeyIdentifiers = new List<string>();
 
 		/// <summary>

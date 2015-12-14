@@ -1,30 +1,28 @@
 ﻿using CnControls;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Manages the main menu.
-/// </summary>
-public class MenuManager : MonoBehaviour
+namespace VoidInc
 {
-	// Update is called once per frame
-	void Update()
+	/// <summary>
+	/// Manages the main menu.
+	/// </summary>
+	public class MenuManager : MonoBehaviour
 	{
-		if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+		// Update is called once per frame
+		public void OnClickStart()
 		{
-			// Start the game when pressing space.
-			if (Input.GetButton("Submit"))
-			{
-				Application.LoadLevel("level1");
-				PlayerPrefs.SetInt("CurrentLevel", 1);
-			}
+			SceneManager.LoadScene("level1");
 		}
-		else if (Application.platform == RuntimePlatform.Android)
+
+		public void OnClickOptions()
 		{
-			if (CnInputManager.GetButtonUp("Jump"))
-			{
-				Application.LoadLevel("level1");
-				PlayerPrefs.SetInt("CurrentLevel", 1);
-			}
+
+		}
+
+		public void OnClickExit()
+		{
+			Application.Quit();
 		}
 	}
 }

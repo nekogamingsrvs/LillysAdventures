@@ -30,13 +30,11 @@ namespace VoidInc
 		/// <summary>
 		/// What type of item is the item.
 		/// </summary>
-		[HideInInspector]
 		public _ItemType ItemType;
 
 		/// <summary>
 		/// The identifier for keys to open locks and for locks to be opened by keys.
 		/// </summary>
-		[HideInInspector]
 		public string Identifier;
 
 		/// <summary>
