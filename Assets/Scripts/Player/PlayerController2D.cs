@@ -6,10 +6,9 @@ namespace VoidInc
 {
 	public class PlayerController2D : MonoBehaviour
 	{
-		public float RunMultiplierSpeed = 2.0f;
-
 		public float Gravity;
 		public float WalkSpeed;
+		public float RunModifierSpeed;
 		public float InAirDamping;
 		public float JumpHeight;
 
@@ -77,13 +76,7 @@ namespace VoidInc
 		void onTriggerEnterEvent(Collider2D col)
 		{
 			// If the trigger collided with an object with the tag "Coins1" then remove the coin and add score.
-			col.gameObject.SendMessage("RemoveCoin", SendMessageOptions.DontRequireReceiver);
-			// If the trigger collided with an object with the tag "Coins5" then remove the coin and add score.
-			col.gameObject.SendMessage("RemoveGem", SendMessageOptions.DontRequireReceiver);
-			// If the trigger collided with an object with the tag "Keys" then remove the key and add to the key amount.
-			col.gameObject.SendMessage("RemoveKey", SendMessageOptions.DontRequireReceiver);
-			// If the trigger collided with an object with the tag "Locks" then check if we have a key and unlock it if we do.
-			col.gameObject.SendMessage("CheckLock", SendMessageOptions.DontRequireReceiver);
+			col.gameObject.SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
 			// If the trigger collided with an object with the tag "Signs" then display the information about the sign.
 			col.gameObject.SendMessage("DisplayDialog", SendMessageOptions.DontRequireReceiver);
 
@@ -169,11 +162,6 @@ namespace VoidInc
 
 			_Animator.SetFloat("Speed", Mathf.Abs(NormalizedHorizontalSpeed));
 
-			if (_IsRunning)
-			{
-				NormalizedHorizontalSpeed *= RunMultiplierSpeed;
-			}
-
 			if (_Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")))
 			{
 				// Jumping
@@ -213,7 +201,7 @@ namespace VoidInc
 				float climbing = Input.GetAxisRaw("Vertical");
 
 				// Are we jumping? If so, we leave this state.
-				if (climbing == 0 && Input.GetButtonDown("Jump"))
+				if (climbing == 0 && (Input.GetButtonDown("Jump") || CnInputManager.GetButtonDown("Jump")))
 				{
 					GotoPlatformState();
 					return;
@@ -269,7 +257,17 @@ namespace VoidInc
 			#endregion
 
 			#region Movement Controls
-			float modifier = _Controller.isGrounded ? WalkSpeed : InAirDamping;
+
+			float modifier = 0;
+
+			if (_IsRunning)
+			{
+				modifier = _Controller.isGrounded ? WalkSpeed * RunModifierSpeed : InAirDamping * RunModifierSpeed;
+			}
+			else
+			{
+				modifier = _Controller.isGrounded ? WalkSpeed : InAirDamping;
+			}
 
 			_Velocity.x = NormalizedHorizontalSpeed * modifier;
 
@@ -293,7 +291,7 @@ namespace VoidInc
 
 		private bool LadderCheck()
 		{
-			float climbing = InputCheck.TestInput(InputCheck.MobilePlatforms) ? CnInputManager.GetAxis("Vertical") : Input.GetAxisRaw("Vertical");
+			float climbing = InputCheck.IsMobilePlatforms ? CnInputManager.GetAxis("Vertical") : Input.GetAxisRaw("Vertical");
 
 			if (climbing != 0)
 			{

@@ -1,5 +1,6 @@
 ﻿//CLAEoS - Change Level At End of Screen - Also a pretty nice name :3 - But the inspector really f's up the spacing >:|
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VoidInc;
 
 [System.Serializable]
@@ -118,7 +119,7 @@ public class CLAEoS : MonoBehaviour
 		// Check if player is in bounds, and load level.
 		if (CanTransition && Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
 		{
-			Application.LoadLevel("level" + LevelNumber);
+			SceneManager.LoadScene("level" + LevelNumber);
 			ConfigFileManager.SaveFile.PlayerData.Level = LevelNumber;
 			ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_Y = Player.transform.position.y;
 			ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_TeleTo = OtherCLAEoSToGoTo;

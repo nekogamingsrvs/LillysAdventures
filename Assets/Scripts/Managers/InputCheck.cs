@@ -65,7 +65,7 @@ namespace VoidInc
 		{
 			get
 			{
-				if (Array.Exists(MobilePlatforms, element => element == Application.platform))
+				if (Array.Exists(EditorPlatforms, element => element == Application.platform))
 				{
 					return true;
 				}
