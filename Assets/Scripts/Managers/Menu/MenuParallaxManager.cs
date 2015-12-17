@@ -35,7 +35,7 @@ public class MenuParallaxManager : MonoBehaviour
 	void Awake()
 	{
 		size = layerSprite.GetComponent<Renderer>().bounds.size;
-		center = new Vector2(160, -170);
+		center = new Vector2(240, -256);
 
 		//instantiate all 4 objects
 		obj1 = layerSprite;
@@ -57,22 +57,22 @@ public class MenuParallaxManager : MonoBehaviour
 		//update 4 object positions
 		obj1p.x = center.x + size.x / 2;
 		//obj1p.y = -2.88f;
-		obj1p.y = -170;
+		obj1p.y = -256;
 		obj1.transform.position = obj1p;
 
 		obj2p.x = center.x - size.x / 2;
 		//obj2p.y = -2.88f;
-		obj2p.y = -170;
+		obj2p.y = -256;
 		obj2.transform.position = obj2p;
 
 		obj3p.x = (center.x - size.x / 2) + size.x * 2;
 		//obj2p.y = -2.88f;
-		obj3p.y = -170;
+		obj3p.y = -256;
 		obj3.transform.position = obj3p;
 
 		if (center.x < -size.x / 2)
 		{
-			center = new Vector2(160, -170);
+			center = new Vector2(240, -256);
 		}
 	}
 

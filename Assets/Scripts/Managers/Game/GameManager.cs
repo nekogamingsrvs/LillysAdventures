@@ -28,7 +28,7 @@ namespace VoidInc
 		public int TotalGems;
 
 		[HideInInspector]
-		public bool IsLoaded;
+		public bool IsLoaded = false;
 
 		/// <summary>
 		/// Gets or sets the score of the game.
@@ -39,6 +39,7 @@ namespace VoidInc
 		/// <summary>
 		/// Gets or sets the amount of keys the player has.
 		/// </summary>
+		[HideInInspector]
 		public int Keys;
 
 		/// <summary>
@@ -68,13 +69,17 @@ namespace VoidInc
 		/// <summary>
 		/// Gets or sets the list of key id's.
 		/// </summary>
-		public List<string> KeyIdentifiers = new List<string>();
+		[HideInInspector]
+		public Dictionary<int, string> KeyIdentifiers;
 
 		/// <summary>
 		/// The list of destroyed game objects.
 		/// </summary>
 		[HideInInspector]
-		public List<string> DestroyedGameObjects = new List<string>();
+		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
+
+		[HideInInspector]
+		public List<GameObject> ActivatedGameObjects = new List<GameObject>();
 
 		[HideInInspector]
 		public ConfigFileManager ConfigFileManager = new ConfigFileManager();
@@ -125,12 +130,21 @@ namespace VoidInc
 				KeyIdentifiers = ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers;
 				DialogNum = ConfigFileManager.SaveFile.DialogNumber;
 				DestroyedGameObjects = ConfigFileManager.SaveFile.DestroyedGameObjects;
+				ActivatedGameObjects = ConfigFileManager.SaveFile.ActivatedGameObjects;
 
-				foreach (string gameObj in DestroyedGameObjects)
+				foreach (GameObject gameObj in DestroyedGameObjects)
 				{
-					if (GameObject.Find(gameObj).GetComponent<ItemIdentifier>().Destroyed == true)
+					if (gameObj.GetComponent<ItemManager>().Destroyed == true)
 					{
-						Destroy(GameObject.Find(gameObj));
+						Destroy(gameObj);
+					}
+				}
+
+				foreach (GameObject gameObj in ActivatedGameObjects)
+				{
+					if (gameObj.GetComponent<ObjectManager>().Activated == true)
+					{
+						gameObj.GetComponent<ObjectManager>().DoUpdate();
 					}
 				}
 
@@ -167,7 +181,7 @@ namespace VoidInc
 
 		void LateUpdate()
 		{
-			ConfigFileManager.SaveGame();
+			//ConfigFileManager.SaveGame();
 		}
 	}
 }

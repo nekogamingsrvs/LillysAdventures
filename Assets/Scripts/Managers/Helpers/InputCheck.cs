@@ -35,6 +35,17 @@ namespace VoidInc
 			RuntimePlatform.WindowsEditor
 		};
 
+		public static RuntimePlatform[] ConsolePlatforms =
+		{
+			RuntimePlatform.PS3,
+			RuntimePlatform.PS4,
+			RuntimePlatform.PSM,
+			RuntimePlatform.PSP2,
+			RuntimePlatform.WiiU,
+			RuntimePlatform.XBOX360,
+			RuntimePlatform.XboxOne
+		};
+
 		public static bool IsPCPlatforms
 		{
 			get
@@ -74,6 +85,19 @@ namespace VoidInc
 			}
 		}
 
+		public static bool IsConsolePlatforms
+		{
+			get
+			{
+				if (Array.Exists(ConsolePlatforms, element => element == Application.platform))
+				{
+					return true;
+				}
+
+				return false;
+			}
+		}
+
 		public static bool TestInput(RuntimePlatform currentPlatform)
 		{
 			if (Application.platform == currentPlatform)
@@ -92,6 +116,18 @@ namespace VoidInc
 			}
 
 			return false;
+		}
+
+		public static bool GetAxisMinMax(float axis)
+		{
+			if (axis == 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 }

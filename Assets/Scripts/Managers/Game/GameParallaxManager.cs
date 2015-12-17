@@ -4,6 +4,13 @@ namespace VoidInc
 {
 	public class GameParallaxManager : MonoBehaviour
 	{
+		public enum ParallaxType
+		{
+			Normal,
+			FixedY,
+			Follow
+		}
+
 		/// <summary>
 		/// The object to track. Generally a camera.
 		/// </summary>
@@ -14,9 +21,11 @@ namespace VoidInc
 		/// </summary>
 		public float depth;
 
-		public bool isVerticalFixed;
+		public ParallaxType type;
 
-		public int PositionY;
+		public float YOffset;
+
+		public float PositionY;
 
 		/// <summary>
 		/// Object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport.
@@ -68,7 +77,26 @@ namespace VoidInc
 			center.x = f(parent.position.x, depth, size.x);
 			center.y = f(parent.transform.position.y, depth, size.y);
 
-			if (isVerticalFixed)
+			if (type == ParallaxType.Normal)
+			{
+				//update 4 object positions
+				obj1p.x = center.x + size.x / 2;
+				obj1p.y = center.y + size.y / 2;
+				obj1.transform.position = obj1p;
+
+				obj2p.x = center.x - size.x / 2;
+				obj2p.y = center.y - size.y / 2;
+				obj2.transform.position = obj2p;
+
+				obj3p.x = center.x - size.x / 2;
+				obj3p.y = center.y + size.y / 2;
+				obj3.transform.position = obj3p;
+
+				obj4p.x = center.x + size.x / 2;
+				obj4p.y = center.y - size.y / 2;
+				obj4.transform.position = obj4p;
+			}
+			else if (type == ParallaxType.FixedY)
 			{
 				//update 4 object positions
 				obj1p.x = center.x + size.x / 2;
@@ -87,23 +115,23 @@ namespace VoidInc
 				obj4p.y = PositionY;
 				obj4.transform.position = obj4p;
 			}
-			else
+			else if (type == ParallaxType.Follow)
 			{
 				//update 4 object positions
 				obj1p.x = center.x + size.x / 2;
-				obj1p.y = center.y + size.y / 2;
+				obj1p.y = parent.position.y + YOffset;
 				obj1.transform.position = obj1p;
 
 				obj2p.x = center.x - size.x / 2;
-				obj2p.y = center.y - size.y / 2;
+				obj2p.y = parent.position.y + YOffset;
 				obj2.transform.position = obj2p;
 
-				obj3p.x = center.x - size.x / 2;
-				obj3p.y = center.y + size.y / 2;
+				obj3p.x = (center.x - size.x / 2) - size.x;
+				obj3p.y = parent.position.y + YOffset;
 				obj3.transform.position = obj3p;
 
-				obj4p.x = center.x + size.x / 2;
-				obj4p.y = center.y - size.y / 2;
+				obj4p.x = (center.x + size.x / 2) + size.x;
+				obj4p.y = parent.position.y + YOffset;
 				obj4.transform.position = obj4p;
 			}
 		}
