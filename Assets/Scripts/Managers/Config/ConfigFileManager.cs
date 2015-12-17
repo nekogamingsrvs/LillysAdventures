@@ -28,14 +28,14 @@ namespace VoidInc
 		public int Keys;
 
 		[JsonProperty("key identifiers")]
-		public List<string> KeyIdentifiers;
+		public Dictionary<int, string> KeyIdentifiers = new Dictionary<int, string>();
 
 		[JsonProperty("PlayerPositionWER_TeleTo")]
 		public string PlayerPositionWER_TeleTo;
 
 		[JsonProperty("PlayerPositionWER_Y")]
 		public float PlayerPositionWER_Y;
-    }
+	}
 
 	public class SaveFile
 	{
@@ -46,7 +46,10 @@ namespace VoidInc
 		public PlayerData PlayerData = new PlayerData();
 
 		[JsonProperty("destroyed")]
-		public List<string> DestroyedGameObjects;
+		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
+
+		[JsonProperty("activated")]
+		public List<GameObject> ActivatedGameObjects = new List<GameObject>();
 
 		[JsonProperty("dialog")]
 		public int DialogNumber;
@@ -58,7 +61,7 @@ namespace VoidInc
 
 		public void SaveGame()
 		{
-			using (FileStream fileStream = new FileStream("save.config", FileMode.Create))
+			using (FileStream fileStream = new FileStream("save.json", FileMode.Create))
 			using (StreamWriter streamWriter = new StreamWriter(fileStream))
 			using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
 			{
@@ -78,18 +81,20 @@ namespace VoidInc
 			{
 				SaveGame();
 			}
-
-			using (FileStream fileStream = File.OpenRead("save.json"))
-			using (StreamReader streamReader = new StreamReader(fileStream))
-			using (JsonTextReader jsonTextReader = new JsonTextReader(streamReader))
+			else
 			{
-				JObject jsonSaveData = JObject.Load(jsonTextReader);
+				using (FileStream fileStream = File.OpenRead("save.json"))
+				using (StreamReader streamReader = new StreamReader(fileStream))
+				using (JsonTextReader jsonTextReader = new JsonTextReader(streamReader))
+				{
+					JObject jsonSaveData = JObject.Load(jsonTextReader);
 
-				SaveFile = jsonSaveData.ToObject<SaveFile>();
+					SaveFile = jsonSaveData.ToObject<SaveFile>();
 
-				jsonTextReader.Close();
-				streamReader.Close();
-				fileStream.Close();
+					jsonTextReader.Close();
+					streamReader.Close();
+					fileStream.Close();
+				}
 			}
 		}
 	}
