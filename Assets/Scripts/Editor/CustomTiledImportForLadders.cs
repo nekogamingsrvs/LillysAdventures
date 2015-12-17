@@ -12,7 +12,7 @@ class CustomTiledImporterForLadders : Tiled2Unity.ICustomTiledImporter
 
 	public void CustomizePrefab(GameObject prefab)
 	{
-		// Find all the polygon colliders in the pefab
+		// Find all the polygon colliders in the prefab
 		var polygon2Ds = prefab.GetComponentsInChildren<PolygonCollider2D>();
 		if (polygon2Ds == null)
 		{
