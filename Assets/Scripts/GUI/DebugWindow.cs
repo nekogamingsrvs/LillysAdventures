@@ -31,8 +31,8 @@ public class DebugWindow : MonoBehaviour
 	{
 		GUI.DragWindow();
 		GUI.Label(new Rect(5, 25, 125, 25), "Player Position");
-		GUI.Label(new Rect(5, 50, 70, 25), " x : " + _GameManager.PlayersPosition.x, new GUIStyle { overflow = new RectOffset(0, 1, 0, 25) } );
-		GUI.Label(new Rect(80, 50, 70, 25), " y : " + _GameManager.PlayersPosition.y, new GUIStyle { overflow = new RectOffset(0, 1, 0, 25) } );
-		GUI.Label(new Rect(5, 75, 70, 25), " z : " + _GameManager.PlayersPosition.z, new GUIStyle { overflow = new RectOffset(0, 1, 0, 25) } );
+		GUI.Label(new Rect(5, 50, 70, 25), " x : " + _GameManager.PlayersPosition.x, new GUIStyle { overflow = new RectOffset(0, 1, 0, 25) });
+		GUI.Label(new Rect(80, 50, 70, 25), " y : " + _GameManager.PlayersPosition.y, new GUIStyle { overflow = new RectOffset(0, 1, 0, 25) });
+		GUI.Label(new Rect(5, 75, 70, 25), " z : " + _GameManager.PlayersPosition.z, new GUIStyle { overflow = new RectOffset(0, 1, 0, 25) });
 	}
 }

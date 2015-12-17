@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace VoidInc
 {
+	[RequireComponent(typeof(BoxCollider2D))]
+	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(AudioSource))]
+	[RequireComponent(typeof(Animator))]
+	[RequireComponent(typeof(CharacterController2D))]
+	[RequireComponent(typeof(SpriteRenderer))]
 	public class PlayerController2D : MonoBehaviour
 	{
 		public float Gravity;
@@ -17,35 +23,32 @@ namespace VoidInc
 		public float AbsorbGroundedInputTime;
 		public float LadderVelocityPerSecond;
 
-		[HideInInspector]
-		private float NormalizedHorizontalSpeed = 0.0f;
+		private float _NormalizedHorizontalSpeed = 0.0f;
 
 		private CharacterController2D _Controller;
 		private Animator _Animator;
+		private SpriteRenderer _SpriteRenderer;
+		private AudioSource _AudioSource;
+		private Transform _Linecast1;
+		private Transform _Linecast2;
+
 		private Vector3 _Velocity;
 		private bool _IsRunning;
 		private bool _IsClimbing;
 		private float _Climb;
+		private float _Modifier;
 
-		private Transform _Linecast1
-		{
-			get;
-			set;
-		}
-		private Transform _Linecast2
-		{
-			get;
-			set;
-		}
 
-		// Use this for initialization
+		// Use this for initialization.
 		void Awake()
 		{
 			// Set the animator and controller components.
 			_Animator = GetComponent<Animator>();
 			_Controller = GetComponent<CharacterController2D>();
+			_AudioSource = GetComponent<AudioSource>();
+			_SpriteRenderer = GetComponent<SpriteRenderer>();
 
-			// listen to some events for illustration purposes
+			// Listen to some events for illustration purposes.
 			_Controller.onControllerCollidedEvent += onControllerCollider;
 			_Controller.onTriggerEnterEvent += onTriggerEnterEvent;
 			_Controller.onTriggerExitEvent += onTriggerExitEvent;
@@ -57,18 +60,19 @@ namespace VoidInc
 		#region Event Listeners
 		void onControllerCollider(RaycastHit2D hit)
 		{
-			// bail out on plain old ground hits cause they aren't very interesting
+			// Bail out on plain old ground hits cause they aren't very interesting.
 			if (hit.normal.y == 1f)
 			{
 				return;
 			}
 
+			// Check ladder collision, then go to platform state.
 			if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ladders"))
 			{
 				GotoPlatformState();
 			}
 
-			// logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
+			// Logs any collider hits if uncommented. it gets noisy so it is commented out for the demo.
 			//Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
 		}
 
@@ -80,28 +84,31 @@ namespace VoidInc
 			// If the trigger collided with an object with the tag "Signs" then display the information about the sign.
 			col.gameObject.SendMessage("DisplayDialog", SendMessageOptions.DontRequireReceiver);
 
-			if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
-			{
-				Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
-			}
+			// Debug if the player has entered a collision.
+			//if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
+			//{
+			//	Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
+			//}
 		}
 
 		// Update when the trigger exits the event.
 		void onTriggerExitEvent(Collider2D col)
 		{
+			// Check of the player has exited the LadderSpines layer and go to platform state.
 			if (col.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
 			{
 				GotoPlatformState();
 			}
 
-			if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
-			{
-				Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
-			}
+			// Debug if the player has exited a collision.
+			//if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
+			//{
+			//	Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
+			//}
 		}
 		#endregion
 
-		// Update is called once per frame
+		// Update is called once per frame.
 		void Update()
 		{
 			#region Get or set input values
@@ -126,45 +133,42 @@ namespace VoidInc
 				_Animator.SetBool("Jumping", false);
 			}
 
+			// Play the meowing sound of Lilly.
 			if (_Controller.isGrounded && (Input.GetButton("Meow") || CnInputManager.GetButton("Meow")))
 			{
-				gameObject.GetComponent<AudioSource>().Play();
+				_AudioSource.Play();
 
 				_Animator.SetTrigger("Meowing");
 			}
 
-			if (LadderCheck())
+			// Get button down if the player has running checked. 
+			if (InputCheck.IsMobilePlatforms)
 			{
-				_IsClimbing = true;
+				_IsRunning = GameObject.Find("RunToggleButton").GetComponent<SimpleButton>().ToggleState;
 			}
-
-			if (CnInputManager.GetButtonUp("Run"))
+			if (InputCheck.IsPCPlatforms)
 			{
-				_IsRunning = !_IsRunning;
-			}
-			else
-			{
-				if (Input.GetAxis("Run") == 0)
-				{
-					_IsRunning = false;
-				}
-				else if (Input.GetAxis("Run") == 1)
-				{
-					_IsRunning = true;
-				}
-
+				_IsRunning = InputCheck.GetAxisMinMax(Input.GetAxis("Run"));
 				_IsRunning = Input.GetButton("Run");
 			}
+			if (InputCheck.IsConsolePlatforms)
+			{
+				_IsRunning = InputCheck.GetAxisMinMax(Input.GetAxis("Run"));
+			}
 
+			// Set the animators boolean of if the player is running.
 			_Animator.SetBool("Running", _IsRunning);
 
-			NormalizedHorizontalSpeed = Input.GetAxis("Horizontal") + CnInputManager.GetAxis("Horizontal");
+			// Set the normalized horizontal speed of the player.
+			_NormalizedHorizontalSpeed = Input.GetAxis("Horizontal") + CnInputManager.GetAxis("Horizontal");
 
-			_Animator.SetFloat("Speed", Mathf.Abs(NormalizedHorizontalSpeed));
+			// Set the animators float of the speed of the player.
+			_Animator.SetFloat("Speed", Mathf.Abs(_NormalizedHorizontalSpeed));
 
+			// Get if the player is jumping.
 			if (_Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")))
 			{
-				// Jumping
+				// Jumping.
 				_Velocity.y = JumpHeight;
 
 				// Raise our MegaDad dude up a bit to start the jump off
@@ -172,29 +176,25 @@ namespace VoidInc
 				this.transform.Translate(0, 4, 0);
 			}
 
-			if (NormalizedHorizontalSpeed == 0)
-			{
-				_Animator.SetFloat("Speed", 0);
-			}
-
 			// Flip the character based off of his speed.
-			if (NormalizedHorizontalSpeed > 0)
+			if (_NormalizedHorizontalSpeed > 0)
 			{
-				if (transform.localScale.x < 0f)
-				{
-					transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-				}
+				_SpriteRenderer.flipX = false;
 			}
-			else if (NormalizedHorizontalSpeed < 0)
+			else if (_NormalizedHorizontalSpeed < 0)
 			{
-				if (transform.localScale.x > 0f)
-				{
-					transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-				}
+				_SpriteRenderer.flipX = true;
 			}
 			#endregion
 
 			#region Ladder Controls
+			// Check if the player is climbing a ladder.
+			if (LadderCheck())
+			{
+				_IsClimbing = true;
+			}
+
+			// Check if the player is climbing.
 			if (_IsClimbing)
 			{
 				// We only animate the player while he is moving up/down the ladder
@@ -257,23 +257,24 @@ namespace VoidInc
 			#endregion
 
 			#region Movement Controls
-
-			float modifier = 0;
-
+			// Check if the player is running.
 			if (_IsRunning)
 			{
-				modifier = _Controller.isGrounded ? WalkSpeed * RunModifierSpeed : InAirDamping * RunModifierSpeed;
+				_Modifier = _Controller.isGrounded ? WalkSpeed * RunModifierSpeed : InAirDamping * RunModifierSpeed;
 			}
 			else
 			{
-				modifier = _Controller.isGrounded ? WalkSpeed : InAirDamping;
+				_Modifier = _Controller.isGrounded ? WalkSpeed : InAirDamping;
 			}
 
-			_Velocity.x = NormalizedHorizontalSpeed * modifier;
+			// Set the product of the horizontal speed and the modifier to the players velocity.
+			_Velocity.x = _NormalizedHorizontalSpeed * _Modifier;
 
 			// Apply gravity before moving.
 			if (!_IsClimbing)
+			{
 				_Velocity.y += Gravity * Time.deltaTime * 1.0f;
+			}
 
 			// Move the controller at the velocity and fluctuate it with time.
 			_Controller.move(_Velocity * Time.deltaTime);
@@ -281,12 +282,6 @@ namespace VoidInc
 			// grab our current _velocity to use as a base for all calculations
 			_Velocity = _Controller.velocity;
 			#endregion
-		}
-
-		void LateUpdate()
-		{
-			//_LadderSpineCollider = null;
-			//_LadderTopCollider = null;
 		}
 
 		private bool LadderCheck()

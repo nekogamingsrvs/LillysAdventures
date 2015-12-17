@@ -10,12 +10,18 @@ namespace CnControls
 		/// <summary>
 		/// Name of the button for which this virtual button has to be registered
 		/// </summary>
-		public string Name { get; set; }
+		public string Name
+		{
+			get; set;
+		}
 
 		/// <summary>
 		/// Is this button currently pressed?
 		/// </summary>
-		public bool IsPressed { get; private set; }
+		public bool IsPressed
+		{
+			get; private set;
+		}
 
 		/// <summary>
 		/// The last frame this button was pressed
@@ -23,7 +29,7 @@ namespace CnControls
 		private int _lastPressedFrame = -1;
 
 		/// <summary>
-		/// The last frame this butto was released
+		/// The last frame this button was released
 		/// </summary>
 		private int _lastReleasedFrame = -1;
 
@@ -33,7 +39,7 @@ namespace CnControls
 		}
 
 		/// <summary>
-		/// Press logic sets the current state of the button to "IsPressed" untill the Release() method is called
+		/// Press logic sets the current state of the button to "IsPressed" until the Release() method is called
 		/// </summary>
 		public void Press()
 		{
@@ -59,7 +65,10 @@ namespace CnControls
 		/// </summary>
 		public bool GetButton
 		{
-			get { return IsPressed; }
+			get
+			{
+				return IsPressed;
+			}
 		}
 
 		/// <summary>
