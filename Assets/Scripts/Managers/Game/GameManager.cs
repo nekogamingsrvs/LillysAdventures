@@ -10,7 +10,7 @@ namespace VoidInc
 		/// <summary>
 		/// Gets or sets if the game is in debug mode.
 		/// </summary>
-		public bool isDebugActive;
+		public bool IsDebugActive;
 
 		/// <summary>
 		/// Gets or sets the current level.
@@ -27,6 +27,9 @@ namespace VoidInc
 		/// </summary>
 		public int TotalGems;
 
+		/// <summary>
+		/// If the game got loaded.
+		/// </summary>
 		[HideInInspector]
 		public bool IsLoaded = false;
 
@@ -78,15 +81,27 @@ namespace VoidInc
 		[HideInInspector]
 		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
 
+		/// <summary>
+		/// The list of activated game objects.
+		/// </summary>
 		[HideInInspector]
 		public List<GameObject> ActivatedGameObjects = new List<GameObject>();
 
+		/// <summary>
+		/// The ConfigFileManager to save and load with.
+		/// </summary>
 		[HideInInspector]
 		public ConfigFileManager ConfigFileManager = new ConfigFileManager();
 
+		/// <summary>
+		/// The identifier of the dialog the player has activated.
+		/// </summary>
 		[HideInInspector]
-		public int DialogNum;
+		public int DialogID;
 
+		/// <summary>
+		/// The player's position compute.
+		/// </summary>
 		[HideInInspector]
 		public Vector3 PlayersPosition;
 
@@ -115,7 +130,7 @@ namespace VoidInc
 			LevelBoundries.yMax = 0;
 
 			// Sets the score to be able to be seen from the debug panel.
-			if (isDebugActive)
+			if (IsDebugActive)
 			{
 				//DebugWindowManager.AddToDatabase("Score", Score);
 			}
@@ -128,7 +143,7 @@ namespace VoidInc
 				Gems = ConfigFileManager.SaveFile.PlayerData.Gems;
 				Keys = ConfigFileManager.SaveFile.PlayerData.Keys;
 				KeyIdentifiers = ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers;
-				DialogNum = ConfigFileManager.SaveFile.DialogNumber;
+				DialogID = ConfigFileManager.SaveFile.DialogIdentifier;
 				DestroyedGameObjects = ConfigFileManager.SaveFile.DestroyedGameObjects;
 				ActivatedGameObjects = ConfigFileManager.SaveFile.ActivatedGameObjects;
 
@@ -176,7 +191,7 @@ namespace VoidInc
 			ConfigFileManager.SaveFile.PlayerData.Level = CurrentLevel;
 			ConfigFileManager.SaveFile.PlayerData.Position = PlayersPosition;
 			ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers = KeyIdentifiers;
-			ConfigFileManager.SaveFile.DialogNumber = DialogNum;
+			ConfigFileManager.SaveFile.DialogIdentifier = DialogID;
 		}
 
 		void LateUpdate()

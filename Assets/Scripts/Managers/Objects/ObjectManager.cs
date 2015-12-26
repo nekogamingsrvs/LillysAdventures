@@ -16,8 +16,14 @@ namespace VoidInc
 			Sign
 		}
 
+		/// <summary>
+		/// The parameters for the sign.
+		/// </summary>
 		public struct _Sign
 		{
+			/// <summary>
+			/// The type of sign.
+			/// </summary>
 			public enum _SignType
 			{
 				dialog,
@@ -25,11 +31,15 @@ namespace VoidInc
 				save
 			}
 
+			/// <summary>
+			/// The variable for the type of sign.
+			/// </summary>
 			public _SignType SignType;
 
+			/// <summary>
+			/// The dialog for the sign.
+			/// </summary>
 			public string Dialog;
-
-			public int Type;
 		}
 
 		/// <summary>
@@ -37,6 +47,12 @@ namespace VoidInc
 		/// </summary>
 		[HideInInspector]
 		public bool Activated;
+
+		/// <summary>
+		/// The type of sign that the sign is.
+		/// </summary>
+		[HideInInspector]
+		public _Sign _SignType;
 
 		/// <summary>
 		/// What type of item is the item.
@@ -63,17 +79,21 @@ namespace VoidInc
 		/// </summary>
 		private GameManager _GameController;
 
-		/// <summary>
-		/// The type of sign that the sign is.
-		/// </summary>
-		private _Sign _SignType;
-
 		void Awake()
 		{
 			_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+			if (GameObjectSpawn != null)
+			{
+				GameObjectSpawn.transform.position = gameObject.transform.position;
+				GameObjectSpawn.SetActive(false);
+			}
 		}
 
-		public void RemoveObject()
+		/// <summary>
+		/// Activates the objects when the player is activating them.
+		/// </summary>
+		public void ActivateObject()
 		{
 			switch (ObjectType)
 			{

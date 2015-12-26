@@ -431,205 +431,165 @@
  <objectgroup color="#00ffff" name="Water">
   <object id="35" x="1248" y="608" width="96" height="32">
    <properties>
-    <property name="lwa:liquid" value="water"/>
+    <property name="parameters" value="{&quot;liquid&quot;:&quot;water&quot;}}"/>
    </properties>
   </object>
   <object id="36" x="1440" y="608" width="128" height="160">
    <properties>
-    <property name="lwa:liquid" value="water"/>
+    <property name="parameters" value="{&quot;liquid&quot;:&quot;water&quot;}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ff5500" name="Lava">
   <object id="37" x="1600" y="608" width="128" height="160">
    <properties>
-    <property name="lwa:liquid" value="lava"/>
+    <property name="parameters" value="{&quot;liquid&quot;:&quot;lava&quot;}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aaff7f" name="Quicksand">
   <object id="38" x="1760" y="608" width="128" height="160">
    <properties>
-    <property name="lwa:liquid" value="quicksand"/>
+    <property name="parameters" value="{&quot;liquid&quot;:&quot;quicksand&quot;}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffff7f" name="Torches">
   <object id="11" x="672" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="torch"/>
+    <property name="parameters" value="{&quot;object&quot;:&quot;torch&quot;}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="Locks">
   <object id="4" x="640" y="160">
    <properties>
-    <property name="lwa:keyID" value="0"/>
-    <property name="lwa:object" value="lock"/>
+    <property name="parameters" value="{&quot;lock&quot;:{&quot;keyID&quot;:0}}}"/>
    </properties>
    <polygon points="0,0 -288,0 -288,32 -352,32 -352,64 -384,64 -384,128 -384,160 -288,160 -288,128 -352,128 -352,96 -320,96 -320,64 -224,64 -224,96 -192,96 -192,64 -160,64 -160,32 0,32"/>
   </object>
   <object id="32" x="736" y="64" width="32" height="32">
    <properties>
-    <property name="lwa:keyID" value="1"/>
-    <property name="lwa:object" value="lock"/>
+    <property name="parameters" value="{&quot;lock&quot;:{&quot;keyID&quot;:1}}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffff00" name="Keys">
   <object id="21" x="1152" y="288" width="32" height="32">
    <properties>
-    <property name="lwa:item" value="key"/>
-    <property name="lwa:keyID" value="0"/>
+    <property name="parameters" value="{&quot;key&quot;:{&quot;keyID&quot;:0}}}"/>
    </properties>
   </object>
   <object id="34" x="576" y="448" width="32" height="32">
    <properties>
-    <property name="lwa:item" value="key"/>
-    <property name="lwa:keyID" value="1"/>
+    <property name="parameters" value="{&quot;key&quot;:{&quot;keyID&quot;:1}}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aaaaff" name="Item_Blocks">
   <object id="5" x="1088" y="288" width="32" height="32">
    <properties>
-    <property name="lwa:itemBlock" value="coin1"/>
-    <property name="lwa:object" value="itemBlock"/>
+    <property name="parameters" value="{&quot;itemBlock&quot;:{&quot;type&quot;:&quot;coin1&quot;}}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aa5500" name="Coins1">
   <object id="15" x="1088" y="544" width="32" height="32">
    <properties>
-    <property name="lwa:item" value="coin1"/>
+    <property name="parameters" value="{&quot;item&quot;:&quot;coin1&quot;}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#d5d5da" name="Coins5">
   <object id="16" x="1056" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:item" value="coin5"/>
+    <property name="parameters" value="{&quot;item&quot;:&quot;coin5&quot;}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffaa00" name="Coins10">
   <object id="19" x="1120" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:item" value="coin10"/>
+    <property name="parameters" value="{&quot;item&quot;:&quot;coin10&quot;}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ff0000" name="Gems">
   <object id="18" x="1088" y="480" width="32" height="32">
    <properties>
-    <property name="lwa:item" value="gem"/>
+    <property name="parameters" value="{&quot;item&quot;:&quot;gem&quot;}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#55ff00" name="Object_Blocks">
   <object id="6" x="1984" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="sign"/>
-    <property name="lwa:sign" value="heal"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;save&quot;}}}"/>
    </properties>
   </object>
   <object id="41" x="2048" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="torch"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;heal&quot;}}}"/>
    </properties>
   </object>
   <object id="42" x="2112" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="sign"/>
-    <property name="lwa:sign" value="save"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test1&quot;,&quot;skin&quot;:0}}}"/>
    </properties>
   </object>
   <object id="43" x="2176" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="test1"/>
-    <property name="lwa:signType" value="0"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test2&quot;,&quot;skin&quot;:1}}}"/>
    </properties>
   </object>
   <object id="44" x="2240" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="test2"/>
-    <property name="lwa:signType" value="1"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test3&quot;,&quot;skin&quot;:2}}}"/>
    </properties>
   </object>
   <object id="45" x="1984" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="test3"/>
-    <property name="lwa:signType" value="2"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test4&quot;,&quot;skin&quot;:3}}}"/>
    </properties>
   </object>
   <object id="46" x="2048" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="test4"/>
-    <property name="lwa:signType" value="3"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test5&quot;,&quot;skin&quot;:4}}}"/>
    </properties>
   </object>
   <object id="47" x="2112" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:itemBlock" value="gem"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="itemBlock"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;gem&quot;}}}"/>
    </properties>
   </object>
   <object id="48" x="2176" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:itemBlock" value="gem"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="itemBlock"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin1&quot;}}}"/>
    </properties>
   </object>
   <object id="49" x="2240" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:itemBlock" value="coin1"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="itemBlock"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin5&quot;}}}"/>
    </properties>
   </object>
   <object id="50" x="1984" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:itemBlock" value="coin5"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="itemBlock"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin10&quot;}}}"/>
    </properties>
   </object>
   <object id="51" x="2048" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:itemBlock" value="coin10"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="itemBlock"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;liquid&quot;:&quot;lava&quot;}}"/>
    </properties>
   </object>
   <object id="53" x="2112" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:liquid" value="water"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="liquid"/>
+    <property name="{&quot;objectBlock&quot;:{&quot;liquid&quot;:&quot;water&quot;}}" value=""/>
    </properties>
   </object>
   <object id="54" x="2176" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:liquid" value="water"/>
-    <property name="lwa:object" value="objectBlock"/>
-    <property name="lwa:objectBlock" value="liquid"/>
+    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;objectBlock&quot;:{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin10&quot;}}}}}"/>
    </properties>
   </object>
  </objectgroup>
@@ -700,14 +660,14 @@
   <object id="63" x="2560" y="416" width="32" height="32">
    <properties>
     <property name="lwa:object" value="trapBlock"/>
-    <property name="lwa:trapBlock" value="flame"/>
+    <property name="lwa:trapBlock" value="bomb"/>
     <property name="lwa:trapDirection" value="right"/>
    </properties>
   </object>
   <object id="64" x="2560" y="512" width="32" height="32">
    <properties>
     <property name="lwa:object" value="trapBlock"/>
-    <property name="lwa:trapBlock" value="flame"/>
+    <property name="lwa:trapBlock" value="bomb"/>
     <property name="lwa:trapDirection" value="left"/>
    </properties>
   </object>
@@ -722,53 +682,39 @@
  <objectgroup color="#555500" name="Signs">
   <object id="22" x="192" y="576" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="sign"/>
-    <property name="lwa:sign" value="save"/>
+    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;save&quot;}}}"/>
    </properties>
   </object>
-  <object id="25" x="256" y="576" width="32" height="32">
+  <object id="25" x="320" y="576" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="!!!"/>
-    <property name="lwa:signType" value="0"/>
+    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;!!!&quot;,&quot;skin&quot;:0}}}"/>
    </properties>
   </object>
-  <object id="26" x="320" y="576" width="32" height="32">
+  <object id="26" x="192" y="480" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="???"/>
-    <property name="lwa:signType" value="1"/>
+    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;???&quot;,&quot;skin&quot;:1}}}"/>
    </properties>
   </object>
-  <object id="27" x="192" y="480" width="32" height="32">
+  <object id="27" x="256" y="480" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="Death"/>
-    <property name="lwa:signType" value="2"/>
+    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;Death&quot;,&quot;skin&quot;:2}}}"/>
    </properties>
   </object>
-  <object id="29" x="256" y="480" width="32" height="32">
+  <object id="29" x="320" y="480" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="sign"/>
-    <property name="lwa:sign" value="dialog"/>
-    <property name="lwa:signDialog" value="Exit"/>
-    <property name="lwa:signType" value="3"/>
+    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;Exit&quot;,&quot;skin&quot;:3}}}"/>
    </properties>
   </object>
-  <object id="30" x="320" y="480" width="32" height="32">
+  <object id="30" x="256" y="576" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="sign"/>
-    <property name="lwa:sign" value="heal"/>
+    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;heal&quot;}}}"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffffff" name="Spawn_Point">
   <object id="66" x="32" y="576" width="32" height="32">
    <properties>
-    <property name="lwa:point" value="playerSpawn"/>
+    <property name="parameters" value="{&quot;point&quot;:{&quot;type&quot;:&quot;playerSpawn&quot;}}"/>
    </properties>
   </object>
  </objectgroup>

@@ -52,7 +52,7 @@ namespace VoidInc
 		public List<GameObject> ActivatedGameObjects = new List<GameObject>();
 
 		[JsonProperty("dialog")]
-		public int DialogNumber;
+		public int DialogIdentifier;
 	}
 
 	public class ConfigFileManager
