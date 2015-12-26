@@ -67,7 +67,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -92,9 +92,9 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 0.5
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -108,8 +108,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Idle_0
       rect:
         serializedVersion: 2
@@ -118,8 +123,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_1
       rect:
         serializedVersion: 2
@@ -128,8 +134,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Stand_0
       rect:
         serializedVersion: 2
@@ -138,8 +149,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_2
       rect:
         serializedVersion: 2
@@ -148,8 +160,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Run_0
       rect:
         serializedVersion: 2
@@ -158,8 +175,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Run_1
       rect:
         serializedVersion: 2
@@ -168,8 +186,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Run_2
       rect:
         serializedVersion: 2
@@ -178,8 +197,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Run_3
       rect:
         serializedVersion: 2
@@ -188,8 +208,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_3
       rect:
         serializedVersion: 2
@@ -198,8 +219,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Blink_0
       rect:
         serializedVersion: 2
@@ -208,8 +234,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_4
       rect:
         serializedVersion: 2
@@ -218,8 +245,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Jump_0
       rect:
         serializedVersion: 2
@@ -228,8 +260,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Jump_1
       rect:
         serializedVersion: 2
@@ -238,8 +271,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Jump_2
       rect:
         serializedVersion: 2
@@ -248,8 +282,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_5
       rect:
         serializedVersion: 2
@@ -258,8 +293,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Fall_0
       rect:
         serializedVersion: 2
@@ -268,8 +308,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Fall_1
       rect:
         serializedVersion: 2
@@ -278,8 +319,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_6
       rect:
         serializedVersion: 2
@@ -288,8 +330,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Walk_0
       rect:
         serializedVersion: 2
@@ -298,8 +345,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_1
       rect:
         serializedVersion: 2
@@ -308,8 +356,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_2
       rect:
         serializedVersion: 2
@@ -318,8 +367,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_3
       rect:
         serializedVersion: 2
@@ -328,8 +378,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_4
       rect:
         serializedVersion: 2
@@ -338,8 +389,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_5
       rect:
         serializedVersion: 2
@@ -348,8 +400,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_6
       rect:
         serializedVersion: 2
@@ -358,8 +411,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Walk_7
       rect:
         serializedVersion: 2
@@ -368,8 +422,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_7
       rect:
         serializedVersion: 2
@@ -378,8 +433,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Eat_0
       rect:
         serializedVersion: 2
@@ -388,8 +448,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Eat_1
       rect:
         serializedVersion: 2
@@ -398,8 +459,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Eat_2
       rect:
         serializedVersion: 2
@@ -408,8 +470,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_8
       rect:
         serializedVersion: 2
@@ -418,8 +481,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Inspect_0
       rect:
         serializedVersion: 2
@@ -428,8 +496,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Inspect_1
       rect:
         serializedVersion: 2
@@ -438,8 +507,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Inspect_2
       rect:
         serializedVersion: 2
@@ -448,8 +518,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Inspect_3
       rect:
         serializedVersion: 2
@@ -458,8 +529,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_9
       rect:
         serializedVersion: 2
@@ -468,8 +540,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Swim_0
       rect:
         serializedVersion: 2
@@ -478,8 +555,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Swim_1
       rect:
         serializedVersion: 2
@@ -488,8 +566,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Swim_2
       rect:
         serializedVersion: 2
@@ -498,8 +577,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Swim_3
       rect:
         serializedVersion: 2
@@ -508,8 +588,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Swim_4
       rect:
         serializedVersion: 2
@@ -518,8 +599,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Swim_5
       rect:
         serializedVersion: 2
@@ -528,8 +610,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_10
       rect:
         serializedVersion: 2
@@ -538,8 +621,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Wine_0
       rect:
         serializedVersion: 2
@@ -548,8 +636,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Wine_1
       rect:
         serializedVersion: 2
@@ -558,8 +647,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Wine_2
       rect:
         serializedVersion: 2
@@ -568,8 +658,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Lilly_Wine_3
       rect:
         serializedVersion: 2
@@ -578,8 +669,9 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Note_11
       rect:
         serializedVersion: 2
@@ -588,8 +680,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     - name: Lilly_Sleep_0
       rect:
         serializedVersion: 2
@@ -598,8 +695,10 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

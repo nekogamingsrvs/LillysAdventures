@@ -1,5 +1,4 @@
-﻿using CnControls;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace VoidInc

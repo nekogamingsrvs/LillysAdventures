@@ -48,6 +48,9 @@ namespace VoidInc
 			_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 		}
 
+		/// <summary>
+		/// Removes the item from the world.
+		/// </summary>
 		public void RemoveItem()
 		{
 			switch (ItemType)

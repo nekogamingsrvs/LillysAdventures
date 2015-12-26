@@ -4,7 +4,10 @@ namespace VoidInc
 {
 	public class GameParallaxManager : MonoBehaviour
 	{
-		public enum ParallaxType
+		/// <summary>
+		/// The type of parallax the parallaxmanager is using.
+		/// </summary>
+		public enum _ParallaxType
 		{
 			Normal,
 			FixedY,
@@ -21,45 +24,56 @@ namespace VoidInc
 		/// </summary>
 		public float depth;
 
-		public ParallaxType type;
+		/// <summary>
+		/// The parallax type the parallax manager is using.
+		/// </summary>
+		public _ParallaxType ParallaxType;
 
+		/// <summary>
+		/// The Y axis offset for Follow parallax type.
+		/// </summary>
 		public float YOffset;
 
+		/// <summary>
+		/// The Y axis position for FixedY parallax type.
+		/// </summary>
 		public float PositionY;
 
 		/// <summary>
 		/// Object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport.
 		/// </summary>
-		public GameObject layerSprite;
+		public GameObject LayerSprite;
 
-		//size of the layerSprite
-		private Vector2 size;
+		/// <summary>
+		/// The size of the layer sprite.
+		/// </summary>
+		private Vector2 _Size;
 
-		//position of parent, and the meeting of the 4 corners of our 4 layerSprites
-		private Vector2 center;
+		/// <summary>
+		/// position of parent, and the meeting of the 4 corners of our 4 layerSprites
+		/// </summary>
+		private Vector2 _Center;
 
-		//our 4 layerSprites
-		private GameObject obj1;
-		private GameObject obj2;
-		private GameObject obj3;
-		private GameObject obj4;
+		/// <summary>
+		/// Our four layer sprites.
+		/// </summary>
+		private GameObject obj1, obj2, obj3, obj4;
 
-		//our 4 layerSprite positions
-		private Vector2 obj1p;
-		private Vector2 obj2p;
-		private Vector2 obj3p;
-		private Vector2 obj4p;
+		/// <summary>
+		/// Our four layer sprite positions.
+		/// </summary>
+		private Vector2 obj1p, obj2p, obj3p, obj4p;
 
 		void Awake()
 		{
-			size = layerSprite.GetComponent<Renderer>().bounds.size;
-			center = new Vector2(parent.position.x, parent.position.y);
+			_Size = LayerSprite.GetComponent<Renderer>().bounds.size;
+			_Center = new Vector2(parent.position.x, parent.position.y);
 
 			//instantiate all 4 objects
-			obj1 = layerSprite;
-			obj2 = Instantiate(layerSprite);
-			obj3 = Instantiate(layerSprite);
-			obj4 = Instantiate(layerSprite);
+			obj1 = LayerSprite;
+			obj2 = Instantiate(LayerSprite);
+			obj3 = Instantiate(LayerSprite);
+			obj4 = Instantiate(LayerSprite);
 
 			obj2.transform.SetParent(gameObject.transform);
 			obj3.transform.SetParent(gameObject.transform);
@@ -74,71 +88,75 @@ namespace VoidInc
 		void LateUpdate()
 		{
 			//compute our new position
-			center.x = f(parent.position.x, depth, size.x);
-			center.y = f(parent.transform.position.y, depth, size.y);
+			_Center.x = f(parent.position.x, depth, _Size.x);
+			_Center.y = f(parent.transform.position.y, depth, _Size.y);
 
-			if (type == ParallaxType.Normal)
+			if (ParallaxType == _ParallaxType.Normal)
 			{
 				//update 4 object positions
-				obj1p.x = center.x + size.x / 2;
-				obj1p.y = center.y + size.y / 2;
+				obj1p.x = _Center.x + _Size.x / 2;
+				obj1p.y = _Center.y + _Size.y / 2;
 				obj1.transform.position = obj1p;
 
-				obj2p.x = center.x - size.x / 2;
-				obj2p.y = center.y - size.y / 2;
+				obj2p.x = _Center.x - _Size.x / 2;
+				obj2p.y = _Center.y - _Size.y / 2;
 				obj2.transform.position = obj2p;
 
-				obj3p.x = center.x - size.x / 2;
-				obj3p.y = center.y + size.y / 2;
+				obj3p.x = _Center.x - _Size.x / 2;
+				obj3p.y = _Center.y + _Size.y / 2;
 				obj3.transform.position = obj3p;
 
-				obj4p.x = center.x + size.x / 2;
-				obj4p.y = center.y - size.y / 2;
+				obj4p.x = _Center.x + _Size.x / 2;
+				obj4p.y = _Center.y - _Size.y / 2;
 				obj4.transform.position = obj4p;
 			}
-			else if (type == ParallaxType.FixedY)
+			else if (ParallaxType == _ParallaxType.FixedY)
 			{
 				//update 4 object positions
-				obj1p.x = center.x + size.x / 2;
+				obj1p.x = _Center.x + _Size.x / 2;
 				obj1p.y = PositionY;
 				obj1.transform.position = obj1p;
 
-				obj2p.x = center.x - size.x / 2;
+				obj2p.x = _Center.x - _Size.x / 2;
 				obj2p.y = PositionY;
 				obj2.transform.position = obj2p;
 
-				obj3p.x = (center.x - size.x / 2) - size.x;
+				obj3p.x = (_Center.x - _Size.x / 2) - _Size.x;
 				obj3p.y = PositionY;
 				obj3.transform.position = obj3p;
 
-				obj4p.x = (center.x + size.x / 2) + size.x;
+				obj4p.x = (_Center.x + _Size.x / 2) + _Size.x;
 				obj4p.y = PositionY;
 				obj4.transform.position = obj4p;
 			}
-			else if (type == ParallaxType.Follow)
+			else if (ParallaxType == _ParallaxType.Follow)
 			{
 				//update 4 object positions
-				obj1p.x = center.x + size.x / 2;
+				obj1p.x = _Center.x + _Size.x / 2;
 				obj1p.y = parent.position.y + YOffset;
 				obj1.transform.position = obj1p;
 
-				obj2p.x = center.x - size.x / 2;
+				obj2p.x = _Center.x - _Size.x / 2;
 				obj2p.y = parent.position.y + YOffset;
 				obj2.transform.position = obj2p;
 
-				obj3p.x = (center.x - size.x / 2) - size.x;
+				obj3p.x = (_Center.x - _Size.x / 2) - _Size.x;
 				obj3p.y = parent.position.y + YOffset;
 				obj3.transform.position = obj3p;
 
-				obj4p.x = (center.x + size.x / 2) + size.x;
+				obj4p.x = (_Center.x + _Size.x / 2) + _Size.x;
 				obj4p.y = parent.position.y + YOffset;
 				obj4.transform.position = obj4p;
 			}
 		}
 
-		//p = position, in this scenario, x or y
-		//d = depth
-		//w = width or height of object
+		/// <summary>
+		/// Computes parallax position.
+		/// </summary>
+		/// <param name="p">position, in this scenario, x or y</param>
+		/// <param name="d">depth</param>
+		/// <param name="w">width or height of object</param>
+		/// <returns>Parallax Position (float)</returns>
 		private float f(float p, float d, float w)
 		{
 			return d * p + Mathf.Round(p * (1 - d) / w) * w;

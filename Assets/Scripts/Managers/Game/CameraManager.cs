@@ -5,48 +5,48 @@ namespace VoidInc
 	/// <summary>
 	/// Handles the main camera's movement.
 	/// </summary>
-	public class CameraMovementManager : MonoBehaviour
+	public class CameraManager : MonoBehaviour
 	{
 		/// <summary>
 		/// The LevelBounds for the map.
 		/// </summary>
-		private Rect LevelBounds;
+		private Rect _LevelBounds;
 
 		/// <summary>
 		/// The left most bound.
 		/// </summary>
-		private float LeftBound;
+		private float _LeftBound;
 
 		/// <summary>
 		/// The right most bound.
 		/// </summary>
-		private float RightBound;
+		private float _RightBound;
 
 		/// <summary>
 		/// The highest bound.
 		/// </summary>
-		private float TopBound;
+		private float _TopBound;
 
 		/// <summary>
 		/// The lowest bound.
 		/// </summary>
-		private float BottomBound;
+		private float _BottomBound;
 
 		// Use this for initialization
 		void Start()
 		{
 			// Get the LevelBounds from game GameManager.
-			LevelBounds = FindObjectOfType<GameManager>().LevelBoundries;
+			_LevelBounds = FindObjectOfType<GameManager>().LevelBoundries;
 
 			// Calculate the extents of the camera.
 			float VertExtent = GetComponent<Camera>().orthographicSize;
 			float HorzExtent = VertExtent * Screen.width / Screen.height;
 
 			// Calculate the camera's LevelBounds to the map.
-			LeftBound = (float)(HorzExtent);
-			RightBound = (float)(LevelBounds.width / 2.0f - HorzExtent);
-			BottomBound = (float)(VertExtent - LevelBounds.height / 2.0f);
-			TopBound = (float)(-VertExtent);
+			_LeftBound = (float)(HorzExtent);
+			_RightBound = (float)(_LevelBounds.width / 2.0f - HorzExtent);
+			_BottomBound = (float)(VertExtent - _LevelBounds.height / 2.0f);
+			_TopBound = (float)(-VertExtent);
 		}
 
 		// Update is called once per frame
@@ -63,8 +63,8 @@ namespace VoidInc
 			Vector3 vectorClamp = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 			// Clamps the camera.
-			vectorClamp.x = Mathf.Clamp(vectorClamp.x, LeftBound, RightBound);
-			vectorClamp.y = Mathf.Clamp(vectorClamp.y, BottomBound, TopBound);
+			vectorClamp.x = Mathf.Clamp(vectorClamp.x, _LeftBound, _RightBound);
+			vectorClamp.y = Mathf.Clamp(vectorClamp.y, _BottomBound, _TopBound);
 			vectorClamp.z = -100;
 
 			// Sets the clamp to the camera.
