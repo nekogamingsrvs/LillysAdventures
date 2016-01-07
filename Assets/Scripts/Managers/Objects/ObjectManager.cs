@@ -77,11 +77,11 @@ namespace VoidInc
 		/// <summary>
 		/// The GameManager class for the items.
 		/// </summary>
-		private GameManager _GameController;
+		private GameManager _GameManager;
 
 		void Awake()
 		{
-			_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+			_GameManager = FindObjectOfType<GameManager>();
 
 			if (GameObjectSpawn != null)
 			{
@@ -119,11 +119,11 @@ namespace VoidInc
 
 		private void CheckLock()
 		{
-			if (_GameController.Keys >= 1 && _GameController.KeyIdentifiers[KeyID] == Identifier)
+			if (_GameManager.GameDataManager.Keys >= 1 && _GameManager.GameDataManager.KeyIdentifiers[KeyID] == Identifier)
 			{
-				_GameController.DestroyedGameObjects.Add(gameObject);
-				_GameController.Keys -= 1;
-				_GameController.KeyIdentifiers.Remove(KeyID);
+				_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
+				_GameManager.GameDataManager.Keys -= 1;
+				_GameManager.GameDataManager.KeyIdentifiers.Remove(KeyID);
 				Destroy(gameObject);
 			}
 		}

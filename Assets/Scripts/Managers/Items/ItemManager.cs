@@ -41,11 +41,11 @@ namespace VoidInc
 		/// The GameManager class for the items.
 		/// </summary>
 		[HideInInspector]
-		private GameManager _GameController;
+		private GameManager _GameManager;
 
 		void Awake()
 		{
-			_GameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+			_GameManager = FindObjectOfType<GameManager>();
 		}
 
 		/// <summary>
@@ -77,27 +77,27 @@ namespace VoidInc
 
 		private void RemoveCoin(int score)
 		{
-			_GameController.DestroyedGameObjects.Add(gameObject);
+			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
 			Destroy(gameObject);
-			_GameController.Score += score;
+			_GameManager.GameDataManager.Score += score;
 		}
 
 		private void RemoveGem(int score)
 		{
-			_GameController.DestroyedGameObjects.Add(gameObject);
+			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
 			Destroy(gameObject);
-			_GameController.Score += score;
-			_GameController.Gems += 1;
-			_GameController.TotalGems += 1;
+			_GameManager.GameDataManager.Score += score;
+			_GameManager.Gems += 1;
+			_GameManager.GameDataManager.TotalGems += 1;
 		}
 
 
 		private void RemoveKey()
 		{
-			_GameController.DestroyedGameObjects.Add(gameObject);
+			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
 			Destroy(gameObject);
-			_GameController.Keys += 1;
-			_GameController.KeyIdentifiers.Add(KeyID, Identifier);
+			_GameManager.GameDataManager.Keys += 1;
+			_GameManager.GameDataManager.KeyIdentifiers.Add(KeyID, Identifier);
 		}
 	}
 }

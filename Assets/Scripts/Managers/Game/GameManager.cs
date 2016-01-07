@@ -1,202 +1,257 @@
 ﻿using System.Collections.Generic;
 using Tiled2Unity;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace VoidInc
 {
 	public class GameManager : MonoBehaviour
 	{
+		#region Public Variables
+		///////////////////////////////////////
+		// Setting up the map.
+		///////////////////////////////////////
 		/// <summary>
 		/// Gets or sets if the game is in debug mode.
 		/// </summary>
 		public bool IsDebugActive;
-
 		/// <summary>
 		/// Gets or sets the current level.
 		/// </summary>
 		public int CurrentLevel;
+		/// <summary>
+		/// If the game got loaded.
+		/// </summary>
+		public bool IsLoaded = false;
+		/// <summary>
+		/// The boundaries of the map.
+		/// </summary>
+		public Rect LevelBoundries;
 
+		///////////////////////////////////////
+		//  The variables for the map.
+		///////////////////////////////////////
 		/// <summary>
 		/// Gets or sets the max amount of gems in the level.
 		/// </summary>
 		public int MaxGems;
-
-		/// <summary>
-		/// Gets or sets the total number of gems from each level.
-		/// </summary>
-		public int TotalGems;
-
-		/// <summary>
-		/// If the game got loaded.
-		/// </summary>
-		[HideInInspector]
-		public bool IsLoaded = false;
-
-		/// <summary>
-		/// Gets or sets the score of the game.
-		/// </summary>
-		[HideInInspector]
-		public int Score;
-
-		/// <summary>
-		/// Gets or sets the amount of keys the player has.
-		/// </summary>
-		[HideInInspector]
-		public int Keys;
-
 		/// <summary>
 		/// Gets or sets the amount of gems the player has.
 		/// </summary>
-		[HideInInspector]
 		public int Gems;
 
+		///////////////////////////////////////
+		//  GameObjects on the scene.
+		///////////////////////////////////////
+		/// <summary>
+		/// Gets or sets the GameDataManager, which is used to transfer data between levels.
+		/// </summary>
+		[HideInInspector]
+		public GameDataManager GameDataManager;
 		/// <summary>
 		/// The current level of the game.
 		/// </summary>
-		[HideInInspector]
 		public TiledMap Level;
-
 		/// <summary>
 		/// The text box for keeping score.
 		/// </summary>
-		[HideInInspector]
 		public Text ScorePanelText;
-
 		/// <summary>
-		/// The boundaries of the map.
+		/// The tag to look for when disabling mobile controls.
 		/// </summary>
-		[HideInInspector]
-		public Rect LevelBoundries;
+		public string MobileControlsTag;
 
-		/// <summary>
-		/// Gets or sets the list of key id's.
-		/// </summary>
-		[HideInInspector]
-		public Dictionary<int, string> KeyIdentifiers;
-
-		/// <summary>
-		/// The list of destroyed game objects.
-		/// </summary>
-		[HideInInspector]
-		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
-
-		/// <summary>
-		/// The list of activated game objects.
-		/// </summary>
-		[HideInInspector]
-		public List<GameObject> ActivatedGameObjects = new List<GameObject>();
-
-		/// <summary>
-		/// The ConfigFileManager to save and load with.
-		/// </summary>
-		[HideInInspector]
-		public ConfigFileManager ConfigFileManager = new ConfigFileManager();
-
-		/// <summary>
-		/// The identifier of the dialog the player has activated.
-		/// </summary>
-		[HideInInspector]
-		public int DialogID;
-
+		///////////////////////////////////////
+		// Misc variables.
+		///////////////////////////////////////
 		/// <summary>
 		/// The player's position compute.
 		/// </summary>
-		[HideInInspector]
 		public Vector3 PlayersPosition;
+		/// <summary>
+		/// The current time of the game.
+		/// </summary>
+		[HideInInspector]
+		public float CurrentTime = 0;
+		/// <summary>
+		/// The previous time of the game.
+		/// </summary>
+		[HideInInspector]
+		public float PreviousTime = 0;
+		/// <summary>
+		/// The elapsed time of the game.
+		/// </summary>
+		public float ElapsedTime
+		{
+			get
+			{
+				return CurrentTime - PreviousTime;
+			}
+		}
+		/// <summary>
+		/// The time in between to save the game.
+		/// </summary>
+		public float TimeBetweenSaves = 2500;
+		#endregion
 
 		// Use this for initialization
 		void Awake()
 		{
-			// Get the current level of the game.
-			Level = GameObject.Find("level" + CurrentLevel).GetComponent<TiledMap>();
-			// Set the ScorePanel's Textbox for the GameManafer.
-			ScorePanelText = GameObject.FindGameObjectWithTag("ScorePanel").GetComponent<Text>();
-
-			// If this is not a mobile game then remove the mobile controls.
-			if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+			GetGameDataManager();
+			CheckPlatform();
+			LoadLevelBoundires();
+			if (GameDataManager.NewSaveWorld)
 			{
-				foreach (GameObject go in GameObject.FindGameObjectsWithTag("MobileControls"))
-				{
-					go.SetActive(false);
-				}
+				GameDataManager.NewSaveWorld = false;
 			}
-
-			// Sets the level boundaries of the map for the camera.
-			LevelBoundries = new Rect();
-			LevelBoundries.xMin = 0;
-			LevelBoundries.xMax = Level.MapWidthInPixels * 2;
-			LevelBoundries.yMin = -Level.MapHeightInPixels * 2;
-			LevelBoundries.yMax = 0;
-
-			// Sets the score to be able to be seen from the debug panel.
-			if (IsDebugActive)
+			else
 			{
-				//DebugWindowManager.AddToDatabase("Score", Score);
+				LoadSaveData();
 			}
-
-			if (IsLoaded)
+			if (GameDataManager.Transitioned)
 			{
-				GameObject.FindGameObjectWithTag("Player").transform.position = ConfigFileManager.SaveFile.PlayerData.Position;
-				Score = ConfigFileManager.SaveFile.PlayerData.Score;
-				TotalGems = ConfigFileManager.SaveFile.PlayerData.TotalGems;
-				Gems = ConfigFileManager.SaveFile.PlayerData.Gems;
-				Keys = ConfigFileManager.SaveFile.PlayerData.Keys;
-				KeyIdentifiers = ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers;
-				DialogID = ConfigFileManager.SaveFile.DialogIdentifier;
-				DestroyedGameObjects = ConfigFileManager.SaveFile.DestroyedGameObjects;
-				ActivatedGameObjects = ConfigFileManager.SaveFile.ActivatedGameObjects;
-
-				foreach (GameObject gameObj in DestroyedGameObjects)
-				{
-					if (gameObj.GetComponent<ItemManager>().Destroyed == true)
-					{
-						Destroy(gameObj);
-					}
-				}
-
-				foreach (GameObject gameObj in ActivatedGameObjects)
-				{
-					if (gameObj.GetComponent<ObjectManager>().Activated == true)
-					{
-						gameObj.GetComponent<ObjectManager>().DoUpdate();
-					}
-				}
-
-				IsLoaded = false;
+				TransitionedToWorld();
 			}
 		}
 
 		void Update()
 		{
+			CurrentTime += Time.deltaTime;
+
 			// Updates the score box text.
-			ScorePanelText.text = "Score:" + Score;
+			ScorePanelText.text = "Score:" + GameDataManager.Score;
 			// Set the player's position.
 			PlayersPosition = GameObject.Find("Player").transform.position;
 
-			if (Gems == MaxGems)
+			if (Gems == MaxGems || GameDataManager.TotalGems >= MaxGems)
 			{
 				foreach (CLAEoS claeos in GameObject.FindGameObjectWithTag("LevelChangerManager").GetComponentsInChildren<CLAEoS>())
 				{
 					claeos.CanTransition = true;
 				}
-
-				Gems = 0;
 			}
-
-			ConfigFileManager.SaveFile.PlayerData.Score = Score;
-			ConfigFileManager.SaveFile.PlayerData.TotalGems = TotalGems;
-			ConfigFileManager.SaveFile.PlayerData.Gems = Gems;
-			ConfigFileManager.SaveFile.PlayerData.Keys = Keys;
-			ConfigFileManager.SaveFile.PlayerData.Level = CurrentLevel;
-			ConfigFileManager.SaveFile.PlayerData.Position = PlayersPosition;
-			ConfigFileManager.SaveFile.PlayerData.KeyIdentifiers = KeyIdentifiers;
-			ConfigFileManager.SaveFile.DialogIdentifier = DialogID;
 		}
 
 		void LateUpdate()
 		{
-			//ConfigFileManager.SaveGame();
+			PreviousTime = CurrentTime;
+		}
+
+		#region Startup Functions
+		void CheckPlatform()
+		{
+			// If this is not a mobile game then we remove the mobile controls.
+			if (InputCheck.IsPCPlatforms || InputCheck.IsEditorPlatforms || InputCheck.IsConsolePlatforms)
+			{
+				foreach (GameObject go in GameObject.FindGameObjectsWithTag(MobileControlsTag))
+				{
+					go.SetActive(false);
+				}
+			}
+		}
+
+		void LoadLevelBoundires()
+		{
+			// Sets the level boundaries of the map for the camera.
+			LevelBoundries = new Rect();
+			LevelBoundries.xMin = 0;
+			LevelBoundries.xMax = Level.MapWidthInPixels * 2;
+			LevelBoundries.yMin = Level.MapHeightInPixels * 2;
+			LevelBoundries.yMax = 0;
+		}
+
+		void GetGameDataManager()
+		{
+			if (FindObjectOfType<GameDataManager>() != null)
+			{
+				GameDataManager = FindObjectOfType<GameDataManager>();
+			}
+		}
+
+		void SpawnPlayer()
+		{
+			// Spawn the player spawn, if it could be found.
+			if (GameObject.Find("PlayerSpawn") && !IsLoaded && !GameDataManager.Transitioned)
+			{
+				GameObject.Find("Player").transform.position = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position + new Vector3(16, 16, 0);
+			}
+		}
+
+		void TransitionedToWorld()
+		{
+			foreach (int gameObj in GameDataManager.DestroyedGameObjects)
+			{
+				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				{
+					Destroy(GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name));
+				}
+				else
+				{
+					Debug.Log("Couldn't find DestoryedGameObjects");
+				}
+			}
+
+			foreach (int gameObj in GameDataManager.ActivatedGameObjects)
+			{
+				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				{
+					GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name).GetComponent<ObjectManager>().DoUpdate();
+				}
+				else
+				{
+					Debug.Log("Couldn't find DestoryedGameObjects");
+				}
+			}
+
+			Debug.Log("Loaded");
+		}
+		#endregion
+
+		void SaveGame()
+		{
+			GameDataManager.SaveFile.PlayerData.Score = GameDataManager.Score;
+			GameDataManager.SaveFile.PlayerData.TotalGems = GameDataManager.TotalGems;
+			GameDataManager.SaveFile.PlayerData.Gems = Gems;
+			GameDataManager.SaveFile.PlayerData.Keys = GameDataManager.Keys;
+			GameDataManager.SaveFile.PlayerData.Level = CurrentLevel;
+			GameDataManager.SaveFile.PlayerData.Position = PlayersPosition;
+			GameDataManager.SaveFile.PlayerData.KeyIdentifiers = GameDataManager.KeyIdentifiers;
+			GameDataManager.SaveFile.StoryLine = GameDataManager.StoryLine;
+			GameDataManager.SaveGame();
+			Debug.Log("Saved");
+		}
+
+		void LoadSaveData()
+		{
+			var SaveFile = GameDataManager.SaveFile;
+
+			GameObject.FindGameObjectWithTag("Player").transform.position = SaveFile.PlayerData.Position;
+			GameDataManager.Score = SaveFile.PlayerData.Score;
+			GameDataManager.TotalGems = SaveFile.PlayerData.TotalGems;
+			Gems = SaveFile.PlayerData.Gems;
+			GameDataManager.Keys = SaveFile.PlayerData.Keys;
+			GameDataManager.KeyIdentifiers = SaveFile.PlayerData.KeyIdentifiers;
+			GameDataManager.StoryLine = SaveFile.StoryLine;
+			GameDataManager.DestroyedGameObjects = SaveFile.DestroyedGameObjects;
+			GameDataManager.ActivatedGameObjects = SaveFile.ActivatedGameObjects;
+
+			foreach (int gameObj in GameDataManager.DestroyedGameObjects)
+			{
+				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				{
+					Destroy(GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name));
+				}
+			}
+
+			foreach (int gameObj in GameDataManager.ActivatedGameObjects)
+			{
+				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				{
+					GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name).GetComponent<ObjectManager>().DoUpdate();
+				}
+			}
 		}
 	}
 }
