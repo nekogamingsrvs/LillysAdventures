@@ -227,7 +227,7 @@ namespace VoidInc
 
 						// We may be just above the ladder top and we don't want to fall for a split second
 						// So, move our character controller back down to the ground. He should collide with the ladder top we just popped past.
-						_Controller.move(new Vector3(0, -0.0f, 0));
+						_Controller.move(new Vector3(0, 0, 0));
 
 						// Go back to the platform state
 						GotoPlatformState();
@@ -340,7 +340,7 @@ namespace VoidInc
 			Vector3 pos = this.transform.position;
 			float ladder_x = ladderSpine.points[0].x;
 			float ladder_y = ladderSpine.points[1].y;
-			this.transform.position = new Vector3(ladder_x + 8f, ladder_y, pos.z);
+			this.transform.position = new Vector3(ladder_x + 16, ladder_y, pos.z);
 
 			// The platform controller is not active while on a ladder, but our ladder controller is
 			_IsClimbing = true;
