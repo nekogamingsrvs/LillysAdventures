@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -30,11 +29,14 @@ namespace VoidInc
 		[JsonProperty("key identifiers")]
 		public Dictionary<int, string> KeyIdentifiers = new Dictionary<int, string>();
 
-		[JsonProperty("PlayerPositionWER_TeleTo")]
+		[JsonProperty("player position tele to")]
 		public string PlayerPositionWER_TeleTo;
 
-		[JsonProperty("PlayerPositionWER_Y")]
+		[JsonProperty("player transition y")]
 		public float PlayerPositionWER_Y;
+
+		[JsonProperty("Transitioned")]
+		public bool Transitioned;
 	}
 
 	public class SaveFile
@@ -42,17 +44,20 @@ namespace VoidInc
 		[JsonProperty("version")]
 		public string SaveVersion;
 
+		[JsonProperty("new save")]
+		public bool NewSave = true;
+
 		[JsonProperty("player")]
 		public PlayerData PlayerData = new PlayerData();
 
 		[JsonProperty("destroyed")]
-		public List<GameObject> DestroyedGameObjects = new List<GameObject>();
+		public List<int> DestroyedGameObjects = new List<int>();
 
 		[JsonProperty("activated")]
-		public List<GameObject> ActivatedGameObjects = new List<GameObject>();
+		public List<int> ActivatedGameObjects = new List<int>();
 
-		[JsonProperty("dialog")]
-		public int DialogIdentifier;
+		[JsonProperty("storyline")]
+		public int StoryLine;
 	}
 
 	public class ConfigFileManager
@@ -61,21 +66,16 @@ namespace VoidInc
 
 		public void SaveGame()
 		{
-			using (FileStream fileStream = new FileStream("save.json", FileMode.Create))
-			using (StreamWriter streamWriter = new StreamWriter(fileStream))
-			using (JsonWriter jsonWriter = new JsonTextWriter(streamWriter))
-			{
-				jsonWriter.Formatting = Formatting.Indented;
+			string json = JsonConvert.SerializeObject(SaveFile, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
-				JsonConvert.SerializeObject(SaveFile, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
-
-				jsonWriter.Close();
-				streamWriter.Close();
-				fileStream.Close();
-			}
+			File.WriteAllText("save.json", json);
 		}
 
-		public void LoadSave()
+		/// <summary>
+		/// Loads the Save file and saves it into SaveData and returns the data too.
+		/// </summary>
+		/// <returns>SaveFile data.</returns>
+		public SaveFile LoadSave()
 		{
 			if (!File.Exists("save.json"))
 			{
@@ -88,14 +88,22 @@ namespace VoidInc
 				using (JsonTextReader jsonTextReader = new JsonTextReader(streamReader))
 				{
 					JObject jsonSaveData = JObject.Load(jsonTextReader);
-
-					SaveFile = jsonSaveData.ToObject<SaveFile>();
-
+					
 					jsonTextReader.Close();
 					streamReader.Close();
 					fileStream.Close();
+
+					SaveFile = jsonSaveData.ToObject<SaveFile>();
+
+					return jsonSaveData.ToObject<SaveFile>();
 				}
 			}
+			return null;
+		}
+
+		public void ResetFile()
+		{
+			SaveFile.NewSave = true;
 		}
 	}
 }
