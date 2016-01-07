@@ -7,14 +7,12 @@ namespace VoidInc
 		/// <summary>
 		/// Time of day in minutes.
 		/// </summary>
-		[HideInInspector]
-		public float DayLength;
+		public float DayLength = 1024.0f;
 
 		/// <summary>
 		/// The current time of day.
 		/// </summary>
-		[HideInInspector]
-		public float CurrentTime;
+		public float CurrentTime = 0.5f;
 
 		/// <summary>
 		/// The sun's initial intensity.
