@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="106" height="33" tilewidth="32" tileheight="32" nextobjectid="67">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="106" height="33" tilewidth="32" tileheight="32" nextobjectid="73">
  <tileset firstgid="1" name="tileset_32x32" tilewidth="32" tileheight="32" tilecount="273">
   <image source="../Tiled2Unity/Textures/tileset_32x32.png" width="416" height="672"/>
   <tile id="2">
@@ -358,8 +358,9 @@
    </objectgroup>
   </tile>
  </tileset>
- <layer name="Grass Tile Sets" width="106" height="33">
+ <layer name="Grass" width="106" height="33">
   <properties>
+   <property name="unity:ignore" value="collision"/>
    <property name="unity:layer" value="Default"/>
    <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="0"/>
@@ -370,16 +371,18 @@
  </layer>
  <layer name="Ground_Background" width="106" height="33">
   <properties>
+   <property name="unity:ignore" value="collision"/>
    <property name="unity:layer" value="Default"/>
    <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2EEKgCAURdF2Wwtw/9QCCizK76NzwEkDlS6CuCwAAHPYjtE6xlq1QbobaVXrTiOt6jzp1Ep2+m86ZdApg04ZnnZyrxjrjU7O1/d0yqBTBp0y6DSvu296Oo014n9fzXW2Tu+3v6k8Fzr10ymDThl0yuDeBgAAwIx2Kx+ZuQ==
+   eJzt2FEKgzAQQEEL3rU9gPfHfpeWbgSz2WQGAiKiIY9AcNsAAMbweo8jMJ5ZEyTcSKtcLY20ynOl05Ey07XpVMNsnfbHvc9nmblT6/XIrnYa9VyhU4399bnu//rolMN+0inTrJ2iXXTKMdN+av2np1NfPdb717u+fSd6bzWZ+0KnOJ1q0KkGnWqodG4DAABgHSecxZqL
   </data>
  </layer>
  <layer name="Grass_Overlay_Background" width="106" height="33">
   <properties>
+   <property name="unity:ignore" value="collision"/>
    <property name="unity:layer" value="Default"/>
    <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="2"/>
@@ -395,10 +398,10 @@
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztl9EKgzAMRat/7vv2z24PwgjXJmPW6HIOHCwRtUkg1NYAAAAArsHz5WJsIvZI2R28UT3a6xO9ykP1otenRbwDAACOZ578q/Uz3lsDZGLPiJwBr0nGGTAy97arnWmRNQDcj71/0n/5L/127tnn1Jq5B0fAee0cejPOm3+/3I9+Q+1T5RCNVdPLe2RdVP2jsWp6eY+si6p/NFZNL++RdVH1j8aq6eU9si6q/tFYNSNk7xERERERERHruQKfz9+c
+   eJztl9EKgzAMRev+3Pf5z3PsrVzNBa3pyDlwoETQJoEQWwMAAACYg2137Wwi9k65HXxRPTrqE73KQ/XirE+reAcAAOTyWn66Z4BM+h2RHXBOZt8B+5nmnAHg/zj6J51tJj2BO/OYe3AH7GvPcDbjovl35bn7DXVPlYMbq2aU98i6qPq7sWpGeY+si6q/G6tmlPfIuqj6u7FqRnmPrIuqvxurpkP2HREREREREbGeH2tp32M=
   </data>
  </layer>
- <layer name="Grass_Overlay" width="106" height="33">
+ <layer name="Ground_Overlay" width="106" height="33">
   <properties>
    <property name="unity:layer" value="Default"/>
    <property name="unity:sortingLayerName" value="Foreground"/>
@@ -431,291 +434,234 @@
  <objectgroup color="#00ffff" name="Water">
   <object id="35" x="1248" y="608" width="96" height="32">
    <properties>
-    <property name="parameters" value="{&quot;liquid&quot;:&quot;water&quot;}}"/>
+    <property name="lwa:liquid" value="water"/>
    </properties>
   </object>
   <object id="36" x="1440" y="608" width="128" height="160">
    <properties>
-    <property name="parameters" value="{&quot;liquid&quot;:&quot;water&quot;}}"/>
+    <property name="lwa:liquid" value="water"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ff5500" name="Lava">
   <object id="37" x="1600" y="608" width="128" height="160">
    <properties>
-    <property name="parameters" value="{&quot;liquid&quot;:&quot;lava&quot;}}"/>
+    <property name="lwa:liquid" value="lava"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aaff7f" name="Quicksand">
   <object id="38" x="1760" y="608" width="128" height="160">
    <properties>
-    <property name="parameters" value="{&quot;liquid&quot;:&quot;quicksand&quot;}}"/>
+    <property name="lwa:liquid" value="quicksand"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffff7f" name="Torches">
   <object id="11" x="672" y="512" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;object&quot;:&quot;torch&quot;}"/>
+    <property name="lwa:object" value="torch"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="Locks">
   <object id="4" x="640" y="160">
    <properties>
-    <property name="parameters" value="{&quot;lock&quot;:{&quot;keyID&quot;:0}}}"/>
+    <property name="lwa:keyID" value="0"/>
+    <property name="lwa:object" value="lock"/>
    </properties>
    <polygon points="0,0 -288,0 -288,32 -352,32 -352,64 -384,64 -384,128 -384,160 -288,160 -288,128 -352,128 -352,96 -320,96 -320,64 -224,64 -224,96 -192,96 -192,64 -160,64 -160,32 0,32"/>
   </object>
   <object id="32" x="736" y="64" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;lock&quot;:{&quot;keyID&quot;:1}}}"/>
+    <property name="lwa:keyID" value="1"/>
+    <property name="lwa:object" value="lock"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffff00" name="Keys">
   <object id="21" x="1152" y="288" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;key&quot;:{&quot;keyID&quot;:0}}}"/>
+    <property name="lwa:item" value="key"/>
+    <property name="lwa:keyID" value="1"/>
    </properties>
   </object>
   <object id="34" x="576" y="448" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;key&quot;:{&quot;keyID&quot;:1}}}"/>
+    <property name="lwa:item" value="key"/>
+    <property name="lwa:keyID" value="0"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aaaaff" name="Item_Blocks">
   <object id="5" x="1088" y="288" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;itemBlock&quot;:{&quot;type&quot;:&quot;coin1&quot;}}}"/>
+    <property name="lwa:itemBlock" value="coin1"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aa5500" name="Coins1">
   <object id="15" x="1088" y="544" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;item&quot;:&quot;coin1&quot;}"/>
+    <property name="lwa:item" value="coin1"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#d5d5da" name="Coins5">
   <object id="16" x="1056" y="512" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;item&quot;:&quot;coin5&quot;}}"/>
+    <property name="lwa:item" value="coin5"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffaa00" name="Coins10">
   <object id="19" x="1120" y="512" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;item&quot;:&quot;coin10&quot;}"/>
+    <property name="lwa:item" value="coin10"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ff0000" name="Gems">
   <object id="18" x="1088" y="480" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;item&quot;:&quot;gem&quot;}"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup color="#55ff00" name="Object_Blocks">
-  <object id="6" x="1984" y="512" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;save&quot;}}}"/>
-   </properties>
-  </object>
-  <object id="41" x="2048" y="512" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;heal&quot;}}}"/>
-   </properties>
-  </object>
-  <object id="42" x="2112" y="512" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test1&quot;,&quot;skin&quot;:0}}}"/>
-   </properties>
-  </object>
-  <object id="43" x="2176" y="512" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test2&quot;,&quot;skin&quot;:1}}}"/>
-   </properties>
-  </object>
-  <object id="44" x="2240" y="512" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test3&quot;,&quot;skin&quot;:2}}}"/>
-   </properties>
-  </object>
-  <object id="45" x="1984" y="416" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test4&quot;,&quot;skin&quot;:3}}}"/>
-   </properties>
-  </object>
-  <object id="46" x="2048" y="416" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;test5&quot;,&quot;skin&quot;:4}}}"/>
-   </properties>
-  </object>
-  <object id="47" x="2112" y="416" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;gem&quot;}}}"/>
-   </properties>
-  </object>
-  <object id="48" x="2176" y="416" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin1&quot;}}}"/>
-   </properties>
-  </object>
-  <object id="49" x="2240" y="416" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin5&quot;}}}"/>
-   </properties>
-  </object>
-  <object id="50" x="1984" y="320" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin10&quot;}}}"/>
-   </properties>
-  </object>
-  <object id="51" x="2048" y="320" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;liquid&quot;:&quot;lava&quot;}}"/>
-   </properties>
-  </object>
-  <object id="53" x="2112" y="320" width="32" height="32">
-   <properties>
-    <property name="{&quot;objectBlock&quot;:{&quot;liquid&quot;:&quot;water&quot;}}" value=""/>
-   </properties>
-  </object>
-  <object id="54" x="2176" y="320" width="32" height="32">
-   <properties>
-    <property name="parameters" value="{&quot;objectBlock&quot;:{&quot;objectBlock&quot;:{&quot;objectBlock&quot;:{&quot;itemBlock&quot;:{&quot;item&quot;:&quot;coin10&quot;}}}}}"/>
+    <property name="lwa:item" value="gem"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#550000" name="Trap_Blocks">
   <object id="39" x="2368" y="608" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="flame"/>
-    <property name="lwa:trapDirection" value="up"/>
+    <property name="lwa:trapBlock:direction" value="up"/>
    </properties>
   </object>
   <object id="55" x="2368" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="flame"/>
-    <property name="lwa:trapDirection" value="left"/>
+    <property name="lwa:trapBlock:direction" value="left"/>
    </properties>
   </object>
   <object id="56" x="2368" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="flame"/>
-    <property name="lwa:trapDirection" value="right"/>
+    <property name="lwa:trapBlock:direction" value="right"/>
    </properties>
   </object>
   <object id="57" x="2368" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="flame"/>
-    <property name="lwa:trapDirection" value="down"/>
+    <property name="lwa:trapBlock:direction" value="down"/>
    </properties>
   </object>
   <object id="58" x="2464" y="608" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="spear"/>
-    <property name="lwa:trapDirection" value="up"/>
+    <property name="lwa:trapBlock:direction" value="up"/>
    </properties>
   </object>
   <object id="59" x="2464" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="spear"/>
-    <property name="lwa:trapDirection" value="right"/>
+    <property name="lwa:trapBlock:direction" value="right"/>
    </properties>
   </object>
   <object id="60" x="2464" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="spear"/>
-    <property name="lwa:trapDirection" value="left"/>
+    <property name="lwa:trapBlock:direction" value="left"/>
    </properties>
   </object>
   <object id="61" x="2464" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="spear"/>
-    <property name="lwa:trapDirection" value="down"/>
+    <property name="lwa:trapBlock:direction" value="down"/>
    </properties>
   </object>
   <object id="62" x="2560" y="608" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="bomb"/>
-    <property name="lwa:trapDirection" value="up"/>
+    <property name="lwa:trapBlock:direction" value="up"/>
    </properties>
   </object>
   <object id="63" x="2560" y="416" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="bomb"/>
-    <property name="lwa:trapDirection" value="right"/>
+    <property name="lwa:trapBlock:direction" value="right"/>
    </properties>
   </object>
   <object id="64" x="2560" y="512" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="bomb"/>
-    <property name="lwa:trapDirection" value="left"/>
+    <property name="lwa:trapBlock:direction" value="left"/>
    </properties>
   </object>
   <object id="65" x="2560" y="320" width="32" height="32">
    <properties>
-    <property name="lwa:object" value="trapBlock"/>
     <property name="lwa:trapBlock" value="bomb"/>
-    <property name="lwa:trapDirection" value="down"/>
+    <property name="lwa:trapBlock:direction" value="down"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#555500" name="Signs">
   <object id="22" x="192" y="576" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;save&quot;}}}"/>
+    <property name="lwa:sign" value="save"/>
    </properties>
   </object>
   <object id="25" x="320" y="576" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;!!!&quot;,&quot;skin&quot;:0}}}"/>
+    <property name="lwa:sign" value="dialog"/>
+    <property name="lwa:sign:dialog" value="!!!"/>
+    <property name="lwa:sign:skin" value="0"/>
    </properties>
   </object>
   <object id="26" x="192" y="480" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;???&quot;,&quot;skin&quot;:1}}}"/>
+    <property name="lwa:sign" value="dialog"/>
+    <property name="lwa:sign:dialog" value="???"/>
+    <property name="lwa:sign:skin" value="1"/>
    </properties>
   </object>
   <object id="27" x="256" y="480" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;Death&quot;,&quot;skin&quot;:2}}}"/>
+    <property name="lwa:sign" value="dialog"/>
+    <property name="lwa:sign:dialog" value="Death"/>
+    <property name="lwa:sign:skin" value="2"/>
    </properties>
   </object>
   <object id="29" x="320" y="480" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;dialog&quot;,&quot;dialog&quot;:&quot;Exit&quot;,&quot;skin&quot;:3}}}"/>
+    <property name="lwa:sign" value="dialog"/>
+    <property name="lwa:sign:dialog" value="Exit"/>
+    <property name="lwa:sign:skin" value="3"/>
    </properties>
   </object>
   <object id="30" x="256" y="576" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;sign&quot;:{&quot;type&quot;:&quot;heal&quot;}}}"/>
+    <property name="lwa:sign" value="heal"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#ffffff" name="Spawn_Point">
+ <objectgroup color="#ffffff" name="Points">
   <object id="66" x="32" y="576" width="32" height="32">
    <properties>
-    <property name="parameters" value="{&quot;point&quot;:{&quot;type&quot;:&quot;playerSpawn&quot;}}"/>
+    <property name="lwa:point" value="playerSpawn"/>
    </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Boundries">
+  <object id="67" x="0" y="608">
+   <polyline points="0,0 0,-608"/>
+  </object>
+  <object id="68" x="0" y="0">
+   <polyline points="0,0 3392,0"/>
+  </object>
+  <object id="71" x="3392" y="0">
+   <properties>
+    <property name="unity:layer" value="Boundries"/>
+    <property name="unity:tag" value="Colliders"/>
+   </properties>
+   <polyline points="0,0 0,608"/>
   </object>
  </objectgroup>
 </map>
