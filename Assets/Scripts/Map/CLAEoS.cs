@@ -66,18 +66,18 @@ namespace VoidInc
 		public float YPositionWhileEntering;
 
 		[HideInInspector]
-		public ConfigFileManager ConfigFileManager;
+		public SaveFile SaveFile;
 
 		// Start's the script.
 		public void Start()
 		{
-			ConfigFileManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ConfigFileManager;
+			SaveFile = FindObjectOfType<GameManager>().GameDataManager.SaveFile;
 
 			// Get the setting to tell where to teleport to.
-			if (ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_TeleTo == gameObject.name)
+			if (SaveFile.PlayerData.PlayerPositionWER_TeleTo == gameObject.name)
 			{
 				// Set the player's position.
-				Player.transform.position = new Vector3(gameObject.transform.position.x + SpawnPlayerAtX, PlayerPrefs.GetFloat("PlayerPositionWER_Y"), 0);
+				Player.transform.position = new Vector3(gameObject.transform.position.x + SpawnPlayerAtX, SaveFile.PlayerData.PlayerPositionWER_Y, 0);
 			}
 		}
 
@@ -127,10 +127,12 @@ namespace VoidInc
 			// Check if player is in bounds, and load level.
 			if (CanTransition && Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
 			{
+				SceneManager.MoveGameObjectToScene(GameObject.Find("GameDataManager"), SceneManager.GetSceneByName("level" + LevelNumber));
 				SceneManager.LoadScene("level" + LevelNumber);
-				ConfigFileManager.SaveFile.PlayerData.Level = LevelNumber;
-				ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_Y = Player.transform.position.y;
-				ConfigFileManager.SaveFile.PlayerData.PlayerPositionWER_TeleTo = OtherCLAEoSToGoTo;
+				SaveFile.PlayerData.Level = LevelNumber;
+				SaveFile.PlayerData.PlayerPositionWER_Y = Player.transform.position.y;
+				SaveFile.PlayerData.PlayerPositionWER_TeleTo = OtherCLAEoSToGoTo;
+				SaveFile.PlayerData.Transitioned = true;
 			}
 		}
 	}
