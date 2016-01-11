@@ -10,27 +10,27 @@ namespace VoidInc
 		/// <summary>
 		/// The LevelBounds for the map.
 		/// </summary>
-		private Rect _LevelBounds;
+		public Rect _LevelBounds;
 
 		/// <summary>
 		/// The left most bound.
 		/// </summary>
-		private float _LeftBound;
+		public float _LeftBound;
 
 		/// <summary>
 		/// The right most bound.
 		/// </summary>
-		private float _RightBound;
+		public float _RightBound;
 
 		/// <summary>
 		/// The highest bound.
 		/// </summary>
-		private float _TopBound;
+		public float _TopBound;
 
 		/// <summary>
 		/// The lowest bound.
 		/// </summary>
-		private float _BottomBound;
+		public float _BottomBound;
 
 		// Use this for initialization
 		void Start()
@@ -46,7 +46,7 @@ namespace VoidInc
 			_LeftBound = (float)(HorzExtent);
 			_RightBound = (float)(_LevelBounds.width / 2.0f - HorzExtent);
 			_BottomBound = (float)(VertExtent - _LevelBounds.height / 2.0f);
-			_TopBound = (float)(-VertExtent);
+			_TopBound = (float)(VertExtent);
 		}
 
 		// Update is called once per frame
