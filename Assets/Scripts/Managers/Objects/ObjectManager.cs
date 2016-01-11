@@ -7,7 +7,7 @@ namespace VoidInc
 		/// <summary>
 		/// The item type enum to determine the item function.
 		/// </summary>
-		public enum _ObjectType
+		public enum ObjectType
 		{
 			Lock,
 			ItemBlock,
@@ -19,12 +19,12 @@ namespace VoidInc
 		/// <summary>
 		/// The parameters for the sign.
 		/// </summary>
-		public struct _Sign
+		public struct Sign
 		{
 			/// <summary>
 			/// The type of sign.
 			/// </summary>
-			public enum _SignType
+			public enum SignType
 			{
 				dialog,
 				heal,
@@ -34,13 +34,28 @@ namespace VoidInc
 			/// <summary>
 			/// The variable for the type of sign.
 			/// </summary>
-			public _SignType SignType;
+			public SignType Type;
 
 			/// <summary>
 			/// The dialog for the sign.
 			/// </summary>
 			public string Dialog;
 		}
+
+		public struct TrapBlock
+		{
+			public enum TrapDeployDir
+			{
+				above,
+				below,
+				left,
+				right
+			}
+
+			public TrapDeployDir Direction;
+
+			public string Type;
+        }
 
 		/// <summary>
 		/// If the item has been destroyed.
@@ -52,12 +67,15 @@ namespace VoidInc
 		/// The type of sign that the sign is.
 		/// </summary>
 		[HideInInspector]
-		public _Sign _SignType;
+		public Sign SignType;
+
+		[HideInInspector]
+		public TrapBlock TrapBlockType;
 
 		/// <summary>
 		/// What type of item is the item.
 		/// </summary>
-		public _ObjectType ObjectType;
+		public ObjectType Type;
 
 		/// <summary>
 		/// The identifier for keys to open locks and for locks to be opened by keys.
@@ -93,31 +111,31 @@ namespace VoidInc
 		/// <summary>
 		/// Activates the objects when the player is activating them.
 		/// </summary>
-		public void ActivateObject()
+		public void ActivateObject(PlayerController2D player)
 		{
-			switch (ObjectType)
+			switch (Type)
 			{
-				case _ObjectType.ItemBlock:
-					TriggerItemBlock();
+				case ObjectType.ItemBlock:
+					TriggerItemBlock(player);
 					break;
-				case _ObjectType.Lock:
-					CheckLock();
+				case ObjectType.Lock:
+					CheckLock(player);
 					break;
-				case _ObjectType.ObjectBlock:
-					TriggerObjectBlock();
+				case ObjectType.ObjectBlock:
+					TriggerObjectBlock(player);
 					break;
-				case _ObjectType.Sign:
-					TriggerSign();
+				case ObjectType.Sign:
+					TriggerSign(player);
 					break;
-				case _ObjectType.TrapBlock:
-					TriggerTrapBlock();
+				case ObjectType.TrapBlock:
+					TriggerTrapBlock(player);
 					break;
 				default:
 					break;
 			}
 		}
 
-		private void CheckLock()
+		private void CheckLock(PlayerController2D player)
 		{
 			if (_GameManager.GameDataManager.Keys >= 1 && _GameManager.GameDataManager.KeyIdentifiers[KeyID] == Identifier)
 			{
@@ -128,27 +146,60 @@ namespace VoidInc
 			}
 		}
 
-		private void TriggerItemBlock()
+		private void TriggerItemBlock(PlayerController2D player)
 		{
-			GameObjectSpawn.SetActive(true);
-			GameObjectSpawn.transform.localPosition = new Vector3(0, -32, 0);
+			if (player.Controller.collisionState.above)
+			{
+				GameObjectSpawn.SetActive(true);
+				GameObjectSpawn.transform.localPosition = new Vector3(0, -32, 0);
+			}
 		}
 
-		private void TriggerObjectBlock()
+		private void TriggerSign(PlayerController2D player)
 		{
-			GameObjectSpawn.SetActive(true);
-			GameObjectSpawn.transform.localPosition = new Vector3(0, -32, 0);
-		}
-
-		private void TriggerSign()
-		{
-			if (_SignType.SignType == _Sign._SignType.dialog)
+			if (SignType.Type == Sign.SignType.dialog)
 			{
 
 			}
 		}
 
-		private void TriggerTrapBlock()
+		private void TriggerTrapBlock(PlayerController2D player)
+		{
+			switch (TrapBlockType.Direction)
+			{
+				case TrapBlock.TrapDeployDir.above:
+					if (player.Controller.collisionState.below)
+					{
+						GameObjectSpawn.SetActive(true);
+						Debug.Log("TrapBlock: Activated()");
+					}
+					break;
+				case TrapBlock.TrapDeployDir.below:
+					if (player.Controller.collisionState.above)
+					{
+						GameObjectSpawn.SetActive(true);
+						Debug.Log("TrapBlock: Activated()");
+					}
+					break;
+				case TrapBlock.TrapDeployDir.left:
+					if (player.Controller.collisionState.right)
+					{
+						GameObjectSpawn.SetActive(true);
+						Debug.Log("TrapBlock: Activated()");
+					}
+					break;
+				case TrapBlock.TrapDeployDir.right:
+					if (player.Controller.collisionState.left)
+					{
+						GameObjectSpawn.SetActive(true);
+						Debug.Log("TrapBlock: Activated()");
+					}
+					break;
+			}
+
+		}
+
+		private void TriggerObjectBlock(PlayerController2D player)
 		{
 
 		}
