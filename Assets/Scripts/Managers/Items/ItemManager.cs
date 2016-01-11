@@ -51,7 +51,7 @@ namespace VoidInc
 		/// <summary>
 		/// Removes the item from the world.
 		/// </summary>
-		public void RemoveItem()
+		void RemoveItem()
 		{
 			switch (ItemType)
 			{

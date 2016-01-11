@@ -103,7 +103,8 @@ namespace VoidInc
 
 			if (GameObjectSpawn != null)
 			{
-				GameObjectSpawn.transform.position = gameObject.transform.position;
+				GameObjectSpawn.transform.parent = gameObject.transform;
+				GameObjectSpawn.transform.localPosition = Vector3.zero;
 				GameObjectSpawn.SetActive(false);
 			}
 		}
@@ -111,7 +112,7 @@ namespace VoidInc
 		/// <summary>
 		/// Activates the objects when the player is activating them.
 		/// </summary>
-		public void ActivateObject(PlayerController2D player)
+		void ActivateObject(PlayerController2D player)
 		{
 			switch (Type)
 			{
@@ -137,12 +138,12 @@ namespace VoidInc
 
 		private void CheckLock(PlayerController2D player)
 		{
-			if (_GameManager.GameDataManager.Keys >= 1 && _GameManager.GameDataManager.KeyIdentifiers[KeyID] == Identifier)
+			if (_GameManager.GameDataManager.Keys >= 1 && _GameManager.GameDataManager.KeyIdentifiers.ContainsKey(KeyID) && Identifier == _GameManager.GameDataManager.KeyIdentifiers[KeyID])
 			{
-				_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
+				Destroy(gameObject);
+				_GameManager.GameDataManager.ActivatedGameObjects.Add(gameObject.GetInstanceID());
 				_GameManager.GameDataManager.Keys -= 1;
 				_GameManager.GameDataManager.KeyIdentifiers.Remove(KeyID);
-				Destroy(gameObject);
 			}
 		}
 
@@ -170,28 +171,24 @@ namespace VoidInc
 				case TrapBlock.TrapDeployDir.above:
 					if (player.Controller.collisionState.below)
 					{
-						GameObjectSpawn.SetActive(true);
 						Debug.Log("TrapBlock: Activated()");
 					}
 					break;
 				case TrapBlock.TrapDeployDir.below:
 					if (player.Controller.collisionState.above)
 					{
-						GameObjectSpawn.SetActive(true);
 						Debug.Log("TrapBlock: Activated()");
 					}
 					break;
 				case TrapBlock.TrapDeployDir.left:
 					if (player.Controller.collisionState.right)
 					{
-						GameObjectSpawn.SetActive(true);
 						Debug.Log("TrapBlock: Activated()");
 					}
 					break;
 				case TrapBlock.TrapDeployDir.right:
 					if (player.Controller.collisionState.left)
 					{
-						GameObjectSpawn.SetActive(true);
 						Debug.Log("TrapBlock: Activated()");
 					}
 					break;

@@ -75,20 +75,27 @@ namespace VoidInc
 			}
 
 			NameOfCollision = hit.collider.gameObject.name;
-			// If the trigger collided with an object with the tag "Coins1" then remove the coin and add score.
-			hit.collider.gameObject.SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
-			// If the trigger collided with an object with the tag "Signs" then display the information about the sign.
-			hit.collider.gameObject.SendMessage("ActivateObject", this, SendMessageOptions.DontRequireReceiver);
 		}
 
 		// Update when the trigger enters the event.
 		void onTriggerEnterEvent(Collider2D col)
 		{
+			NameOfCollision = col.gameObject.name;
+
+			if (col.gameObject.GetComponent<ItemManager>() != null)
+			{
+				col.gameObject.GetComponent<ItemManager>().SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
+			}
+			else if (col.gameObject.GetComponent<ObjectManager>() != null)
+			{
+				col.gameObject.GetComponent<ObjectManager>().SendMessage("ActivateObject", this, SendMessageOptions.DontRequireReceiver);
+			}
 		}
 
 		// Update when the trigger exits the event.
 		void onTriggerExitEvent(Collider2D col)
 		{
+			NameOfCollision = "None";
 			// Check of the player has exited the LadderSpines layer and go to platform state.
 			if (col.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
 			{
