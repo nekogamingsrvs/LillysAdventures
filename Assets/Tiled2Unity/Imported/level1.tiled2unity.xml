@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 1/6/2016 11:38:51 AM-->
+<!--Last exported: 1/8/2016 11:46:37 AM-->
 <Tiled2Unity version="0.9.13.0">
   <AssignMaterial mesh="mesh_[01]_[00]" material="tileset_32x32" sortingLayerName="Background" sortingOrder="1" />
   <AssignMaterial mesh="mesh_[02]_[00]" material="tileset_32x32" sortingLayerName="Background" sortingOrder="2" />
@@ -257,20 +257,20 @@
         <BoxCollider2D width="32" height="32" />
       </GameObject>
     </GameObject>
-    <GameObject name="Boundries" x="0" y="0">
-      <GameObject name="PolylineObject" x="0" y="-608" rotation="0">
+    <GameObject name="Boundries" x="0" y="0" layer="Boundries" tag="Colliders">
+      <GameObject name="PolylineObject" x="120" y="-752" rotation="0">
         <EdgeCollider2D>
-          <Points>0,0 0,608</Points>
+          <Points>-120,752 -120,-304</Points>
         </EdgeCollider2D>
       </GameObject>
       <GameObject name="PolylineObject" x="0" y="0" rotation="0">
         <EdgeCollider2D>
-          <Points>0,0 3392,0</Points>
+          <Points>3392,0 0,0</Points>
         </EdgeCollider2D>
       </GameObject>
-      <GameObject name="PolylineObject" x="3392" y="0" rotation="0" layer="Boundries" tag="Colliders">
+      <GameObject name="PolylineObject" x="3392" y="0" rotation="0">
         <EdgeCollider2D>
-          <Points>0,0 0,-608</Points>
+          <Points>0,-1048 0,0</Points>
         </EdgeCollider2D>
       </GameObject>
     </GameObject>
