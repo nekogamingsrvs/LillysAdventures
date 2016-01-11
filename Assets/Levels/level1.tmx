@@ -650,18 +650,18 @@
   </object>
  </objectgroup>
  <objectgroup name="Boundries">
-  <object id="67" x="0" y="608">
-   <polyline points="0,0 0,-608"/>
+  <properties>
+   <property name="unity:layer" value="Boundries"/>
+   <property name="unity:tag" value="Colliders"/>
+  </properties>
+  <object id="67" x="120" y="752">
+   <polyline points="-120,-752 -120,304"/>
   </object>
   <object id="68" x="0" y="0">
-   <polyline points="0,0 3392,0"/>
+   <polyline points="3392,0 0,0"/>
   </object>
   <object id="71" x="3392" y="0">
-   <properties>
-    <property name="unity:layer" value="Boundries"/>
-    <property name="unity:tag" value="Colliders"/>
-   </properties>
-   <polyline points="0,0 0,608"/>
+   <polyline points="0,1048 0,0"/>
   </object>
  </objectgroup>
 </map>

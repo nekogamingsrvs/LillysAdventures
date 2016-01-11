@@ -162,7 +162,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Objects";
 
 			var objectManager = gameObject.AddComponent<ObjectManager>();
-			objectManager.ObjectType = ObjectManager._ObjectType.Lock;
+			objectManager.Type = ObjectManager.ObjectType.Lock;
 			objectManager.KeyID = Convert.ToInt32(props["lwa:keyID"]);
 			objectManager.Identifier = KeyUUIDs[Convert.ToInt32(props["lwa:keyID"])];
 
@@ -178,7 +178,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Objects";
 
 			var objectManager = gameObject.AddComponent<ObjectManager>();
-			objectManager.ObjectType = ObjectManager._ObjectType.Sign;
+			objectManager.Type = ObjectManager.ObjectType.Sign;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["sign_frame_0"];
@@ -190,16 +190,16 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 
 			if (props["lwa:sign"] == "save")
 			{
-				objectManager._SignType.SignType = ObjectManager._Sign._SignType.save;
+				objectManager.SignType.Type = ObjectManager.Sign.SignType.save;
 			}
 			else if (props["lwa:sign"] == "heal")
 			{
-				objectManager._SignType.SignType = ObjectManager._Sign._SignType.heal;
+				objectManager.SignType.Type = ObjectManager.Sign.SignType.heal;
 			}
 			else if (props["lwa:sign"] == "dialog")
 			{
-				objectManager._SignType.SignType = ObjectManager._Sign._SignType.dialog;
-				objectManager._SignType.Dialog = props["lwa:sign:dialog"];
+				objectManager.SignType.Type = ObjectManager.Sign.SignType.dialog;
+				objectManager.SignType.Dialog = props["lwa:sign:dialog"];
 				animator.SetInteger("SignType", Convert.ToInt32(props["lwa:sign:skin"]));
 			}
 		}
@@ -210,7 +210,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Objects";
 
 			var objectManager = gameObject.AddComponent<ObjectManager>();
-			objectManager.ObjectType = ObjectManager._ObjectType.ItemBlock;
+			objectManager.Type = ObjectManager.ObjectType.ItemBlock;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["itemBlock_frame_0"];
@@ -260,7 +260,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Objects";
 
 			var objectManager = gameObject.AddComponent<ObjectManager>();
-			objectManager.ObjectType = ObjectManager._ObjectType.TrapBlock;
+			objectManager.Type = ObjectManager.ObjectType.TrapBlock;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["trapBlock_frame_0"];
