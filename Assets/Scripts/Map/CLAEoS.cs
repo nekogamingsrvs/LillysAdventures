@@ -71,7 +71,7 @@ namespace VoidInc
 		// Start's the script.
 		public void Start()
 		{
-			SaveFile = FindObjectOfType<GameManager>().GameDataManager.SaveFile;
+			SaveFile = FindObjectOfType<GameDataManager>().SaveFile;
 
 			// Get the setting to tell where to teleport to.
 			if (SaveFile.PlayerData.PlayerPositionWER_TeleTo == gameObject.name)

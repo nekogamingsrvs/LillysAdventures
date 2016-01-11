@@ -58,6 +58,11 @@ namespace VoidInc
 
 		[JsonProperty("storyline")]
 		public int StoryLine;
+
+		public override string ToString()
+		{
+			return "SaveFile | Not null!";
+		}
 	}
 
 	public class ConfigFileManager
