@@ -127,8 +127,8 @@ namespace VoidInc
 			// Check if player is in bounds, and load level.
 			if (CanTransition && Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
 			{
+				SceneManager.LoadScene("level" + LevelNumber, LoadSceneMode.Additive);
 				SceneManager.MoveGameObjectToScene(GameObject.Find("GameDataManager"), SceneManager.GetSceneByName("level" + LevelNumber));
-				SceneManager.LoadScene("level" + LevelNumber);
 				SaveFile.PlayerData.Level = LevelNumber;
 				SaveFile.PlayerData.PlayerPositionWER_Y = Player.transform.position.y;
 				SaveFile.PlayerData.PlayerPositionWER_TeleTo = OtherCLAEoSToGoTo;
