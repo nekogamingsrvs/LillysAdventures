@@ -17,44 +17,45 @@ namespace VoidInc
 		public float RunModifierSpeed;
 		public float InAirDamping;
 		public float JumpHeight;
-
-		//private static readonly float GravityModifierInWater = 0.375f;
-
+		
 		public float AbsorbGroundedInputTime;
 		public float LadderVelocityPerSecond;
 
+		private static readonly float GravityModifierInWater = 0.375f;
 		private float _NormalizedHorizontalSpeed = 0.0f;
 
-		private CharacterController2D _Controller;
-		private Animator _Animator;
-		private SpriteRenderer _SpriteRenderer;
-		private AudioSource _AudioSource;
-		private Transform _Linecast1;
-		private Transform _Linecast2;
+		public CharacterController2D Controller;
+		public Animator Animator;
+		public SpriteRenderer SpriteRenderer;
+		public AudioSource AudioSource;
+		public Transform Linecast1;
+		public Transform Linecast2;
 
-		private Vector3 _Velocity;
-		private bool _IsRunning;
-		private bool _IsClimbing;
-		private float _Climb;
-		private float _Modifier;
+		public Vector3 Velocity;
+		public bool IsRunning;
+		public bool IsJumping;
+		public bool IsClimbing;
+		public float Climb;
+		public float Modifier;
 
+		public string NameOfCollision = "None";
 
 		// Use this for initialization.
 		void Awake()
 		{
 			// Set the animator and controller components.
-			_Animator = GetComponent<Animator>();
-			_Controller = GetComponent<CharacterController2D>();
-			_AudioSource = GetComponent<AudioSource>();
-			_SpriteRenderer = GetComponent<SpriteRenderer>();
+			Animator = GetComponent<Animator>();
+			Controller = GetComponent<CharacterController2D>();
+			AudioSource = GetComponent<AudioSource>();
+			SpriteRenderer = GetComponent<SpriteRenderer>();
 
 			// Listen to some events for illustration purposes.
-			_Controller.onControllerCollidedEvent += onControllerCollider;
-			_Controller.onTriggerEnterEvent += onTriggerEnterEvent;
-			_Controller.onTriggerExitEvent += onTriggerExitEvent;
+			Controller.onControllerCollidedEvent += onControllerCollider;
+			Controller.onTriggerEnterEvent += onTriggerEnterEvent;
+			Controller.onTriggerExitEvent += onTriggerExitEvent;
 
-			_Linecast1 = transform.Find("LadderLinecast1");
-			_Linecast2 = transform.Find("LadderLinecast2");
+			Linecast1 = transform.Find("LadderLinecast1");
+			Linecast2 = transform.Find("LadderLinecast2");
 		}
 
 		#region Event Listeners
@@ -63,6 +64,7 @@ namespace VoidInc
 			// Bail out on plain old ground hits cause they aren't very interesting.
 			if (hit.normal.y == 1f)
 			{
+				IsJumping = false;
 				return;
 			}
 
@@ -72,23 +74,16 @@ namespace VoidInc
 				GotoPlatformState();
 			}
 
-			// Logs any collider hits if uncommented. it gets noisy so it is commented out for the demo.
-			//Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
+			NameOfCollision = hit.collider.gameObject.name;
+			// If the trigger collided with an object with the tag "Coins1" then remove the coin and add score.
+			hit.collider.gameObject.SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
+			// If the trigger collided with an object with the tag "Signs" then display the information about the sign.
+			hit.collider.gameObject.SendMessage("ActivateObject", this, SendMessageOptions.DontRequireReceiver);
 		}
 
 		// Update when the trigger enters the event.
 		void onTriggerEnterEvent(Collider2D col)
 		{
-			// If the trigger collided with an object with the tag "Coins1" then remove the coin and add score.
-			col.gameObject.SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
-			// If the trigger collided with an object with the tag "Signs" then display the information about the sign.
-			col.gameObject.SendMessage("DisplayDialog", SendMessageOptions.DontRequireReceiver);
-
-			// Debug if the player has entered a collision.
-			//if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
-			//{
-			//	Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
-			//}
 		}
 
 		// Update when the trigger exits the event.
@@ -99,12 +94,6 @@ namespace VoidInc
 			{
 				GotoPlatformState();
 			}
-
-			// Debug if the player has exited a collision.
-			//if (GameObject.Find("GameManager").GetComponent<GameManager>().isDebugActive)
-			//{
-			//	Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
-			//}
 		}
 		#endregion
 
@@ -113,77 +102,79 @@ namespace VoidInc
 		{
 			#region Get or set input values
 			// Get if the CharacterController2D is grounded and set the velocity to 0.
-			if (_Controller.isGrounded)
+			Animator.SetBool("Grounded", Controller.isGrounded);
+			if (Controller.isGrounded)
 			{
-				_Velocity.y = 0;
-				_Animator.SetBool("Grounded", true);
-			}
-			else
-			{
-				_Animator.SetBool("Grounded", false);
+				Velocity.y = 0;
 			}
 
 			// Get if the CharacterController2D velocity is greater than 0 so that we can play the jumping animation.
-			if (_Controller.velocity.y > 0)
-			{
-				_Animator.SetBool("Jumping", true);
-			}
-			else
-			{
-				_Animator.SetBool("Jumping", false);
-			}
+			Animator.SetBool("Jumping", Controller.velocity.y > 0 ? true : false);
 
 			// Play the meowing sound of Lilly.
-			if (_Controller.isGrounded && (Input.GetButton("Meow") || CnInputManager.GetButton("Meow")))
+			if (Controller.isGrounded && (Input.GetButton("Meow") || CnInputManager.GetButton("Meow")))
 			{
-				_AudioSource.Play();
-
-				_Animator.SetTrigger("Meowing");
+				AudioSource.Play();
+				Animator.SetTrigger("Meowing");
 			}
 
 			// Get button down if the player has running checked. 
 			if (InputCheck.IsMobilePlatforms)
 			{
-				_IsRunning = GameObject.Find("RunToggleButton").GetComponent<SimpleButton>().ToggleState;
+				if (!IsJumping)
+				{
+					IsRunning = GameObject.Find("RunToggleButton").GetComponent<SimpleButton>().ToggleState;
+				}
 			}
 			if (InputCheck.IsPCPlatforms)
 			{
-				_IsRunning = InputCheck.GetAxisMinMax(Input.GetAxis("Run"));
-				_IsRunning = Input.GetButton("Run");
+				if (!IsJumping)
+				{
+					IsRunning = InputCheck.GetAxisMinMax(Input.GetAxis("Run"));
+					IsRunning = Input.GetButton("Run");
+				}
 			}
 			if (InputCheck.IsConsolePlatforms)
 			{
-				_IsRunning = InputCheck.GetAxisMinMax(Input.GetAxis("Run"));
+				if (!IsJumping)
+				{
+					IsRunning = InputCheck.GetAxisMinMax(Input.GetAxis("Run"));
+				}
 			}
 
 			// Set the animators boolean of if the player is running.
-			_Animator.SetBool("Running", _IsRunning);
+			Animator.SetBool("Running", IsRunning);
 
 			// Set the normalized horizontal speed of the player.
-			_NormalizedHorizontalSpeed = Input.GetAxis("Horizontal") + CnInputManager.GetAxis("Horizontal");
+			if (!IsClimbing)
+			{
+				_NormalizedHorizontalSpeed = Input.GetAxis("Horizontal") + CnInputManager.GetAxis("Horizontal");
+			}
 
 			// Set the animators float of the speed of the player.
-			_Animator.SetFloat("Speed", Mathf.Abs(_NormalizedHorizontalSpeed));
+			Animator.SetFloat("Speed", Mathf.Abs(_NormalizedHorizontalSpeed));
 
 			// Get if the player is jumping.
-			if (_Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")))
+			if (Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")))
 			{
 				// Jumping.
-				_Velocity.y = JumpHeight;
+				Velocity.y = JumpHeight;
 
-				// Raise our MegaDad dude up a bit to start the jump off
+				// Raise our Lilly kitty up a bit to start the jump off
 				// Otherwise, his leg starts off a bit too deep into the ground
 				this.transform.Translate(0, 4, 0);
+
+				IsJumping = true;
 			}
 
 			// Flip the character based off of his speed.
 			if (_NormalizedHorizontalSpeed > 0)
 			{
-				_SpriteRenderer.flipX = false;
+				SpriteRenderer.flipX = false;
 			}
 			else if (_NormalizedHorizontalSpeed < 0)
 			{
-				_SpriteRenderer.flipX = true;
+				SpriteRenderer.flipX = true;
 			}
 			#endregion
 
@@ -191,35 +182,37 @@ namespace VoidInc
 			// Check if the player is climbing a ladder.
 			if (LadderCheck())
 			{
-				_IsClimbing = true;
+				IsClimbing = true;
 			}
 
 			// Check if the player is climbing.
-			if (_IsClimbing)
+			if (IsClimbing)
 			{
 				// We only animate the player while he is moving up/down the ladder
-				float climbing = Input.GetAxisRaw("Vertical");
+				Climb = Input.GetAxisRaw("Vertical") + CnInputManager.GetAxis("Vertical");
+
+				Velocity.x = 0;
 
 				// Are we jumping? If so, we leave this state.
-				if (climbing == 0 && (Input.GetButtonDown("Jump") || CnInputManager.GetButtonDown("Jump")))
+				if (Climb == 0 && (Input.GetButtonDown("Jump") || CnInputManager.GetButtonDown("Jump")))
 				{
 					GotoPlatformState();
 					return;
 				}
 
 				// If we linecast across a ladder top than we are either climbing off of or onto a ladder (bending over a ladder)
-				RaycastHit2D ladderTopRay = Physics2D.Linecast(_Linecast1.position, _Linecast2.position, 1 << LayerMask.NameToLayer("LadderTops"));
+				RaycastHit2D ladderTopRay = Physics2D.Linecast(Linecast1.position, Linecast2.position, 1 << LayerMask.NameToLayer("LadderTops"));
 
 				// If we're moving up a ladder and our "top half" no longer crosses a ladder top then we climb off the ladder
-				if (ladderTopRay && climbing > 0)
+				if (ladderTopRay && Climb > 0)
 				{
-					if (!Physics2D.Linecast(_Linecast1.position, this.transform.position, 1 << LayerMask.NameToLayer("LadderTops")))
+					if (!Physics2D.Linecast(Linecast1.position, this.transform.position, 1 << LayerMask.NameToLayer("LadderTops")))
 					{
 						// To "pop off" the ladder we have to abruptly move to our "foot" 
 						// The bottom of our linecast is made to represent our foot position
 						// And our foot needs to rest on the ladder top we're crossing.
 						Vector3 position = this.transform.position;
-						float feet_y = _Linecast2.transform.position.y;
+						float feet_y = Linecast2.transform.position.y;
 						float ladderTop_y = ladderTopRay.point.y;
 
 						position.y = ladderTop_y + (position.y - feet_y);
@@ -227,7 +220,7 @@ namespace VoidInc
 
 						// We may be just above the ladder top and we don't want to fall for a split second
 						// So, move our character controller back down to the ground. He should collide with the ladder top we just popped past.
-						_Controller.move(new Vector3(0, 0, 0));
+						Controller.move(new Vector3(0, 0, 0));
 
 						// Go back to the platform state
 						GotoPlatformState();
@@ -235,10 +228,10 @@ namespace VoidInc
 				}
 
 				// If we're moving down a ladder then it's possible to fall off it (because it comes to an end)
-				if (climbing < 0)
+				if (Climb < 0)
 				{
 					// Check if the "top half" of our player is crossing a "LadderBottom"
-					RaycastHit2D ladderBottomRay = Physics2D.Linecast(_Linecast2.position, this.transform.position, 1 << LayerMask.NameToLayer("LadderBottoms"));
+					RaycastHit2D ladderBottomRay = Physics2D.Linecast(Linecast2.position, this.transform.position, 1 << LayerMask.NameToLayer("LadderBottoms"));
 
 					if (ladderBottomRay)
 					{
@@ -248,45 +241,45 @@ namespace VoidInc
 
 				// Move our character up/down the ladder
 				// Note: There is no graivty applied while on the ladder
-				if (climbing != 0)
+				if (Climb != 0)
 				{
-					Vector2 velocity = new Vector2(0, Mathf.Sign(climbing) * LadderVelocityPerSecond * Time.deltaTime);
-					_Controller.move(velocity);
+					Vector2 velocity = new Vector2(0, Mathf.Sign(Climb) * LadderVelocityPerSecond * Time.deltaTime);
+					Controller.move(velocity);
 				}
 			}
 			#endregion
 
 			#region Movement Controls
 			// Check if the player is running.
-			if (_IsRunning)
+			if (IsRunning)
 			{
-				_Modifier = _Controller.isGrounded ? WalkSpeed * RunModifierSpeed : InAirDamping * RunModifierSpeed;
+				Modifier = Controller.isGrounded ? WalkSpeed * RunModifierSpeed : InAirDamping * RunModifierSpeed;
 			}
 			else
 			{
-				_Modifier = _Controller.isGrounded ? WalkSpeed : InAirDamping;
+				Modifier = Controller.isGrounded ? WalkSpeed : InAirDamping;
 			}
 
 			// Set the product of the horizontal speed and the modifier to the players velocity.
-			_Velocity.x = _NormalizedHorizontalSpeed * _Modifier;
 
 			// Apply gravity before moving.
-			if (!_IsClimbing)
+			if (!IsClimbing)
 			{
-				_Velocity.y += Gravity * Time.deltaTime * 1.0f;
+				Velocity.x = _NormalizedHorizontalSpeed * Modifier;
+				Velocity.y += Gravity * Time.deltaTime * 1.0f;
+
+				// Move the controller at the velocity and fluctuate it with time.
+				Controller.move(Velocity * Time.deltaTime);
 			}
 
-			// Move the controller at the velocity and fluctuate it with time.
-			_Controller.move(_Velocity * Time.deltaTime);
-
 			// grab our current _velocity to use as a base for all calculations
-			_Velocity = _Controller.velocity;
+			Velocity = Controller.velocity;
 			#endregion
 		}
 
 		private bool LadderCheck()
 		{
-			float climbing = InputCheck.IsMobilePlatforms ? CnInputManager.GetAxis("Vertical") : Input.GetAxisRaw("Vertical");
+			float climbing = CnInputManager.GetAxis("Vertical") + Input.GetAxisRaw("Vertical");
 
 			if (climbing != 0)
 			{
@@ -330,7 +323,7 @@ namespace VoidInc
 			this.transform.position = new Vector3(ladder_x, pos.y, pos.z);
 
 			// The platform controller is not active while on a ladder, but our ladder controller is
-			_IsClimbing = true;
+			IsClimbing = true;
 		}
 
 		public void GotoLadderState_FromTop(EdgeCollider2D ladderSpine)
@@ -343,13 +336,13 @@ namespace VoidInc
 			this.transform.position = new Vector3(ladder_x + 16, ladder_y, pos.z);
 
 			// The platform controller is not active while on a ladder, but our ladder controller is
-			_IsClimbing = true;
+			IsClimbing = true;
 		}
 
 		public void GotoPlatformState()
 		{
 			// Platform controller is now enabled. Other player controllers are disabled.
-			_IsClimbing = false;
+			IsClimbing = false;
 		}
 	}
 }

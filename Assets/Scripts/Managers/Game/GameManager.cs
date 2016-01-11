@@ -76,24 +76,20 @@ namespace VoidInc
 		[HideInInspector]
 		public float CurrentTime = 0;
 		/// <summary>
-		/// The previous time of the game.
+		/// The current time to calculate when to save.
 		/// </summary>
 		[HideInInspector]
-		public float PreviousTime = 0;
-		/// <summary>
-		/// The elapsed time of the game.
-		/// </summary>
-		public float ElapsedTime
-		{
-			get
-			{
-				return CurrentTime - PreviousTime;
-			}
-		}
+		public float SaveTime = 0;
 		/// <summary>
 		/// The time in between to save the game.
 		/// </summary>
-		public float TimeBetweenSaves = 2500;
+		[HideInInspector]
+		public float TimeBetweenSaves = 2.500f;
+		/// <summary>
+		/// PlayerController
+		/// </summary>
+		[HideInInspector]
+		public PlayerController2D PlayerController;
 		#endregion
 
 		// Use this for initialization
@@ -102,8 +98,10 @@ namespace VoidInc
 			GetGameDataManager();
 			CheckPlatform();
 			LoadLevelBoundires();
+			PlayerController = GameObject.FindObjectOfType<PlayerController2D>();
 			if (GameDataManager.NewSaveWorld)
 			{
+				SpawnPlayer();
 				GameDataManager.NewSaveWorld = false;
 			}
 			else
@@ -118,7 +116,8 @@ namespace VoidInc
 
 		void Update()
 		{
-			CurrentTime += Time.deltaTime;
+			CurrentTime += Time.smoothDeltaTime;
+			SaveTime += Time.smoothDeltaTime;
 
 			// Updates the score box text.
 			ScorePanelText.text = "Score:" + GameDataManager.Score;
@@ -132,11 +131,15 @@ namespace VoidInc
 					claeos.CanTransition = true;
 				}
 			}
+
+			if (SaveGameTicks())
+			{
+				SaveGame();
+			}
 		}
 
 		void LateUpdate()
 		{
-			PreviousTime = CurrentTime;
 		}
 
 		#region Startup Functions
@@ -158,7 +161,7 @@ namespace VoidInc
 			LevelBoundries = new Rect();
 			LevelBoundries.xMin = 0;
 			LevelBoundries.xMax = Level.MapWidthInPixels * 2;
-			LevelBoundries.yMin = Level.MapHeightInPixels * 2;
+			LevelBoundries.yMin = -Level.MapHeightInPixels * 2;
 			LevelBoundries.yMax = 0;
 		}
 
@@ -209,6 +212,18 @@ namespace VoidInc
 		}
 		#endregion
 
+		#region Save Data Functions
+		bool SaveGameTicks()
+		{
+			if (SaveTime >= TimeBetweenSaves)
+			{
+				SaveTime = 0;
+				return true;
+			}
+
+			return false;
+		}
+
 		void SaveGame()
 		{
 			GameDataManager.SaveFile.PlayerData.Score = GameDataManager.Score;
@@ -220,7 +235,6 @@ namespace VoidInc
 			GameDataManager.SaveFile.PlayerData.KeyIdentifiers = GameDataManager.KeyIdentifiers;
 			GameDataManager.SaveFile.StoryLine = GameDataManager.StoryLine;
 			GameDataManager.SaveGame();
-			Debug.Log("Saved");
 		}
 
 		void LoadSaveData()
@@ -252,6 +266,12 @@ namespace VoidInc
 					GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name).GetComponent<ObjectManager>().DoUpdate();
 				}
 			}
+		}
+		#endregion
+
+		public override string ToString()
+		{
+			return "GameManager | Not null!";
 		}
 	}
 }
