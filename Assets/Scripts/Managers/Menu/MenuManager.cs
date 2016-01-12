@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	/// <summary>
 	/// Manages the main menu.

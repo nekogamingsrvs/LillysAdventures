@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Tiled2Unity;
+﻿using Tiled2Unity;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	public class GameManager : MonoBehaviour
 	{

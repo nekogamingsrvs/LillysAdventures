@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	/// <summary>
 	/// Handles the main camera's movement.

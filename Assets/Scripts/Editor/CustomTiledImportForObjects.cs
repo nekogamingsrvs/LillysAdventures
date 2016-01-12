@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using VoidInc;
+using VoidInc.LWA;
 
 /// <summary>
 /// Imports the coins' controller objects for Coins1
