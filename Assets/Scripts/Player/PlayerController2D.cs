@@ -2,7 +2,7 @@
 using Prime31;
 using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	[RequireComponent(typeof(BoxCollider2D))]
 	[RequireComponent(typeof(Rigidbody2D))]

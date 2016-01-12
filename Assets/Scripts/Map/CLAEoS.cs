@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 // Also a pretty nice name :3 - But the inspector really f's up the spacing >:|
 // ============================================================================================================================
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	[System.Serializable]
 	public class BounderyRect

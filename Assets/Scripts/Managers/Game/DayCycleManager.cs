@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
+	/// <summary>
+	/// The Day Cycle Manager for Lilly's Wonderful Adventures
+	/// </summary>
 	public class DayCycleManager : MonoBehaviour
 	{
 		/// <summary>

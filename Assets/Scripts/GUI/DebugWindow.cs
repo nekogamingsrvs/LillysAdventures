@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
+	/// <summary>
+	/// The debug window for debugging Lilly's Wonderful Adventures
+	/// </summary>
 	public class DebugWindow : MonoBehaviour
 	{
 		/// <summary>

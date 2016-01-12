@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	// Helper class for collecting trigger collisions
 	// This is needed because OnTriggerExit2D is not reliable

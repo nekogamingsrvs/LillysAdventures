@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	public static class InputCheck
 	{

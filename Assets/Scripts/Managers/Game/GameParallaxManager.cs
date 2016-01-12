@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VoidInc
+namespace VoidInc.LWA
 {
 	public class GameParallaxManager : MonoBehaviour
 	{
