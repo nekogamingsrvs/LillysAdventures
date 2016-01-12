@@ -49,7 +49,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Items";
 
 			var itemManager = gameObject.AddComponent<ItemManager>();
-			itemManager.ItemType = ItemManager._ItemType.Key;
+			itemManager.Type = ItemManager.ItemType.Key;
 			itemManager.KeyID = Convert.ToInt32(props["lwa:keyID"]);
 			itemManager.Identifier = KeyUUIDs[Convert.ToInt32(props["lwa:keyID"])];
 
@@ -68,7 +68,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Items";
 
 			var itemManager = gameObject.AddComponent<ItemManager>();
-			itemManager.ItemType = ItemManager._ItemType.Coin1;
+			itemManager.Type = ItemManager.ItemType.Coin1;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["coin1_frame_0"];
@@ -85,7 +85,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Items";
 
 			var itemManager = gameObject.AddComponent<ItemManager>();
-			itemManager.ItemType = ItemManager._ItemType.Coin5;
+			itemManager.Type = ItemManager.ItemType.Coin5;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["coin5_frame_0"];
@@ -102,7 +102,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Items";
 
 			var itemManager = gameObject.AddComponent<ItemManager>();
-			itemManager.ItemType = ItemManager._ItemType.Coin10;
+			itemManager.Type = ItemManager.ItemType.Coin10;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["coin10_frame_0"];
@@ -119,7 +119,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.tag = "Items";
 
 			var itemManager = gameObject.AddComponent<ItemManager>();
-			itemManager.ItemType = ItemManager._ItemType.Gem;
+			itemManager.Type = ItemManager.ItemType.Gem;
 
 			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 			spriteRenderer.sprite = ItemDictonary["gem_frame_0"];
@@ -307,7 +307,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		tempGameObject.tag = "Items";
 
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
-		itemManager.ItemType = ItemManager._ItemType.Key;
+		itemManager.Type = ItemManager.ItemType.Key;
 		itemManager.KeyID = Convert.ToInt32(keyID);
 		itemManager.Identifier = KeyUUIDs[Convert.ToInt32(keyID)];
 
@@ -331,7 +331,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		tempGameObject.tag = "Items";
 
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
-		itemManager.ItemType = ItemManager._ItemType.Coin1;
+		itemManager.Type = ItemManager.ItemType.Coin1;
 
 		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = ItemDictonary["coin1_frame_0"];
@@ -354,7 +354,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		tempGameObject.tag = "Items";
 
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
-		itemManager.ItemType = ItemManager._ItemType.Coin5;
+		itemManager.Type = ItemManager.ItemType.Coin5;
 
 		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = ItemDictonary["coin5_frame_0"];
@@ -376,7 +376,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		tempGameObject.tag = "Items";
 
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
-		itemManager.ItemType = ItemManager._ItemType.Coin10;
+		itemManager.Type = ItemManager.ItemType.Coin10;
 
 		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = ItemDictonary["coin10_frame_0"];
@@ -398,7 +398,7 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		tempGameObject.tag = "Items";
 
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
-		itemManager.ItemType = ItemManager._ItemType.Gem;
+		itemManager.Type = ItemManager.ItemType.Gem;
 
 		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = ItemDictonary["gem_frame_0"];

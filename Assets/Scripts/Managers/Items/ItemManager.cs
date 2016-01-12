@@ -7,7 +7,7 @@ namespace VoidInc
 		/// <summary>
 		/// The item type enum to determine the item function.
 		/// </summary>
-		public enum _ItemType
+		public enum ItemType
 		{
 			Coin1,
 			Coin5,
@@ -15,28 +15,22 @@ namespace VoidInc
 			Gem,
 			Key
 		}
-
 		/// <summary>
 		/// If the item has been destroyed.
 		/// </summary>
-		[HideInInspector]
 		public bool Destroyed;
-
 		/// <summary>
 		/// What type of item is the item.
 		/// </summary>
-		public _ItemType ItemType;
-
+		public ItemType Type;
 		/// <summary>
 		/// The identifier for keys to open locks and for locks to be opened by keys.
 		/// </summary>
 		public string Identifier;
-
 		/// <summary>
 		/// The key id to check the identifier with.
 		/// </summary>
 		public int KeyID;
-
 		/// <summary>
 		/// The GameManager class for the items.
 		/// </summary>
@@ -53,21 +47,21 @@ namespace VoidInc
 		/// </summary>
 		void RemoveItem()
 		{
-			switch (ItemType)
+			switch (Type)
 			{
-				case _ItemType.Coin1:
+				case ItemType.Coin1:
 					RemoveCoin(100);
 					break;
-				case _ItemType.Coin5:
+				case ItemType.Coin5:
 					RemoveCoin(500);
 					break;
-				case _ItemType.Coin10:
+				case ItemType.Coin10:
 					RemoveCoin(1000);
 					break;
-				case _ItemType.Gem:
+				case ItemType.Gem:
 					RemoveGem(8000);
 					break;
-				case _ItemType.Key:
+				case ItemType.Key:
 					RemoveKey();
 					break;
 				default:
@@ -90,8 +84,7 @@ namespace VoidInc
 			_GameManager.Gems += 1;
 			_GameManager.GameDataManager.TotalGems += 1;
 		}
-
-
+		
 		private void RemoveKey()
 		{
 			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
