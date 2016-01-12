@@ -18,7 +18,6 @@ namespace VoidInc
 		/// The size of the bounding area.
 		/// </summary>
 		public Vector2 size = new Vector2(1, 1);
-
 		/// <summary>
 		/// The bounds of the bounding area?
 		/// </summary>
@@ -33,51 +32,40 @@ namespace VoidInc
 		/// The bounds of the area.
 		/// </summary>
 		public BounderyRect Bounds;
-
 		/// <summary>
 		/// The player's GameObject.
 		/// </summary>
 		public GameObject Player;
-
 		/// <summary>
 		/// The level to go to.
 		/// </summary>
 		public int LevelNumber;
-
 		/// <summary>
 		/// If the player can go to the next area.
 		/// </summary>
 		public bool CanTransition;
-
 		/// <summary>
 		/// The any other GameObject with this script on it.
 		/// </summary>
 		public string OtherCLAEoSToGoTo;
-
 		/// <summary>
 		/// Spawn's the player at X position.
 		/// </summary>
 		public float SpawnPlayerAtX = 0;
-
 		/// <summary>
 		/// The Y position when entering the area.
 		/// </summary>
 		[HideInInspector]
 		public float YPositionWhileEntering;
 
-		[HideInInspector]
-		public SaveFile SaveFile;
-
 		// Start's the script.
 		public void Start()
 		{
-			SaveFile = FindObjectOfType<GameDataManager>().SaveFile;
-
 			// Get the setting to tell where to teleport to.
-			if (SaveFile.PlayerData.PlayerPositionWER_TeleTo == gameObject.name)
+			if (FindObjectOfType<GameDataManager>().SaveFile.PlayerData.PlayerTranisitionTeleTo == gameObject.name)
 			{
 				// Set the player's position.
-				Player.transform.position = new Vector3(gameObject.transform.position.x + SpawnPlayerAtX, SaveFile.PlayerData.PlayerPositionWER_Y, 0);
+				Player.transform.position = new Vector3(gameObject.transform.position.x + SpawnPlayerAtX, FindObjectOfType<GameDataManager>().SaveFile.PlayerData.PlayerTransitionPositionY, 0);
 			}
 		}
 
@@ -127,12 +115,11 @@ namespace VoidInc
 			// Check if player is in bounds, and load level.
 			if (CanTransition && Player.transform.position.x > boundsActualWS.topLeft.x && Player.transform.position.x < boundsActualWS.bottomRight.x && Player.transform.position.y > boundsActualWS.bottomLeft.y && Player.transform.position.y < boundsActualWS.topRight.y)
 			{
-				SceneManager.LoadScene("level" + LevelNumber, LoadSceneMode.Additive);
-				SceneManager.MoveGameObjectToScene(GameObject.Find("GameDataManager"), SceneManager.GetSceneByName("level" + LevelNumber));
-				SaveFile.PlayerData.Level = LevelNumber;
-				SaveFile.PlayerData.PlayerPositionWER_Y = Player.transform.position.y;
-				SaveFile.PlayerData.PlayerPositionWER_TeleTo = OtherCLAEoSToGoTo;
-				SaveFile.PlayerData.Transitioned = true;
+				SceneManager.LoadScene("Level" + LevelNumber);
+				FindObjectOfType<GameDataManager>().SaveFile.PlayerData.Level = LevelNumber;
+				FindObjectOfType<GameDataManager>().SaveFile.PlayerData.PlayerTransitionPositionY = Player.transform.position.y;
+				FindObjectOfType<GameDataManager>().SaveFile.PlayerData.PlayerTranisitionTeleTo = OtherCLAEoSToGoTo;
+				FindObjectOfType<GameDataManager>().Transitioned = true;
 			}
 		}
 	}
