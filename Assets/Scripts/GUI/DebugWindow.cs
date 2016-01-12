@@ -4,12 +4,18 @@ namespace VoidInc
 {
 	public class DebugWindow : MonoBehaviour
 	{
-
+		/// <summary>
+		/// The debug window's size.
+		/// </summary>
 		public Rect DebugWindowRect = new Rect(100, 100, 250, 300);
-
+		/// <summary>
+		/// The GameManager to get data from.
+		/// </summary>
 		[HideInInspector]
 		private GameManager _GameManager;
-
+		/// <summary>
+		/// The position of the scroll frame.
+		/// </summary>
 		private Vector2 ScrollPosition;
 
 		void Awake()
