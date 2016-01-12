@@ -138,10 +138,6 @@ namespace VoidInc
 			}
 		}
 
-		void LateUpdate()
-		{
-		}
-
 		#region Startup Functions
 		void CheckPlatform()
 		{
@@ -170,6 +166,7 @@ namespace VoidInc
 			if (FindObjectOfType<GameDataManager>() != null)
 			{
 				GameDataManager = FindObjectOfType<GameDataManager>();
+				DontDestroyOnLoad(FindObjectOfType<GameDataManager>().gameObject);
 			}
 		}
 
@@ -268,10 +265,5 @@ namespace VoidInc
 			}
 		}
 		#endregion
-
-		public override string ToString()
-		{
-			return "GameManager | Not null!";
-		}
 	}
 }

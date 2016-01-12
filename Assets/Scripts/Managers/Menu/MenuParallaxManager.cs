@@ -8,31 +8,26 @@ namespace VoidInc
 		/// The speed of the background.
 		/// </summary>
 		public Vector2 UvAnimationSpeed;
-
 		/// <summary>
 		/// Object with SpriteRenderer to be drawn, ensure this is larger than the camera viewport.
 		/// </summary>
 		public GameObject LayerSprite;
-
 		/// <summary>
 		/// Size of the layerSprite
 		/// </summary>
 		private Vector2 _Size;
-
 		/// <summary>
 		/// Position of parent, and the meeting of the 4 corners of our 4 layerSprites.
 		/// </summary>
 		private Vector2 _Center;
-
 		/// <summary>
 		/// Our four layer sprites.
 		/// </summary>
-		private GameObject obj1, obj2, obj3;
-
+		private GameObject _Object1, _Object2, _Object3;
 		/// <summary>
 		/// Our four layer spite positions.
 		/// </summary>
-		private Vector2 obj1p, obj2p, obj3p;
+		private Vector2 _Object1Pos, _Object2Pos, _Object3Pos;
 
 		void Awake()
 		{
@@ -40,13 +35,13 @@ namespace VoidInc
 			_Center = new Vector2(240, -256);
 
 			//instantiate all 4 objects
-			obj1 = LayerSprite;
-			obj2 = Instantiate(LayerSprite);
-			obj3 = Instantiate(LayerSprite);
+			_Object1 = LayerSprite;
+			_Object2 = Instantiate(LayerSprite);
+			_Object3 = Instantiate(LayerSprite);
 
-			obj1p = new Vector3();
-			obj2p = new Vector3();
-			obj3p = new Vector3();
+			_Object1Pos = new Vector3();
+			_Object2Pos = new Vector3();
+			_Object3Pos = new Vector3();
 		}
 
 		void Update()
@@ -57,20 +52,20 @@ namespace VoidInc
 			//center.x = f(parent.position.x, -uvAnimationSpeed.x / 6, size.x);
 
 			//update 4 object positions
-			obj1p.x = _Center.x + _Size.x / 2;
+			_Object1Pos.x = _Center.x + _Size.x / 2;
 			//obj1p.y = -2.88f;
-			obj1p.y = -256;
-			obj1.transform.position = obj1p;
+			_Object1Pos.y = -256;
+			_Object1.transform.position = _Object1Pos;
 
-			obj2p.x = _Center.x - _Size.x / 2;
+			_Object2Pos.x = _Center.x - _Size.x / 2;
 			//obj2p.y = -2.88f;
-			obj2p.y = -256;
-			obj2.transform.position = obj2p;
+			_Object2Pos.y = -256;
+			_Object2.transform.position = _Object2Pos;
 
-			obj3p.x = (_Center.x - _Size.x / 2) + _Size.x * 2;
+			_Object3Pos.x = (_Center.x - _Size.x / 2) + _Size.x * 2;
 			//obj2p.y = -2.88f;
-			obj3p.y = -256;
-			obj3.transform.position = obj3p;
+			_Object3Pos.y = -256;
+			_Object3.transform.position = _Object3Pos;
 
 			if (_Center.x < -_Size.x / 2)
 			{
