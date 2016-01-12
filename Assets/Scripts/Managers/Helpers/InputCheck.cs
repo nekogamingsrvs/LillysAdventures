@@ -21,7 +21,6 @@ namespace VoidInc
 			RuntimePlatform.WebGLPlayer,
 			RuntimePlatform.TizenPlayer
 		};
-
 		/// <summary>
 		/// The list of mobile platforms.
 		/// </summary>
@@ -34,7 +33,6 @@ namespace VoidInc
 			RuntimePlatform.WSAPlayerX64,
 			RuntimePlatform.WSAPlayerARM
 		};
-
 		/// <summary>
 		/// The list of Editors.
 		/// </summary>
@@ -43,7 +41,6 @@ namespace VoidInc
 			RuntimePlatform.OSXEditor,
 			RuntimePlatform.WindowsEditor
 		};
-
 		/// <summary>
 		/// The list of console platforms.
 		/// </summary>
@@ -57,7 +54,6 @@ namespace VoidInc
 			RuntimePlatform.XBOX360,
 			RuntimePlatform.XboxOne
 		};
-
 		/// <summary>
 		/// Tests if the game is a PC platform.
 		/// </summary>
@@ -73,7 +69,6 @@ namespace VoidInc
 				return false;
 			}
 		}
-
 		/// <summary>
 		/// Tests if the game is a mobile platform.
 		/// </summary>
@@ -89,8 +84,6 @@ namespace VoidInc
 				return false;
 			}
 		}
-
-
 		/// <summary>
 		/// Tests if the game is an editor platform.
 		/// </summary>
@@ -106,7 +99,6 @@ namespace VoidInc
 				return false;
 			}
 		}
-
 		/// <summary>
 		/// Tests if the game is a console platform.
 		/// </summary>
@@ -122,7 +114,6 @@ namespace VoidInc
 				return false;
 			}
 		}
-
 		/// <summary>
 		/// Tests input of one platform.
 		/// </summary>
@@ -137,7 +128,6 @@ namespace VoidInc
 
 			return false;
 		}
-
 		/// <summary>
 		/// Tests input of multiple platforms.
 		/// </summary>
@@ -153,7 +143,6 @@ namespace VoidInc
 
 			return false;
 		}
-
 		/// <summary>
 		/// Returns what the inputed axis is if 0 is true and 1 is false.
 		/// </summary>

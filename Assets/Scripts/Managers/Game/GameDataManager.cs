@@ -34,6 +34,9 @@ namespace VoidInc
 		/// The identifier of the dialog the player has activated.
 		/// </summary>
 		public int StoryLine;
+		/// <summary>
+		/// The save file for the game.
+		/// </summary>
 		public SaveFile SaveFile = new SaveFile();
 		/// <summary>
 		/// The list of destroyed game objects.
@@ -60,11 +63,6 @@ namespace VoidInc
 		public void SaveGame()
 		{
 			ConfigFileManager.SaveGame();
-		}
-
-		public override string ToString()
-		{
-			return "GameDataManager | Not null!";
 		}
 	}
 }
