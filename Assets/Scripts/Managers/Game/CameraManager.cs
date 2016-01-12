@@ -8,29 +8,25 @@ namespace VoidInc
 	public class CameraManager : MonoBehaviour
 	{
 		/// <summary>
-		/// The LevelBounds for the map.
+		/// The level bounds for the map.
 		/// </summary>
-		public Rect _LevelBounds;
-
+		private Rect _LevelBounds;
 		/// <summary>
 		/// The left most bound.
 		/// </summary>
-		public float _LeftBound;
-
+		private float _LeftBound;
 		/// <summary>
 		/// The right most bound.
 		/// </summary>
-		public float _RightBound;
-
+		private float _RightBound;
 		/// <summary>
 		/// The highest bound.
 		/// </summary>
-		public float _TopBound;
-
+		private float _TopBound;
 		/// <summary>
 		/// The lowest bound.
 		/// </summary>
-		public float _BottomBound;
+		private float _BottomBound;
 
 		// Use this for initialization
 		void Start()
@@ -43,10 +39,10 @@ namespace VoidInc
 			float HorzExtent = VertExtent * Screen.width / Screen.height;
 
 			// Calculate the camera's LevelBounds to the map.
-			_LeftBound = (float)(HorzExtent);
-			_RightBound = (float)(_LevelBounds.width / 2.0f - HorzExtent);
-			_BottomBound = (float)(VertExtent - _LevelBounds.height / 2.0f);
-			_TopBound = (float)(VertExtent);
+			_LeftBound = (HorzExtent);
+			_RightBound = (_LevelBounds.width / 2.0f - HorzExtent);
+			_BottomBound = (VertExtent - _LevelBounds.height / 2.0f);
+			_TopBound = (VertExtent);
 		}
 
 		// Update is called once per frame

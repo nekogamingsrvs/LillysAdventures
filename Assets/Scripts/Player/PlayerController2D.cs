@@ -21,7 +21,7 @@ namespace VoidInc
 		public float AbsorbGroundedInputTime;
 		public float LadderVelocityPerSecond;
 
-		private static readonly float GravityModifierInWater = 0.375f;
+		//private static readonly float GravityModifierInWater = 0.375f;
 		private float _NormalizedHorizontalSpeed = 0.0f;
 
 		public CharacterController2D Controller;
