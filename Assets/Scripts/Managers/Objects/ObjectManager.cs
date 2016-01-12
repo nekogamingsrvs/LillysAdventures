@@ -15,7 +15,7 @@ namespace VoidInc
 			TrapBlock,
 			Sign
 		}
-
+		#region Object Structures
 		/// <summary>
 		/// The parameters for the sign.
 		/// </summary>
@@ -30,20 +30,23 @@ namespace VoidInc
 				heal,
 				save
 			}
-
 			/// <summary>
 			/// The variable for the type of sign.
 			/// </summary>
 			public SignType Type;
-
 			/// <summary>
 			/// The dialog for the sign.
 			/// </summary>
 			public string Dialog;
 		}
-
+		/// <summary>
+		/// The parameters for the trap block.
+		/// </summary>
 		public struct TrapBlock
 		{
+			/// <summary>
+			/// The different direction to deploy the trap block.
+			/// </summary>
 			public enum TrapDeployDir
 			{
 				above,
@@ -51,51 +54,51 @@ namespace VoidInc
 				left,
 				right
 			}
-
+			/// <summary>
+			/// The direction to deploy the trap block.
+			/// </summary>
 			public TrapDeployDir Direction;
-
+			/// <summary>
+			/// The type of trap.
+			/// </summary>
 			public string Type;
         }
-
+		#endregion
 		/// <summary>
 		/// If the item has been destroyed.
 		/// </summary>
-		[HideInInspector]
 		public bool Activated;
-
 		/// <summary>
 		/// The type of sign that the sign is.
 		/// </summary>
 		[HideInInspector]
 		public Sign SignType;
-
+		/// <summary>
+		/// The type of the trap block.
+		/// </summary>
 		[HideInInspector]
 		public TrapBlock TrapBlockType;
-
 		/// <summary>
 		/// What type of item is the item.
 		/// </summary>
 		public ObjectType Type;
-
 		/// <summary>
 		/// The identifier for keys to open locks and for locks to be opened by keys.
 		/// </summary>
 		public string Identifier;
-
 		/// <summary>
 		/// The key id to check the identifier with.
 		/// </summary>
 		public int KeyID;
-
 		/// <summary>
 		/// The GameObject to spawn when an item or object block is triggered.
 		/// </summary>
 		public GameObject GameObjectSpawn;
-
 		/// <summary>
 		/// The GameManager class for the items.
 		/// </summary>
 		private GameManager _GameManager;
+
 
 		void Awake()
 		{
@@ -149,10 +152,15 @@ namespace VoidInc
 
 		private void TriggerItemBlock(PlayerController2D player)
 		{
-			if (player.Controller.collisionState.above)
+			if (!Activated)
 			{
-				GameObjectSpawn.SetActive(true);
-				GameObjectSpawn.transform.localPosition = new Vector3(0, -32, 0);
+				if (player.Controller.collisionState.above)
+				{
+					GameObjectSpawn.SetActive(true);
+					GameObjectSpawn.transform.localPosition = new Vector3(0, -32, 0);
+				}
+
+				Activated = true;
 			}
 		}
 
@@ -166,43 +174,51 @@ namespace VoidInc
 
 		private void TriggerTrapBlock(PlayerController2D player)
 		{
-			switch (TrapBlockType.Direction)
+			if (!Activated)
 			{
-				case TrapBlock.TrapDeployDir.above:
-					if (player.Controller.collisionState.below)
-					{
-						Debug.Log("TrapBlock: Activated()");
-					}
-					break;
-				case TrapBlock.TrapDeployDir.below:
-					if (player.Controller.collisionState.above)
-					{
-						Debug.Log("TrapBlock: Activated()");
-					}
-					break;
-				case TrapBlock.TrapDeployDir.left:
-					if (player.Controller.collisionState.right)
-					{
-						Debug.Log("TrapBlock: Activated()");
-					}
-					break;
-				case TrapBlock.TrapDeployDir.right:
-					if (player.Controller.collisionState.left)
-					{
-						Debug.Log("TrapBlock: Activated()");
-					}
-					break;
-			}
+				switch (TrapBlockType.Direction)
+				{
+					case TrapBlock.TrapDeployDir.above:
+						if (player.Controller.collisionState.below)
+						{
+							Debug.Log("TrapBlock: Activated()");
+						}
+						break;
+					case TrapBlock.TrapDeployDir.below:
+						if (player.Controller.collisionState.above)
+						{
+							Debug.Log("TrapBlock: Activated()");
+						}
+						break;
+					case TrapBlock.TrapDeployDir.left:
+						if (player.Controller.collisionState.right)
+						{
+							Debug.Log("TrapBlock: Activated()");
+						}
+						break;
+					case TrapBlock.TrapDeployDir.right:
+						if (player.Controller.collisionState.left)
+						{
+							Debug.Log("TrapBlock: Activated()");
+						}
+						break;
+				}
 
+				Activated = true;
+			}
 		}
 
 		private void TriggerObjectBlock(PlayerController2D player)
 		{
-
+			if (!Activated)
+			{
+				Activated = true;
+			}
 		}
 
 		public void DoUpdate()
 		{
+			Activated = true;
 		}
 	}
 }
