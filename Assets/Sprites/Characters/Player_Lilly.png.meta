@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: e385fe6feab4c964d85d210f68eaff9f
-timeCreated: 1447197328
-licenseType: Free
+timeCreated: 1453484156
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: Note_0
@@ -121,11 +121,17 @@ TextureImporter:
         x: 32
         y: 160
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -7, y: 0}
+        - {x: -10, y: -4}
+        - {x: -10, y: -16}
+        - {x: 7, y: -16}
+        - {x: 8, y: -12}
+        - {x: 8, y: 0}
     - name: Note_1
       rect:
         serializedVersion: 2
@@ -147,11 +153,16 @@ TextureImporter:
         x: 96
         y: 160
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -13, y: 0}
+        - {x: -13, y: -10}
+        - {x: -7, y: -16}
+        - {x: 10, y: -16}
+        - {x: 10, y: 0}
     - name: Note_2
       rect:
         serializedVersion: 2
@@ -173,44 +184,73 @@ TextureImporter:
         x: 160
         y: 160
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -15, y: -16}
+        - {x: 5, y: -16}
+        - {x: 10, y: -13}
+        - {x: 10, y: -1}
+        - {x: -16, y: -1}
+        - {x: -16, y: -15}
     - name: Lilly_Run_1
       rect:
         serializedVersion: 2
         x: 192
         y: 160
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 8, y: 0}
+        - {x: -3, y: 0}
+        - {x: -16, y: -7}
+        - {x: -16, y: -14}
+        - {x: -13, y: -16}
+        - {x: 5, y: -16}
+        - {x: 9, y: -15}
+        - {x: 12, y: -13}
+        - {x: 12, y: -6}
+        - {x: 11, y: -1}
     - name: Lilly_Run_2
       rect:
         serializedVersion: 2
         x: 224
         y: 160
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 8, y: -1}
+        - {x: -3, y: -1}
+        - {x: -16, y: -5}
+        - {x: -16, y: -13}
+        - {x: -12, y: -16}
+        - {x: 11, y: -16}
+        - {x: 11, y: -2}
     - name: Lilly_Run_3
       rect:
         serializedVersion: 2
         x: 256
         y: 160
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -16, y: -2}
+        - {x: -16, y: -11}
+        - {x: -11, y: -16}
+        - {x: 7, y: -16}
+        - {x: 10, y: -12}
+        - {x: 10, y: -2}
     - name: Note_3
       rect:
         serializedVersion: 2
@@ -232,11 +272,17 @@ TextureImporter:
         x: 32
         y: 128
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -7, y: 0}
+        - {x: -10, y: -4}
+        - {x: -10, y: -16}
+        - {x: 7, y: -16}
+        - {x: 8, y: -12}
+        - {x: 8, y: 0}
     - name: Note_4
       rect:
         serializedVersion: 2
@@ -258,33 +304,57 @@ TextureImporter:
         x: 96
         y: 128
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 11, y: 1}
+        - {x: -3, y: 1}
+        - {x: -16, y: -3}
+        - {x: -16, y: -16}
+        - {x: 7, y: -16}
+        - {x: 12, y: -13}
+        - {x: 12, y: -4}
+        - {x: 11, y: 0}
     - name: Lilly_Jump_1
       rect:
         serializedVersion: 2
         x: 128
         y: 128
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 8, y: 1}
+        - {x: -2, y: 1}
+        - {x: -16, y: -8}
+        - {x: -16, y: -16}
+        - {x: 4, y: -16}
+        - {x: 12, y: -12}
+        - {x: 12, y: -2}
+        - {x: 11, y: 0}
     - name: Lilly_Jump_2
       rect:
         serializedVersion: 2
         x: 160
         y: 128
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 8, y: 1}
+        - {x: -2, y: 1}
+        - {x: -16, y: -8}
+        - {x: -16, y: -16}
+        - {x: 4, y: -16}
+        - {x: 12, y: -12}
+        - {x: 12, y: -2}
+        - {x: 11, y: 0}
     - name: Note_5
       rect:
         serializedVersion: 2
@@ -306,22 +376,37 @@ TextureImporter:
         x: 224
         y: 128
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -15, y: -1}
+        - {x: -16, y: -3}
+        - {x: -16, y: -9}
+        - {x: -11, y: -16}
+        - {x: 12, y: -16}
+        - {x: 12, y: -1}
     - name: Lilly_Fall_1
       rect:
         serializedVersion: 2
         x: 256
         y: 128
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -15, y: 0}
+        - {x: -16, y: -1}
+        - {x: -16, y: -7}
+        - {x: -10, y: -15}
+        - {x: -9, y: -16}
+        - {x: 11, y: -16}
+        - {x: 12, y: -9}
+        - {x: 12, y: -2}
+        - {x: 11, y: 0}
     - name: Note_6
       rect:
         serializedVersion: 2
@@ -343,88 +428,141 @@ TextureImporter:
         x: 32
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -13, y: 0}
+        - {x: -13, y: -9}
+        - {x: -11, y: -16}
+        - {x: 10, y: -16}
+        - {x: 10, y: 0}
     - name: Lilly_Walk_1
       rect:
         serializedVersion: 2
         x: 64
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 10, y: -9}
+        - {x: 10, y: 1}
+        - {x: -13, y: 1}
+        - {x: -13, y: -9}
+        - {x: -9, y: -16}
+        - {x: 8, y: -16}
     - name: Lilly_Walk_2
       rect:
         serializedVersion: 2
         x: 96
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -12, y: 1}
+        - {x: -12, y: -11}
+        - {x: -10, y: -16}
+        - {x: 8, y: -16}
+        - {x: 10, y: -10}
+        - {x: 10, y: 1}
     - name: Lilly_Walk_3
       rect:
         serializedVersion: 2
         x: 128
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -4, y: 1}
+        - {x: -8, y: 1}
+        - {x: -12, y: -3}
+        - {x: -12, y: -10}
+        - {x: -11, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -9}
+        - {x: 10, y: -3}
+        - {x: 8, y: -1}
     - name: Lilly_Walk_4
       rect:
         serializedVersion: 2
         x: 160
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -11, y: 1}
+        - {x: -12, y: -5}
+        - {x: -12, y: -9}
+        - {x: -9, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -13}
+        - {x: 10, y: 0}
+        - {x: 4, y: 1}
     - name: Lilly_Walk_5
       rect:
         serializedVersion: 2
         x: 192
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -13, y: 1}
+        - {x: -13, y: -9}
+        - {x: -6, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -13}
+        - {x: 10, y: -1}
+        - {x: -1, y: 1}
     - name: Lilly_Walk_6
       rect:
         serializedVersion: 2
         x: 224
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -15, y: 1}
+        - {x: -15, y: -6}
+        - {x: -8, y: -16}
+        - {x: 10, y: -16}
+        - {x: 10, y: 1}
     - name: Lilly_Walk_7
       rect:
         serializedVersion: 2
         x: 256
         y: 96
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 9, y: -1}
+        - {x: -12, y: -1}
+        - {x: -15, y: -2}
+        - {x: -15, y: -14}
+        - {x: -12, y: -16}
+        - {x: 11, y: -16}
+        - {x: 10, y: -3}
     - name: Note_7
       rect:
         serializedVersion: 2
@@ -446,33 +584,54 @@ TextureImporter:
         x: 32
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -2, y: -2}
+        - {x: -14, y: -11}
+        - {x: -14, y: -16}
+        - {x: 10, y: -16}
+        - {x: 11, y: -12}
+        - {x: 11, y: -2}
     - name: Lilly_Eat_1
       rect:
         serializedVersion: 2
         x: 64
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 2, y: -3}
+        - {x: -5, y: -4}
+        - {x: -14, y: -13}
+        - {x: -14, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -11}
+        - {x: 11, y: -5}
+        - {x: 9, y: -3}
     - name: Lilly_Eat_2
       rect:
         serializedVersion: 2
         x: 96
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -5, y: -4}
+        - {x: -13, y: -7}
+        - {x: -14, y: -14}
+        - {x: -14, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -12}
+        - {x: 11, y: -4}
     - name: Note_8
       rect:
         serializedVersion: 2
@@ -494,44 +653,75 @@ TextureImporter:
         x: 160
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -15, y: -3}
+        - {x: -16, y: -5}
+        - {x: -16, y: -10}
+        - {x: -9, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -14}
+        - {x: 11, y: -6}
+        - {x: 10, y: -3}
     - name: Lilly_Inspect_1
       rect:
         serializedVersion: 2
         x: 192
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -14, y: -2}
+        - {x: -14, y: -9}
+        - {x: -8, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -12}
+        - {x: 11, y: -3}
+        - {x: 7, y: -2}
     - name: Lilly_Inspect_2
       rect:
         serializedVersion: 2
         x: 224
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -8, y: -2}
+        - {x: -10, y: -2}
+        - {x: -13, y: -6}
+        - {x: -13, y: -9}
+        - {x: -7, y: -16}
+        - {x: 10, y: -16}
+        - {x: 11, y: -13}
+        - {x: 11, y: -4}
+        - {x: 10, y: -3}
     - name: Lilly_Inspect_3
       rect:
         serializedVersion: 2
         x: 256
         y: 64
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -14, y: -2}
+        - {x: -14, y: -9}
+        - {x: -8, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -12}
+        - {x: 11, y: -3}
+        - {x: 7, y: -2}
     - name: Note_9
       rect:
         serializedVersion: 2
@@ -553,66 +743,111 @@ TextureImporter:
         x: 32
         y: 32
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -3, y: 0}
+        - {x: -16, y: -3}
+        - {x: -16, y: -14}
+        - {x: -15, y: -15}
+        - {x: -12, y: -16}
+        - {x: 9, y: -16}
+        - {x: 11, y: -12}
+        - {x: 11, y: 0}
     - name: Lilly_Swim_1
       rect:
         serializedVersion: 2
         x: 64
         y: 32
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -16, y: -14}
+        - {x: -12, y: -16}
+        - {x: 7, y: -16}
+        - {x: 11, y: -12}
+        - {x: 11, y: 0}
+        - {x: -8, y: 0}
+        - {x: -16, y: -2}
     - name: Lilly_Swim_2
       rect:
         serializedVersion: 2
         x: 96
         y: 32
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -16, y: -11}
+        - {x: -11, y: -16}
+        - {x: 11, y: -16}
+        - {x: 11, y: 1}
+        - {x: -11, y: 1}
+        - {x: -16, y: 0}
     - name: Lilly_Swim_3
       rect:
         serializedVersion: 2
         x: 128
         y: 32
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 11, y: 0}
+        - {x: 9, y: 1}
+        - {x: -5, y: 1}
+        - {x: -16, y: -5}
+        - {x: -16, y: -13}
+        - {x: -13, y: -16}
+        - {x: 7, y: -16}
+        - {x: 10, y: -11}
+        - {x: 11, y: -7}
     - name: Lilly_Swim_4
       rect:
         serializedVersion: 2
         x: 160
         y: 32
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -4, y: 1}
+        - {x: -16, y: -6}
+        - {x: -16, y: -14}
+        - {x: -14, y: -16}
+        - {x: 11, y: -16}
+        - {x: 11, y: 1}
     - name: Lilly_Swim_5
       rect:
         serializedVersion: 2
         x: 192
         y: 32
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 0, y: 0}
+        - {x: -11, y: -5}
+        - {x: -15, y: -9}
+        - {x: -15, y: -14}
+        - {x: -14, y: -16}
+        - {x: 10, y: -16}
+        - {x: 11, y: -15}
+        - {x: 11, y: -2}
+        - {x: 9, y: 0}
     - name: Note_10
       rect:
         serializedVersion: 2
@@ -634,44 +869,72 @@ TextureImporter:
         x: 32
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -2, y: 1}
+        - {x: -14, y: -14}
+        - {x: -14, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -8}
+        - {x: 10, y: -1}
+        - {x: 7, y: 1}
     - name: Lilly_Wine_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -5, y: 1}
+        - {x: -16, y: -11}
+        - {x: -16, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -9}
+        - {x: 10, y: -1}
+        - {x: 9, y: 1}
     - name: Lilly_Wine_2
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -7, y: 1}
+        - {x: -16, y: -2}
+        - {x: -16, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -9}
+        - {x: 10, y: 1}
     - name: Lilly_Wine_3
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -5, y: 1}
+        - {x: -16, y: -10}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 9, y: -16}
+        - {x: 10, y: -8}
+        - {x: 10, y: -2}
+        - {x: 8, y: 1}
     - name: Note_11
       rect:
         serializedVersion: 2
@@ -693,11 +956,17 @@ TextureImporter:
         x: 192
         y: 0
         width: 32
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -3, y: -5}
+        - {x: -9, y: -11}
+        - {x: -10, y: -16}
+        - {x: 9, y: -16}
+        - {x: 9, y: -13}
+        - {x: 5, y: -5}
     outline: []
   spritePackingTag: 
   userData: 

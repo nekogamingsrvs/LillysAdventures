@@ -55,7 +55,9 @@ namespace VoidInc.LWA
 		/// <summary>
 		/// The text box for keeping score.
 		/// </summary>
-		public Text ScorePanelText;
+		public Text ScoreText;
+		public Text GemsText;
+		public Text KeysText;
 		/// <summary>
 		/// The tag to look for when disabling mobile controls.
 		/// </summary>
@@ -102,7 +104,7 @@ namespace VoidInc.LWA
 				SpawnPlayer();
 				GameDataManager.NewSaveWorld = false;
 			}
-			else
+			else if (!GameDataManager.NewSaveWorld && !GameDataManager.Transitioned)
 			{
 				LoadSaveData();
 			}
@@ -118,7 +120,9 @@ namespace VoidInc.LWA
 			SaveTime += Time.smoothDeltaTime;
 
 			// Updates the score box text.
-			ScorePanelText.text = "Score:" + GameDataManager.Score;
+			ScoreText.text = GameDataManager.Score.ToString();
+			GemsText.text = GameDataManager.TotalGems.ToString();
+			KeysText.text = GameDataManager.Keys.ToString();
 			// Set the player's position.
 			PlayersPosition = GameObject.Find("Player").transform.position;
 
@@ -179,27 +183,21 @@ namespace VoidInc.LWA
 
 		void TransitionedToWorld()
 		{
-			foreach (int gameObj in GameDataManager.DestroyedGameObjects)
+			foreach (string UUID in GameDataManager.DestroyedGameObjects)
 			{
-				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				foreach (ItemManager itemManager in FindObjectsOfType<ItemManager>())
 				{
-					Destroy(GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name));
+					if (itemManager.UUID == UUID)
+					{
+						Destroy(itemManager.gameObject);
+					}
 				}
-				else
+				foreach (ObjectManager objectManager in FindObjectsOfType<ObjectManager>())
 				{
-					Debug.Log("Couldn't find DestoryedGameObjects");
-				}
-			}
-
-			foreach (int gameObj in GameDataManager.ActivatedGameObjects)
-			{
-				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
-				{
-					GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name).GetComponent<ObjectManager>().DoUpdate();
-				}
-				else
-				{
-					Debug.Log("Couldn't find DestoryedGameObjects");
+					if (objectManager.UUID == UUID)
+					{
+						objectManager.DoUpdate();
+					}
 				}
 			}
 
@@ -221,6 +219,7 @@ namespace VoidInc.LWA
 
 		void SaveGame()
 		{
+			GameDataManager.SaveFile.PlayerData.Lives = GameDataManager.Lives;
 			GameDataManager.SaveFile.PlayerData.Score = GameDataManager.Score;
 			GameDataManager.SaveFile.PlayerData.TotalGems = GameDataManager.TotalGems;
 			GameDataManager.SaveFile.PlayerData.Gems = Gems;
@@ -237,6 +236,7 @@ namespace VoidInc.LWA
 			var SaveFile = GameDataManager.SaveFile;
 
 			GameObject.FindGameObjectWithTag("Player").transform.position = SaveFile.PlayerData.Position;
+			GameDataManager.Lives = SaveFile.PlayerData.Lives;
 			GameDataManager.Score = SaveFile.PlayerData.Score;
 			GameDataManager.TotalGems = SaveFile.PlayerData.TotalGems;
 			Gems = SaveFile.PlayerData.Gems;
@@ -244,21 +244,30 @@ namespace VoidInc.LWA
 			GameDataManager.KeyIdentifiers = SaveFile.PlayerData.KeyIdentifiers;
 			GameDataManager.StoryLine = SaveFile.StoryLine;
 			GameDataManager.DestroyedGameObjects = SaveFile.DestroyedGameObjects;
-			GameDataManager.ActivatedGameObjects = SaveFile.ActivatedGameObjects;
 
-			foreach (int gameObj in GameDataManager.DestroyedGameObjects)
+			foreach (string UUID in GameDataManager.DestroyedGameObjects)
 			{
-				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				foreach (ItemManager itemManager in FindObjectsOfType<ItemManager>())
 				{
-					Destroy(GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name));
+					if (itemManager.UUID == UUID)
+					{
+						Destroy(itemManager.gameObject);
+					}
+					else
+					{
+						Debug.Log("Couldn't find DestoryedGameObjects");
+					}
 				}
-			}
-
-			foreach (int gameObj in GameDataManager.ActivatedGameObjects)
-			{
-				if (EditorUtility.InstanceIDToObject(gameObj) != null && GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name) != null)
+				foreach (ObjectManager objectManager in FindObjectsOfType<ObjectManager>())
 				{
-					GameObject.Find(EditorUtility.InstanceIDToObject(gameObj).name).GetComponent<ObjectManager>().DoUpdate();
+					if (objectManager.UUID == UUID)
+					{
+						objectManager.DoUpdate();
+					}
+					else
+					{
+						Debug.Log("Couldn't find DestoryedGameObjects");
+					}
 				}
 			}
 		}

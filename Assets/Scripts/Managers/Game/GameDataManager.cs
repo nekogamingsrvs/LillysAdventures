@@ -14,6 +14,10 @@ namespace VoidInc.LWA
 		/// </summary>
 		public bool NewSaveWorld;
 		/// <summary>
+		/// The number of lives the player has.
+		/// </summary>
+		public int Lives;
+		/// <summary>
 		/// The current amount of gems the player has.
 		/// </summary>
 		public int TotalGems;
@@ -40,11 +44,7 @@ namespace VoidInc.LWA
 		/// <summary>
 		/// The list of destroyed game objects.
 		/// </summary>
-		public List<int> DestroyedGameObjects = new List<int>();
-		/// <summary>
-		/// The list of activated game objects.
-		/// </summary>
-		public List<int> ActivatedGameObjects = new List<int>();
+		public List<string> DestroyedGameObjects = new List<string>();
 		/// <summary>
 		/// The ConfigFileManager to save and load with.
 		/// </summary>

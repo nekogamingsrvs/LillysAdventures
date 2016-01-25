@@ -13,6 +13,10 @@ namespace VoidInc.LWA
 		/// </summary>
 		public GameObject LayerSprite;
 		/// <summary>
+		/// The position of the sprite on the Y axis.
+		/// </summary>
+		public float YPosition;
+		/// <summary>
 		/// Size of the layerSprite
 		/// </summary>
 		private Vector2 _Size;
@@ -32,7 +36,7 @@ namespace VoidInc.LWA
 		void Awake()
 		{
 			_Size = LayerSprite.GetComponent<Renderer>().bounds.size;
-			_Center = new Vector2(240, -256);
+			_Center = new Vector2(240, YPosition);
 
 			//instantiate all 4 objects
 			_Object1 = LayerSprite;
@@ -54,22 +58,22 @@ namespace VoidInc.LWA
 			//update 4 object positions
 			_Object1Pos.x = _Center.x + _Size.x / 2;
 			//obj1p.y = -2.88f;
-			_Object1Pos.y = -256;
+			_Object1Pos.y = YPosition;
 			_Object1.transform.position = _Object1Pos;
 
 			_Object2Pos.x = _Center.x - _Size.x / 2;
 			//obj2p.y = -2.88f;
-			_Object2Pos.y = -256;
+			_Object2Pos.y = YPosition;
 			_Object2.transform.position = _Object2Pos;
 
 			_Object3Pos.x = (_Center.x - _Size.x / 2) + _Size.x * 2;
 			//obj2p.y = -2.88f;
-			_Object3Pos.y = -256;
+			_Object3Pos.y = YPosition;
 			_Object3.transform.position = _Object3Pos;
 
 			if (_Center.x < -_Size.x / 2)
 			{
-				_Center = new Vector2(240, -256);
+				_Center = new Vector2(240, YPosition);
 			}
 		}
 
