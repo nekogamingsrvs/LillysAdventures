@@ -5,7 +5,7 @@ namespace VoidInc.LWA
 	public class ObjectManager : MonoBehaviour
 	{
 		/// <summary>
-		/// The item type enum to determine the item function.
+		/// The object type enum to determine the object function.
 		/// </summary>
 		public enum ObjectType
 		{
@@ -65,9 +65,13 @@ namespace VoidInc.LWA
         }
 		#endregion
 		/// <summary>
-		/// If the item has been destroyed.
+		/// If the object has been activated.
 		/// </summary>
-		public bool Activated;
+		public bool Activated = false;
+		/// <summary>
+		/// If the object has been activated because the player has transitioned.
+		/// </summary>
+		public bool TransActivated = false;
 		/// <summary>
 		/// The type of sign that the sign is.
 		/// </summary>
@@ -95,10 +99,13 @@ namespace VoidInc.LWA
 		/// </summary>
 		public GameObject GameObjectSpawn;
 		/// <summary>
+		/// The UUID of the object.
+		/// </summary>
+		public string UUID;
+		/// <summary>
 		/// The GameManager class for the items.
 		/// </summary>
 		private GameManager _GameManager;
-
 
 		void Awake()
 		{
@@ -139,20 +146,39 @@ namespace VoidInc.LWA
 			}
 		}
 
-		private void CheckLock(PlayerController2D player)
+		private void CheckLock()
 		{
-			if (_GameManager.GameDataManager.Keys >= 1 && _GameManager.GameDataManager.KeyIdentifiers.ContainsKey(KeyID) && Identifier == _GameManager.GameDataManager.KeyIdentifiers[KeyID])
+			if (TransActivated && Activated)
 			{
 				Destroy(gameObject);
-				_GameManager.GameDataManager.ActivatedGameObjects.Add(gameObject.GetInstanceID());
-				_GameManager.GameDataManager.Keys -= 1;
-				_GameManager.GameDataManager.KeyIdentifiers.Remove(KeyID);
+			}
+		}
+
+		private void CheckLock(PlayerController2D player)
+		{
+			if (!Activated && !TransActivated)
+			{
+				if (_GameManager.GameDataManager.Keys >= 1 && _GameManager.GameDataManager.KeyIdentifiers.ContainsKey(KeyID) && Identifier == _GameManager.GameDataManager.KeyIdentifiers[KeyID])
+				{
+					Destroy(gameObject);
+					_GameManager.GameDataManager.DestroyedGameObjects.Add(UUID);
+					_GameManager.GameDataManager.Keys -= 1;
+					_GameManager.GameDataManager.KeyIdentifiers.Remove(KeyID);
+				}
+			}
+		}
+
+		private void TriggerItemBlock()
+		{
+			if (TransActivated && Activated)
+			{
+				Destroy(GameObjectSpawn);
 			}
 		}
 
 		private void TriggerItemBlock(PlayerController2D player)
 		{
-			if (!Activated)
+			if (!Activated && !TransActivated)
 			{
 				if (player.Controller.collisionState.above)
 				{
@@ -174,7 +200,7 @@ namespace VoidInc.LWA
 
 		private void TriggerTrapBlock(PlayerController2D player)
 		{
-			if (!Activated)
+			if (!Activated && !TransActivated)
 			{
 				switch (TrapBlockType.Direction)
 				{
@@ -208,9 +234,17 @@ namespace VoidInc.LWA
 			}
 		}
 
+		private void TriggerObjectBlock()
+		{
+			if (Activated && TransActivated)
+			{
+				Destroy(GameObjectSpawn);
+			}
+		}
+
 		private void TriggerObjectBlock(PlayerController2D player)
 		{
-			if (!Activated)
+			if (!Activated && !TransActivated)
 			{
 				Activated = true;
 			}
@@ -218,7 +252,24 @@ namespace VoidInc.LWA
 
 		public void DoUpdate()
 		{
-			Activated = true;
+			if (Type != ObjectType.Sign)
+			{
+				Activated = true;
+				TransActivated = true;
+
+				switch (Type)
+				{
+					case ObjectType.Lock:
+						CheckLock();
+						break;
+					case ObjectType.ItemBlock:
+						TriggerItemBlock();
+						break;
+					case ObjectType.ObjectBlock:
+						TriggerObjectBlock();
+						break;
+				}
+			}
 		}
 	}
 }

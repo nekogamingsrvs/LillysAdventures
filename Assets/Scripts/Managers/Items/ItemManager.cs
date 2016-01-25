@@ -32,9 +32,12 @@ namespace VoidInc.LWA
 		/// </summary>
 		public int KeyID;
 		/// <summary>
+		/// The UUID of the item.
+		/// </summary>
+		public string UUID;
+		/// <summary>
 		/// The GameManager class for the items.
 		/// </summary>
-		[HideInInspector]
 		private GameManager _GameManager;
 
 		void Awake()
@@ -71,14 +74,14 @@ namespace VoidInc.LWA
 
 		private void RemoveCoin(int score)
 		{
-			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
+			_GameManager.GameDataManager.DestroyedGameObjects.Add(UUID);
 			Destroy(gameObject);
 			_GameManager.GameDataManager.Score += score;
 		}
 
 		private void RemoveGem(int score)
 		{
-			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
+			_GameManager.GameDataManager.DestroyedGameObjects.Add(UUID);
 			Destroy(gameObject);
 			_GameManager.GameDataManager.Score += score;
 			_GameManager.Gems += 1;
@@ -87,7 +90,7 @@ namespace VoidInc.LWA
 		
 		private void RemoveKey()
 		{
-			_GameManager.GameDataManager.DestroyedGameObjects.Add(gameObject.GetInstanceID());
+			_GameManager.GameDataManager.DestroyedGameObjects.Add(UUID);
 			Destroy(gameObject);
 			_GameManager.GameDataManager.Keys += 1;
 			_GameManager.GameDataManager.KeyIdentifiers.Add(KeyID, Identifier);

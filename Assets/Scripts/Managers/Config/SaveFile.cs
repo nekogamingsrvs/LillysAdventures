@@ -16,6 +16,8 @@ namespace VoidInc.LWA
 		/// </summary>
 		[JsonProperty("position")]
 		public Vector3 Position;
+		[JsonProperty("lives")]
+		public int Lives;
 		/// <summary>
 		/// The current score the player has.
 		/// </summary>
@@ -69,12 +71,7 @@ namespace VoidInc.LWA
 		/// The list of destroyed game object's identifiers.
 		/// </summary>
 		[JsonProperty("destroyed")]
-		public List<int> DestroyedGameObjects = new List<int>();
-		/// <summary>
-		/// The list of activated game object's identifiers.
-		/// </summary>
-		[JsonProperty("activated")]
-		public List<int> ActivatedGameObjects = new List<int>();
+		public List<string> DestroyedGameObjects = new List<string>();
 		/// <summary>
 		/// The story line position that the story line is at.
 		/// </summary>

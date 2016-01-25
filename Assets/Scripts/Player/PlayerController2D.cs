@@ -21,7 +21,7 @@ namespace VoidInc.LWA
 		public float AbsorbGroundedInputTime;
 		public float LadderVelocityPerSecond;
 
-		//private static readonly float GravityModifierInWater = 0.375f;
+		private static readonly float GravityModifierInWater = 0.375f;
 		private float _NormalizedHorizontalSpeed = 0.0f;
 
 		public CharacterController2D Controller;
@@ -44,18 +44,11 @@ namespace VoidInc.LWA
 		void Awake()
 		{
 			// Set the animator and controller components.
-			Animator = GetComponent<Animator>();
-			Controller = GetComponent<CharacterController2D>();
-			AudioSource = GetComponent<AudioSource>();
-			SpriteRenderer = GetComponent<SpriteRenderer>();
 
 			// Listen to some events for illustration purposes.
 			Controller.onControllerCollidedEvent += onControllerCollider;
 			Controller.onTriggerEnterEvent += onTriggerEnterEvent;
 			Controller.onTriggerExitEvent += onTriggerExitEvent;
-
-			Linecast1 = transform.Find("LadderLinecast1");
-			Linecast2 = transform.Find("LadderLinecast2");
 		}
 
 		#region Event Listeners
@@ -90,6 +83,11 @@ namespace VoidInc.LWA
 			{
 				col.gameObject.GetComponent<ObjectManager>().SendMessage("ActivateObject", this, SendMessageOptions.DontRequireReceiver);
 			}
+
+			if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
+			{
+				Gravity *= GravityModifierInWater;
+			}
 		}
 
 		// Update when the trigger exits the event.
@@ -100,6 +98,11 @@ namespace VoidInc.LWA
 			if (col.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
 			{
 				GotoPlatformState();
+			}
+
+			if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
+			{
+				Gravity /= GravityModifierInWater;
 			}
 		}
 		#endregion
@@ -196,7 +199,7 @@ namespace VoidInc.LWA
 			if (IsClimbing)
 			{
 				// We only animate the player while he is moving up/down the ladder
-				Climb = Input.GetAxisRaw("Vertical") + CnInputManager.GetAxis("Vertical");
+				Climb = Input.GetAxisRaw("Vertical"); //+ CnInputManager.GetAxis("Vertical");
 
 				Velocity.x = 0;
 
@@ -227,7 +230,7 @@ namespace VoidInc.LWA
 
 						// We may be just above the ladder top and we don't want to fall for a split second
 						// So, move our character controller back down to the ground. He should collide with the ladder top we just popped past.
-						Controller.move(new Vector3(0, 0, 0));
+						Controller.move(new Vector3(0, 14, 0));
 
 						// Go back to the platform state
 						GotoPlatformState();
@@ -295,7 +298,7 @@ namespace VoidInc.LWA
 
 				if (climbing > 0)
 				{
-					if (ladderGrabEdgeSpine != null)
+					if (ladderGrabEdgeSpine != null && ladderGrabEdgeSpine.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
 					{
 						GotoLadderState_FromSpine(ladderGrabEdgeSpine);
 						return true;
@@ -305,14 +308,14 @@ namespace VoidInc.LWA
 				{
 					// If there is already a ladder for us to grab onto without looking past a ladder top, than grab it
 					// (In that case, we require the same ladder to be below us too)
-					if (ladderGrabEdgeSpine != null && ladderDownEdgeSpine != null)
+					if (ladderGrabEdgeSpine != null && ladderDownEdgeSpine != null && ladderGrabEdgeSpine.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
 					{
 						GotoLadderState_FromSpine(ladderGrabEdgeSpine);
 						return true;
 					}
 
 					// Try to climb down a ladder (past a ladder top edge)
-					if (ladderDownEdgeSpine != null)
+					if (ladderDownEdgeSpine != null && ladderDownEdgeSpine.gameObject.layer == LayerMask.NameToLayer("LadderTops"))
 					{
 						GotoLadderState_FromTop(ladderDownEdgeSpine);
 						return true;
@@ -325,9 +328,9 @@ namespace VoidInc.LWA
 		public void GotoLadderState_FromSpine(EdgeCollider2D ladderSpine)
 		{
 			// Snap to the ladder
-			Vector3 pos = this.transform.position;
+			Vector3 pos = transform.position;
 			float ladder_x = ladderSpine.points[0].x;
-			this.transform.position = new Vector3(ladder_x, pos.y, pos.z);
+			transform.position = new Vector3(ladder_x, pos.y, pos.z);
 
 			// The platform controller is not active while on a ladder, but our ladder controller is
 			IsClimbing = true;
@@ -337,10 +340,10 @@ namespace VoidInc.LWA
 		{
 			// We need to snap to the ladder plus move down past the ladder top so we don't collide with it
 			// (We take for granted that the edge collider points for the spine go from down-to-up)
-			Vector3 pos = this.transform.position;
+			Vector3 pos = transform.position;
 			float ladder_x = ladderSpine.points[0].x;
 			float ladder_y = ladderSpine.points[1].y;
-			this.transform.position = new Vector3(ladder_x + 16, ladder_y, pos.z);
+			transform.position = new Vector3(ladder_x + 16, ladder_y, pos.z);
 
 			// The platform controller is not active while on a ladder, but our ladder controller is
 			IsClimbing = true;
