@@ -14,11 +14,21 @@ namespace VoidInc.LWA
 		/// <summary>
 		/// The current time of day.
 		/// </summary>
-		public float CurrentTime = 0.5f;
+		private float CurrentTime = 0.5f;
 		/// <summary>
 		/// The sun's initial intensity.
 		/// </summary>
 		private float _SunInitialIntensity = 1.0f;
+
+		void Awake()
+		{
+			DontDestroyOnLoad(this);
+
+			if (FindObjectsOfType(GetType()).Length > 1)
+			{
+				Destroy(gameObject);
+			}
+		}
 
 		// Update is called once per frame
 		void Update()

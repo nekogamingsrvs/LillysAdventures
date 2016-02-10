@@ -10,34 +10,37 @@ namespace VoidInc.LWA
 		/// The level number that the player is currently on.
 		/// </summary>
 		[JsonProperty("level")]
-		public int Level;
+		public int Level = 0;
 		/// <summary>
 		/// The position of the player.
 		/// </summary>
 		[JsonProperty("position")]
-		public Vector3 Position;
+		public Vector3 Position = Vector3.zero;
+		/// <summary>
+		/// The amount of lives the player has.
+		/// </summary>
 		[JsonProperty("lives")]
-		public int Lives;
+		public int Lives = 0;
 		/// <summary>
 		/// The current score the player has.
 		/// </summary>
 		[JsonProperty("score")]
-		public int Score;
+		public int Score = 0;
 		/// <summary>
 		/// The current amount of gems the player has on the current level.
 		/// </summary>
 		[JsonProperty("gems")]
-		public int Gems;
+		public int Gems = 0;
 		/// <summary>
 		/// The total number of gems the player has obtained.
 		/// </summary>
 		[JsonProperty("total gems")]
-		public int TotalGems;
+		public int TotalGems = 0;
 		/// <summary>
 		/// The amount of keys the player has on them.
 		/// </summary>
 		[JsonProperty("keys")]
-		public int Keys;
+		public int Keys = 0;
 		/// <summary>
 		/// The key identifiers to unlock locks.
 		/// </summary>
@@ -47,12 +50,12 @@ namespace VoidInc.LWA
 		/// The level changer to teleport the player to.
 		/// </summary>
 		[JsonProperty("teleport to")]
-		public string PlayerTranisitionTeleTo;
+		public string PlayerTranisitionTeleTo = "";
 		/// <summary>
 		/// The level changer at position Y to teleport the player to.
 		/// </summary>
 		[JsonProperty("teleport position y")]
-		public float PlayerTransitionPositionY;
+		public float PlayerTransitionPositionY = 0.0f;
 	}
 
 	public class SaveFile
@@ -61,7 +64,7 @@ namespace VoidInc.LWA
 		/// The save version of the file.
 		/// </summary>
 		[JsonProperty("version")]
-		public string SaveVersion = "0.0.2";
+		public string SaveVersion = "";
 		/// <summary>
 		/// The player data of the save file.
 		/// </summary>
@@ -76,6 +79,6 @@ namespace VoidInc.LWA
 		/// The story line position that the story line is at.
 		/// </summary>
 		[JsonProperty("storyline")]
-		public int StoryLine;
+		public int StoryLine = 0;
 	}
 }

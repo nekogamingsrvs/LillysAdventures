@@ -8,9 +8,6 @@ namespace CnControls
 		public string AxisName;
 		public float AxisMultiplier;
 
-		public Sprite DownSprite;
-		public Sprite UpSprite;
-
 		public RectTransform RectTransform
 		{
 			get; private set;
@@ -43,7 +40,6 @@ namespace CnControls
 		{
 			_virtualAxis.Value = Mathf.Clamp(AxisMultiplier, -1f, 1f);
 			LastFingerId = pointerId;
-			Pressed(true);
 		}
 
 		public void TryRelease(int pointerId)
@@ -52,19 +48,6 @@ namespace CnControls
 			{
 				_virtualAxis.Value = 0f;
 				LastFingerId = -1;
-				Pressed(false);
-			}
-		}
-
-		public void Pressed(bool isPressed)
-		{
-			if (isPressed)
-			{
-				GetComponent<Image>().sprite = DownSprite;
-			}
-			else
-			{
-				GetComponent<Image>().sprite = UpSprite;
 			}
 		}
 	}

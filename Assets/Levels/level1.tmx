@@ -1,462 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="106" height="33" tilewidth="32" tileheight="32" nextobjectid="74">
- <tileset firstgid="1" name="tileset_32x32" tilewidth="32" tileheight="32" tilecount="195" columns="13">
-  <image source="../Sprites/Tiles/tileset_32x32.png" width="416" height="480"/>
-  <tile id="2">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="3">
-   <objectgroup draworder="index">
-    <object id="0" x="32" y="8">
-     <polyline points="0,0 -24,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="4">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="8">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="5">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="6">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="6" duration="400"/>
-    <frame tileid="7" duration="400"/>
-    <frame tileid="8" duration="400"/>
-    <frame tileid="9" duration="400"/>
-    <frame tileid="8" duration="400"/>
-    <frame tileid="7" duration="400"/>
-   </animation>
-  </tile>
-  <tile id="15">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="16">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="8">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="17">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="8">
-     <polyline points="0,0 24,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="18">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="19">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="19" duration="400"/>
-    <frame tileid="20" duration="400"/>
-    <frame tileid="21" duration="400"/>
-    <frame tileid="22" duration="400"/>
-    <frame tileid="21" duration="400"/>
-    <frame tileid="20" duration="400"/>
-   </animation>
-  </tile>
-  <tile id="26">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="27">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="28">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="31">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="32">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-   <animation>
-    <frame tileid="32" duration="400"/>
-    <frame tileid="33" duration="400"/>
-    <frame tileid="34" duration="400"/>
-    <frame tileid="35" duration="400"/>
-    <frame tileid="34" duration="400"/>
-    <frame tileid="33" duration="400"/>
-   </animation>
-  </tile>
-  <tile id="39">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="40">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="41">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="53">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="54">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="55">
-   <objectgroup draworder="index">
-    <object id="0" x="32" y="16">
-     <polyline points="0,0 -24,0 -32,8"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="56">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="16">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="57">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="16">
-     <polyline points="0,0 24,0 32,8"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="65">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="66">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="67">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="68">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polyline points="0,0 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="69">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="70">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="71">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="72">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="73">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="78">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="79">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="80">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="81">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="82">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="83">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="84">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 16,16 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="85">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 32,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="86">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="87">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="91">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 16,16 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="92">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 32,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="93">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="94">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="95">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 32,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="96">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="97">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,32"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="98">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="32">
-     <polygon points="0,0 32,-32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="99">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="100">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="101">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="102">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="103">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="104">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,32"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="105">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="32">
-     <polygon points="0,0 32,-32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="106">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="107">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="108">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="32">
-     <polygon points="0,0 32,-32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="109">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,32"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="110">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="111">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="112">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="118">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="119">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="121">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 16,16 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="122">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="123">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="126">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="127">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 32,0 32,32"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="128">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="129">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="139">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="140">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="32">
-     <polygon points="0,0 32,-32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="146">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 32,32 0,32"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="147">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="148">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="149">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="150">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="151">
-   <objectgroup draworder="index"/>
-  </tile>
-  <tile id="169">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 32,0 16,16"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="171">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0" width="32" height="32"/>
-   </objectgroup>
-  </tile>
-  <tile id="172">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,0"/>
-    </object>
-   </objectgroup>
-  </tile>
-  <tile id="182">
-   <objectgroup draworder="index">
-    <object id="0" x="0" y="0">
-     <polygon points="0,0 0,32 32,32"/>
-    </object>
-   </objectgroup>
-  </tile>
- </tileset>
- <layer name="Grass" width="106" height="33">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="106" height="33" tilewidth="32" tileheight="32" nextobjectid="90">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer name="Ground_Background" width="106" height="33">
   <properties>
    <property name="unity:ignore" value="collision"/>
    <property name="unity:layer" value="Default"/>
@@ -464,18 +9,7 @@
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20Hb6AAAAAAAAAAAAAAAAAA4Dc2qAAB
-  </data>
- </layer>
- <layer name="Ground_Background" width="106" height="33">
-  <properties>
-   <property name="unity:ignore" value="collision"/>
-   <property name="unity:layer" value="Default"/>
-   <property name="unity:sortingLayerName" value="Background"/>
-   <property name="unity:sortingOrder" value="1"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt2EEKgCAURVEXWwtw/5NaQor1fXQunLn0EKTWJEmS9ui89QeOqgPq8Ua2qm1kI1vVNbNTLznpv7NTRnbKyE4Zze7kXfFtK3Zyv97PThnZKSM7ZWSnfRv9p2enuVZ/YwAAAAAASHQBslzxQg==
+   eJzt2EEKgCAURVH3P3UHQfusJaRY30fnwplLD0FqTZIkaY+OW3/grDqgHm9kq9pGNrJVXTM79ZKT/js7ZWSnjOyU0exO3hXftmIn9+v97JSRnTKyU0Z22rfRf3p2mmv1NwYAAAAAgEQXdoHU1A==
   </data>
  </layer>
  <layer name="Grass_Overlay_Background" width="106" height="33">
@@ -483,10 +17,31 @@
    <property name="unity:ignore" value="collision"/>
    <property name="unity:layer" value="Default"/>
    <property name="unity:sortingLayerName" value="Background"/>
+   <property name="unity:sortingOrder" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2cEJg0AQBdBt2hK0QTuI2ochkEMWlVEhOyHvwb/JOjCH/WgpAAA5PJ4ZA1laDchrR1Pw2bnYVSvRHb3Z1e+YWw8AABvqHq9X5FR3RL0CAP6HvvYdkW/bR9nqa3fP7C7m7nszJ6uhfO6gbzsOAByq7y13175opzv7fxcAACCzFb/OePU=
+  </data>
+ </layer>
+ <layer name="Fence" width="106" height="33">
+  <properties>
+   <property name="unity:layer" value="OnewayTiles"/>
+   <property name="unity:sortingLayerName" value="Background"/>
    <property name="unity:sortingOrder" value="2"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2E0OgyAQBlDO2Xt4AHuK7hXPWdNdiT+ojUD6XvLtCEwyi5kQAgBAHYY5r4xMpQrk06Mx82wMetUKvWpHLF0AACxI93h7BQBAXexr98j5295K+u8af3Bnt5LHTq6+W3Nq9QzfPerLlgMAm9K5dST/OONa3lEAAADOeAP66Vro
+   eJzt0jEKwCAMBdAM9gh6/6PWDoIEKbSL0L4HfxFMJDECAAAAAAAA4LnSc/S03Q/5qTH/KzXe7WKukVNv6q1657v5zD8BAAAAAIBvOwHUnQEh
+  </data>
+ </layer>
+ <layer name="Grass" width="106" height="33">
+  <properties>
+   <property name="unity:ignore" value="collision"/>
+   <property name="unity:layer" value="Default"/>
+   <property name="unity:sortingLayerName" value="Background"/>
+   <property name="unity:sortingOrder" value="3"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2EEKgCAQBVCvleUJvP99SjCIobBF1KL3QIbRQVx+TAkA/iH3Wg97pdd5W8u7zwEAAG5qGb4MpwAA+FIej/CQPRvn0Dfxr3uUo6eTPt5RwzkAAAAAAMCVFQCrBNE=
   </data>
  </layer>
  <layer name="Water" width="106" height="33">
@@ -496,7 +51,7 @@
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0TEKACAMBMF7Svz/J21FsE9kBq5Jyk0AAAAAAAAAgB+tY6/7/aOPukZPFZ0mqOg0QUUnAAAAmGwDLIcC6A==
+   eJzt0TEKACAMBME8R///QVsJ2OdkBq5Jyq0CAAAAAAAAAH60r73u/cccq42ZdMqgUwadAAAAINsBQpkDoA==
   </data>
  </layer>
  <layer name="Lava" width="106" height="33">
@@ -526,7 +81,7 @@
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2E0KgCAQgFFv6b7uf4dqK1MKUlq9B98m6AdnM5QSAMAc1r1clIJry5Cv4xDN6GxOZjVONIurOeXgGQAArcod0Q44JzsgAPyXfe0ZZ//datXu7Xl2tPdd7YO97/lytfO58/zMyZy+ljm9I3N6Ry1Gf6MkSZIk6X9t9Zn7IQ==
+   eJzt2E0KgCAQgNG5sjcQunjRsjSDKLPeg28T9IOzGYoAAHiHvJQ2ReHa1OPjWOXYz6M2J7PqpzSLozmlwjMAAM7KYQccgR0QAP4rh33tCbX/bq1a9155dmnvO9oHr77ny7XO587zMydz+lrmNEbmNEZn9P5GSZIkSdL/mgHlhpLG
   </data>
  </layer>
  <layer name="Ground_Overlay" width="106" height="33">
@@ -536,7 +91,7 @@
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2UsKwjAUBdCsswvQXTjXuuhaMFAfrU0FTSTnwJ30QwNvkEuaEgBAG66PXELSyrV7ldUxm2d0K3x2TGZVS+mMsvErqwAAehF7vA7YptgRdUAA6Ie+9hvxHLs0+d21vrZ1Rl6a4ZmlYeP68t6n3/uHtOqcXmdzqrscAHgr7ltH9q7e9rjc6fZy9P8uAABAyyaEfUXS
+   eJzt2VsKwjAQBdDssUvQPbsDrbvQgoF2aNooaCI9B+5PHzQwH7mkKQEA9OH6zCUkrVy7N1kdk2lGt8pnx2RWrdTOKBu/sgoA4Chij9cB+xQ7og4IAMehr/1GPMeuTX53ra+VzshrM7wyNxSuz+99+r1/SK/OaTmbU9vlAMCmuG/Zu8pyp9vLu/93AQAAevYA451xFA==
   </data>
  </layer>
  <layer name="Ladders" width="106" height="33">
@@ -546,7 +101,7 @@
    <property name="unity:sortingOrder" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2MEJACAMBEHBBuy/WlvwFxdmKjhY8slaAAD/2tMDeHKmB/BEpwadGnRq0KlBpwadGnRq0KlBpwadGnRq0OlffuQNbqhBpwadGnRq0AkAAIAJF45iASc=
+   eJzt2MEJACAMBEHBFuy/VlvwFxdmKjhY8slaAAD/2tMDeHKmB/BEpwadGnRq0KlBpwadGnRq0KlBpwadGnRq0OlffuQNbqhBpwadGnRq0AkAAIAJF/CqAW8=
   </data>
  </layer>
  <layer name="Crates" width="106" height="33">
@@ -556,72 +111,134 @@
    <property name="unity:sortingOrder" value="1"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztw6kNADAMBLDM1mf/lUoPhJQF2JKrAAAAAAAA6KzIXDsy14nMdSMAAAAAAMCPByuLAys=
+   eJzt06ENAAAIBLHfhv03xCJwONImN8IlAAAAAAAAbGoE3PgJAAAAAADgtwaKpwDr
   </data>
  </layer>
  <objectgroup color="#ffff7f" name="Torches">
-  <object id="11" x="672" y="512" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Objects"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
+   <property name="unity:sortingOrder" value="0"/>
+  </properties>
+  <object id="89" gid="221" x="672" y="544" width="32" height="32">
    <properties>
     <property name="lwa:object" value="torch"/>
+    <property name="unity:layer" value="Objects"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#000000" name="Locks">
-  <object id="32" x="736" y="64" width="32" height="32">
-   <properties>
-    <property name="lwa:keyID" value="1"/>
-    <property name="lwa:object" value="lock"/>
-   </properties>
-  </object>
-  <object id="73" x="448" y="608" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Locks"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
+   <property name="unity:sortingOrder" value="1"/>
+  </properties>
+  <object id="87" gid="217" x="448" y="640" width="32" height="32">
    <properties>
     <property name="lwa:keyID" value="0"/>
     <property name="lwa:object" value="lock"/>
+    <property name="unity:layer" value="Locks"/>
+   </properties>
+  </object>
+  <object id="88" gid="217" x="544" y="800" width="32" height="32">
+   <properties>
+    <property name="lwa:keyID" value="1"/>
+    <property name="lwa:object" value="lock"/>
+    <property name="unity:layer" value="Locks"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup color="#aaaaff" name="Item_Blocks"/>
- <objectgroup color="#550000" name="Trap_Blocks"/>
- <objectgroup color="#555500" name="Signs"/>
+ <objectgroup color="#aaaaff" name="Item_Blocks">
+  <properties>
+   <property name="unity:layer" value="ItemBlocks"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
+   <property name="unity:sortingOrder" value="2"/>
+  </properties>
+ </objectgroup>
+ <objectgroup color="#550000" name="Trap_Blocks">
+  <properties>
+   <property name="unity:layer" value="TrapBlocks"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
+   <property name="unity:sortingOrder" value="3"/>
+  </properties>
+ </objectgroup>
+ <objectgroup color="#555500" name="Signs">
+  <properties>
+   <property name="unity:layer" value="Signs"/>
+   <property name="unity:sortingLayerName" value="Objects"/>
+   <property name="unity:sortingOrder" value="4"/>
+  </properties>
+ </objectgroup>
  <objectgroup color="#ffff00" name="Keys">
-  <object id="21" x="1152" y="288" width="32" height="32">
-   <properties>
-    <property name="lwa:item" value="key"/>
-    <property name="lwa:keyID" value="1"/>
-   </properties>
-  </object>
-  <object id="34" x="576" y="448" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Items"/>
+   <property name="unity:sortingLayerName" value="Items"/>
+   <property name="unity:sortingOrder" value="0"/>
+  </properties>
+  <object id="83" gid="239" x="576" y="480" width="32" height="32">
    <properties>
     <property name="lwa:item" value="key"/>
     <property name="lwa:keyID" value="0"/>
+    <property name="unity:layer" value="Items"/>
+   </properties>
+  </object>
+  <object id="84" gid="239" x="1152" y="320" width="32" height="32">
+   <properties>
+    <property name="lwa:item" value="key"/>
+    <property name="lwa:keyID" value="1"/>
+    <property name="unity:layer" value="Items"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#aa5500" name="Coins1">
-  <object id="15" x="1088" y="544" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Items"/>
+   <property name="unity:sortingLayerName" value="Items"/>
+   <property name="unity:sortingOrder" value="1"/>
+  </properties>
+  <object id="82" gid="245" x="1088" y="576" width="32" height="32">
    <properties>
     <property name="lwa:item" value="coin1"/>
+    <property name="unity:layer" value="Items"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#d5d5da" name="Coins5">
-  <object id="16" x="1056" y="512" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Items"/>
+   <property name="unity:sortingLayerName" value="Items"/>
+   <property name="unity:sortingOrder" value="2"/>
+  </properties>
+  <object id="80" gid="262" x="1056" y="544" width="32" height="32">
    <properties>
     <property name="lwa:item" value="coin5"/>
+    <property name="unity:layer" value="Items"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ffaa00" name="Coins10">
-  <object id="19" x="1120" y="512" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Items"/>
+   <property name="unity:sortingLayerName" value="Items"/>
+   <property name="unity:sortingOrder" value="3"/>
+  </properties>
+  <object id="79" gid="273" x="1120" y="544" width="32" height="32">
    <properties>
     <property name="lwa:item" value="coin10"/>
+    <property name="unity:layer" value="Items"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup color="#ff0000" name="Gems">
-  <object id="18" x="1088" y="480" width="32" height="32">
+  <properties>
+   <property name="unity:layer" value="Items"/>
+   <property name="unity:sortingLayerName" value="Items"/>
+   <property name="unity:sortingOrder" value="4"/>
+  </properties>
+  <object id="78" gid="256" x="1088" y="512" width="32" height="32">
    <properties>
     <property name="lwa:item" value="gem"/>
+    <property name="unity:layer" value="Items"/>
    </properties>
   </object>
  </objectgroup>
