@@ -43,7 +43,13 @@ namespace VoidInc.LWA
 		// Use this for initialization.
 		void Awake()
 		{
-			// Set the animator and controller components.
+			// Set as a singleton
+			DontDestroyOnLoad(this);
+
+			if (FindObjectsOfType(GetType()).Length > 1)
+			{
+				Destroy(gameObject);
+			}
 
 			// Listen to some events for illustration purposes.
 			Controller.onControllerCollidedEvent += onControllerCollider;
@@ -54,6 +60,8 @@ namespace VoidInc.LWA
 		#region Event Listeners
 		void onControllerCollider(RaycastHit2D hit)
 		{
+			NameOfCollision = hit.collider.gameObject.name;
+
 			// Bail out on plain old ground hits cause they aren't very interesting.
 			if (hit.normal.y == 1f)
 			{
@@ -66,8 +74,6 @@ namespace VoidInc.LWA
 			{
 				GotoPlatformState();
 			}
-
-			NameOfCollision = hit.collider.gameObject.name;
 		}
 
 		// Update when the trigger enters the event.
@@ -75,13 +81,13 @@ namespace VoidInc.LWA
 		{
 			NameOfCollision = col.gameObject.name;
 
-			if (col.gameObject.GetComponent<ItemManager>() != null)
+			if (col.gameObject.GetComponentInParent<ItemManager>() != null)
 			{
-				col.gameObject.GetComponent<ItemManager>().SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
+				col.gameObject.GetComponentInParent<ItemManager>().SendMessage("RemoveItem", SendMessageOptions.DontRequireReceiver);
 			}
-			else if (col.gameObject.GetComponent<ObjectManager>() != null)
+			else if (col.gameObject.GetComponentInParent<ObjectManager>() != null)
 			{
-				col.gameObject.GetComponent<ObjectManager>().SendMessage("ActivateObject", this, SendMessageOptions.DontRequireReceiver);
+				col.gameObject.GetComponentInParent<ObjectManager>().SendMessage("ActivateObject", this, SendMessageOptions.DontRequireReceiver);
 			}
 
 			if (col.gameObject.layer == LayerMask.NameToLayer("Water"))
@@ -93,7 +99,6 @@ namespace VoidInc.LWA
 		// Update when the trigger exits the event.
 		void onTriggerExitEvent(Collider2D col)
 		{
-			NameOfCollision = "None";
 			// Check of the player has exited the LadderSpines layer and go to platform state.
 			if (col.gameObject.layer == LayerMask.NameToLayer("LadderSpines"))
 			{
@@ -128,14 +133,7 @@ namespace VoidInc.LWA
 				Animator.SetTrigger("Meowing");
 			}
 
-			// Get button down if the player has running checked. 
-			if (InputCheck.IsMobilePlatforms)
-			{
-				if (!IsJumping)
-				{
-					IsRunning = GameObject.Find("RunToggleButton").GetComponent<SimpleButton>().ToggleState;
-				}
-			}
+			// Get button down if the player has running checked.
 			if (InputCheck.IsPCPlatforms)
 			{
 				if (!IsJumping)
@@ -164,8 +162,15 @@ namespace VoidInc.LWA
 			// Set the animators float of the speed of the player.
 			Animator.SetFloat("Speed", Mathf.Abs(_NormalizedHorizontalSpeed));
 
+
+			if (Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")) && (Input.GetAxis("Vertical") < 0 || CnInputManager.GetAxis("Vertical") < 0))
+			{
+				Velocity.y *= 16.0f;
+				IsClimbing = false;
+				Controller.ignoreOneWayPlatformsThisFrame = true;
+			}
 			// Get if the player is jumping.
-			if (Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")))
+			else if (Controller.isGrounded && (Input.GetButton("Jump") || CnInputManager.GetButton("Jump")))
 			{
 				// Jumping.
 				Velocity.y = JumpHeight;
@@ -276,7 +281,7 @@ namespace VoidInc.LWA
 			if (!IsClimbing)
 			{
 				Velocity.x = _NormalizedHorizontalSpeed * Modifier;
-				Velocity.y += Gravity * Time.deltaTime * 1.0f;
+				Velocity.y += Gravity * Time.deltaTime;
 
 				// Move the controller at the velocity and fluctuate it with time.
 				Controller.move(Velocity * Time.deltaTime);

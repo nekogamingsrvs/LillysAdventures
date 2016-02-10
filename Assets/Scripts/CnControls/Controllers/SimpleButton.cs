@@ -21,13 +21,6 @@ namespace CnControls
 		/// </summary>
 		public string ButtonName = "Jump";
 
-		public Sprite DownSprite;
-		public Sprite UpSprite;
-
-		public bool Toggleable;
-
-		public bool ToggleState = false;
-
 		/// <summary>
 		/// Utility object that is registered in the system
 		/// </summary>
@@ -68,15 +61,6 @@ namespace CnControls
 		public void OnPointerUp(PointerEventData eventData)
 		{
 			_virtualButton.Release();
-			if (Toggleable)
-			{
-				ToggleState = !ToggleState;
-				Pressed(ToggleState);
-			}
-			else
-			{
-				Pressed(false);
-			}
 		}
 
 		/// <summary>
@@ -87,22 +71,6 @@ namespace CnControls
 		public void OnPointerDown(PointerEventData eventData)
 		{
 			_virtualButton.Press();
-			if (!Toggleable)
-			{
-				Pressed(true);
-			}
-		}
-
-		public void Pressed(bool isPressed)
-		{
-			if (isPressed)
-			{
-				GetComponent<Image>().sprite = DownSprite;
-			}
-			else
-			{
-				GetComponent<Image>().sprite = UpSprite;
-			}
 		}
 	}
 }

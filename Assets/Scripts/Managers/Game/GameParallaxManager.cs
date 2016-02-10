@@ -56,6 +56,8 @@ namespace VoidInc.LWA
 
 		void Awake()
 		{
+			Parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+
 			_Size = LayerSprite.GetComponent<Renderer>().bounds.size;
 			_Center = new Vector2(Parent.position.x, Parent.position.y);
 

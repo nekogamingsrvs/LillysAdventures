@@ -55,9 +55,7 @@ GitExtensions.settings
 .git/
 
 # ignore Game files
-save.config
-Assets/WSATestCertificate.pfx.meta
-Assets/WSATestCertificate.pfx
-Assets/WSATestCertificate.pfx.meta
-Assets/Temp.meta
+*.pfx.meta
+*.pfx
+Assets/Temp/
 save.json

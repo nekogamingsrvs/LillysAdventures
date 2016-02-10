@@ -52,7 +52,17 @@ namespace VoidInc.LWA
 
 		void Awake()
 		{
-			SaveFile = ConfigFileManager.LoadSave();
+			DontDestroyOnLoad(this);
+
+			if (FindObjectsOfType(GetType()).Length > 1)
+			{
+				Destroy(gameObject);
+			}
+
+			if (NewSaveWorld)
+			{
+				SaveGame();
+			}
 		}
 
 		void Update()

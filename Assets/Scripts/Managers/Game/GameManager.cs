@@ -1,5 +1,4 @@
 ﻿using Tiled2Unity;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -128,7 +127,7 @@ namespace VoidInc.LWA
 
 			if (Gems == MaxGems || GameDataManager.TotalGems >= MaxGems)
 			{
-				foreach (CLAEoS claeos in GameObject.FindGameObjectWithTag("LevelChangerManager").GetComponentsInChildren<CLAEoS>())
+				foreach (CLAEoS claeos in FindObjectsOfType<CLAEoS>())
 				{
 					claeos.CanTransition = true;
 				}
@@ -148,7 +147,7 @@ namespace VoidInc.LWA
 			{
 				foreach (GameObject go in GameObject.FindGameObjectsWithTag(MobileControlsTag))
 				{
-					go.SetActive(false);
+					//go.SetActive(false);
 				}
 			}
 		}
@@ -168,7 +167,6 @@ namespace VoidInc.LWA
 			if (FindObjectOfType<GameDataManager>() != null)
 			{
 				GameDataManager = FindObjectOfType<GameDataManager>();
-				DontDestroyOnLoad(FindObjectOfType<GameDataManager>().gameObject);
 			}
 		}
 
@@ -219,6 +217,11 @@ namespace VoidInc.LWA
 
 		void SaveGame()
 		{
+			if (GameDataManager.SaveFile == null)
+			{
+				return;
+			}
+
 			GameDataManager.SaveFile.PlayerData.Lives = GameDataManager.Lives;
 			GameDataManager.SaveFile.PlayerData.Score = GameDataManager.Score;
 			GameDataManager.SaveFile.PlayerData.TotalGems = GameDataManager.TotalGems;
@@ -234,6 +237,12 @@ namespace VoidInc.LWA
 		void LoadSaveData()
 		{
 			var SaveFile = GameDataManager.SaveFile;
+
+			if (SaveFile == null)
+			{
+				Debug.LogWarning("Save file is not current version. Aborting loading save.");
+				return;
+			}
 
 			GameObject.FindGameObjectWithTag("Player").transform.position = SaveFile.PlayerData.Position;
 			GameDataManager.Lives = SaveFile.PlayerData.Lives;
@@ -272,5 +281,10 @@ namespace VoidInc.LWA
 			}
 		}
 		#endregion
+
+		public void ToggleRunOnPlayer()
+		{
+			GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController2D>().IsRunning = true;
+		}
 	}
 }

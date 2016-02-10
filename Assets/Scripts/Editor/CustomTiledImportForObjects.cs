@@ -15,16 +15,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 
 	Dictionary<string, Sprite> ItemDictonary = new Dictionary<string, Sprite>();
 
-	RuntimeAnimatorController Coin1Animator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/Coin1Animator.controller");
-	RuntimeAnimatorController Coin5Animator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/Coin5Animator.controller");
-	RuntimeAnimatorController Coin10Animator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/Coin10Animator.controller");
-	RuntimeAnimatorController GemAnimator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/GemAnimator.controller");
-	RuntimeAnimatorController KeyAnimator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/KeyAnimator.controller");
-	RuntimeAnimatorController TorchAnimator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/TorchAnimator.controller");
-	RuntimeAnimatorController SignAnimator = AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Animations/Animators/SignAnimator.controller");
-
-	Material DiffuseSpriteShader = AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/DiffuseSprite.mat");
-
 	/// <summary>
 	/// Handles custom properties, does nothing.
 	/// </summary>
@@ -34,9 +24,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 	{
 		LoadKeys(props);
 		LoadImages();
-
-		var collider = gameObject.GetComponent<Collider2D>();
-		collider.isTrigger = true;
 
 		if (props.ContainsKey("lwa:point") && props["lwa:point"] == "playerSpawn")
 		{
@@ -55,15 +42,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			itemManager.KeyID = Convert.ToInt32(props["lwa:keyID"]);
 			itemManager.Identifier = KeyUUIDs[Convert.ToInt32(props["lwa:keyID"])];
 			itemManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["key_frame_0"];
-			spriteRenderer.sortingLayerName = "Items";
-			spriteRenderer.sortingOrder = 0;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = KeyAnimator;
 		}
 		else if (props.ContainsKey("lwa:item") && props["lwa:item"] == "coin1")
 		{
@@ -74,15 +52,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			var itemManager = gameObject.AddComponent<ItemManager>();
 			itemManager.Type = ItemManager.ItemType.Coin1;
 			itemManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["coin1_frame_0"];
-			spriteRenderer.sortingLayerName = "Items";
-			spriteRenderer.sortingOrder = 1;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = Coin1Animator;
 		}
 		else if (props.ContainsKey("lwa:item") && props["lwa:item"] == "coin5")
 		{
@@ -93,15 +62,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			var itemManager = gameObject.AddComponent<ItemManager>();
 			itemManager.Type = ItemManager.ItemType.Coin5;
 			itemManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["coin5_frame_0"];
-			spriteRenderer.sortingLayerName = "Items";
-			spriteRenderer.sortingOrder = 2;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = Coin5Animator;
 		}
 		else if (props.ContainsKey("lwa:item") && props["lwa:item"] == "coin10")
 		{
@@ -112,15 +72,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			var itemManager = gameObject.AddComponent<ItemManager>();
 			itemManager.Type = ItemManager.ItemType.Coin10;
 			itemManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["coin10_frame_0"];
-			spriteRenderer.sortingLayerName = "Items";
-			spriteRenderer.sortingOrder = 3;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = Coin10Animator;
 		}
 		else if (props.ContainsKey("lwa:item") && props["lwa:item"] == "gem")
 		{
@@ -131,15 +82,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			var itemManager = gameObject.AddComponent<ItemManager>();
 			itemManager.Type = ItemManager.ItemType.Gem;
 			itemManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["gem_frame_0"];
-			spriteRenderer.sortingLayerName = "Items";
-			spriteRenderer.sortingOrder = 4;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = GemAnimator;
 		}
 		else if (props.ContainsKey("lwa:object") && props["lwa:object"] == "torch")
 		{
@@ -147,26 +89,18 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			gameObject.layer = LayerMask.NameToLayer("Objects");
 			gameObject.tag = "Objects";
 
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["torch_frame_0"];
-			spriteRenderer.sortingLayerName = "Objects";
-			spriteRenderer.sortingOrder = 0;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = TorchAnimator;
-
 			GameObject tempTorchLight = new GameObject("TorchLight");
 
 			var light = tempTorchLight.AddComponent<Light>();
-			light.type = LightType.Point;
-			light.range = 100;
-			light.intensity = 2.50f;
+			light.type = LightType.Spot;
+			light.range = 200;
+			light.spotAngle = 100;
+			light.intensity = 4f;
 			light.bounceIntensity = 0;
-			light.color = Color.white;
+			light.color = new Color(1, 0.90f, 0.60f);
 
 			tempTorchLight.transform.parent = gameObject.transform;
-			tempTorchLight.transform.localPosition = new Vector3(16, -16, -50);
+			tempTorchLight.transform.localPosition = new Vector3(16, 16, -80);
 		}
 		else if (props.ContainsKey("lwa:object") && props["lwa:object"] == "lock")
 		{
@@ -179,12 +113,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			objectManager.KeyID = Convert.ToInt32(props["lwa:keyID"]);
 			objectManager.Identifier = KeyUUIDs[Convert.ToInt32(props["lwa:keyID"])];
 			objectManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["lock_frame_0"];
-			spriteRenderer.sortingLayerName = "Objects";
-			spriteRenderer.sortingOrder = 1;
-			spriteRenderer.material = DiffuseSpriteShader;
 		}
 		else if (props.ContainsKey("lwa:sign"))
 		{
@@ -194,15 +122,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 
 			var objectManager = gameObject.AddComponent<ObjectManager>();
 			objectManager.Type = ObjectManager.ObjectType.Sign;
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["sign_frame_0"];
-			spriteRenderer.sortingLayerName = "Objects";
-			spriteRenderer.sortingOrder = 2;
-			spriteRenderer.material = DiffuseSpriteShader;
-
-			var animator = gameObject.AddComponent<Animator>();
-			animator.runtimeAnimatorController = SignAnimator;
 
 			if (props["lwa:sign"] == "save")
 			{
@@ -216,7 +135,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			{
 				objectManager.SignType.Type = ObjectManager.Sign.SignType.dialog;
 				objectManager.SignType.Dialog = props["lwa:sign:dialog"];
-				animator.SetInteger("SignType", Convert.ToInt32(props["lwa:sign:skin"]));
 			}
 		}
 		else if (props.ContainsKey("lwa:itemBlock"))
@@ -228,12 +146,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			var objectManager = gameObject.AddComponent<ObjectManager>();
 			objectManager.Type = ObjectManager.ObjectType.ItemBlock;
 			objectManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["itemBlock_frame_0"];
-			spriteRenderer.sortingLayerName = "Objects";
-		    spriteRenderer.sortingOrder = 3;
-			spriteRenderer.material = DiffuseSpriteShader;
 
 			if (props["lwa:itemBlock"] == "key")
 			{
@@ -280,12 +192,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 			var objectManager = gameObject.AddComponent<ObjectManager>();
 			objectManager.Type = ObjectManager.ObjectType.TrapBlock;
 			objectManager.UUID = Guid.NewGuid().ToString();
-
-			var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-			spriteRenderer.sprite = ItemDictonary["trapBlock_frame_0"];
-			spriteRenderer.sortingLayerName = "Objects";
-			spriteRenderer.sortingOrder = 4;
-			spriteRenderer.material = DiffuseSpriteShader;
 		}
 	}
 
@@ -332,15 +238,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		itemManager.Identifier = KeyUUIDs[Convert.ToInt32(keyID)];
 		itemManager.UUID = Guid.NewGuid().ToString();
 
-		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
-		spriteRenderer.sprite = ItemDictonary["key_frame_0"];
-		spriteRenderer.sortingLayerName = "Items";
-		spriteRenderer.sortingOrder = 0;
-		spriteRenderer.material = DiffuseSpriteShader;
-
-		var animator = tempGameObject.AddComponent<Animator>();
-		animator.runtimeAnimatorController = KeyAnimator;
-
 		return tempGameObject;
 	}
 
@@ -355,15 +252,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
 		itemManager.Type = ItemManager.ItemType.Coin1;
 		itemManager.UUID = Guid.NewGuid().ToString();
-
-		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
-		spriteRenderer.sprite = ItemDictonary["coin1_frame_0"];
-		spriteRenderer.sortingLayerName = "Items";
-		spriteRenderer.sortingOrder = 1;
-		spriteRenderer.material = DiffuseSpriteShader;
-
-		var animator = tempGameObject.AddComponent<Animator>();
-		animator.runtimeAnimatorController = Coin1Animator;
 
 		return tempGameObject;
 	}
@@ -381,15 +269,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		itemManager.Type = ItemManager.ItemType.Coin5;
 		itemManager.UUID = Guid.NewGuid().ToString();
 
-		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
-		spriteRenderer.sprite = ItemDictonary["coin5_frame_0"];
-		spriteRenderer.sortingLayerName = "Items";
-		spriteRenderer.sortingOrder = 2;
-		spriteRenderer.material = DiffuseSpriteShader;
-
-		var animator = tempGameObject.AddComponent<Animator>();
-		animator.runtimeAnimatorController = Coin5Animator;
-
 		return tempGameObject;
 	}
 
@@ -405,15 +284,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		itemManager.Type = ItemManager.ItemType.Coin10;
 		itemManager.UUID = Guid.NewGuid().ToString();
 
-		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
-		spriteRenderer.sprite = ItemDictonary["coin10_frame_0"];
-		spriteRenderer.sortingLayerName = "Items";
-		spriteRenderer.sortingOrder = 3;
-		spriteRenderer.material = DiffuseSpriteShader;
-
-		var animator = tempGameObject.AddComponent<Animator>();
-		animator.runtimeAnimatorController = Coin10Animator;
-
 		return tempGameObject;
 	}
 
@@ -428,15 +298,6 @@ class CustomTileImportForObjects : Tiled2Unity.ICustomTiledImporter
 		var itemManager = tempGameObject.AddComponent<ItemManager>();
 		itemManager.Type = ItemManager.ItemType.Gem;
 		itemManager.UUID = Guid.NewGuid().ToString();
-
-		var spriteRenderer = tempGameObject.AddComponent<SpriteRenderer>();
-		spriteRenderer.sprite = ItemDictonary["gem_frame_0"];
-		spriteRenderer.sortingLayerName = "Items";
-		spriteRenderer.sortingOrder = 4;
-		spriteRenderer.material = DiffuseSpriteShader;
-
-		var animator = tempGameObject.AddComponent<Animator>();
-		animator.runtimeAnimatorController = GemAnimator;
 
 		return tempGameObject;
 	}
