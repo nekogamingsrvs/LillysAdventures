@@ -1,61 +1,32 @@
-# ignore system files
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
 .DS_Store
+.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# ignore Unity files
-Temp/
-[Oo]bj/
-Library/
-Assets/AssetStoreTools*
-[Bb]in/
-[Dd]ebug/
-[Rr]elease/
-UnityGenerated/
-UnityLockFile
-[Tt]est[Rr]esult*
-*.unityproj
-*.boopproj
-
-# ignore Visual Studio Files
-.vs/
-ExportedObj/
-*.svd
-*.userprefs
-*.cache
-*.csproj
-*.pidb
-*.suo
-*.sln
-*.suer
-*.log
-*.pfx
-*.exe
-*.pdb
-*.aps
-*.pch
-*.vspscc
-*_i.c
-*_p.c
-*.ncb
-*.tlb
-*.tlh
-*.bak
-*.cache
-*.ilk
-*.lib
-*.sbr
-
-# ignore Git files
-GitExtensions.settings
-.zedstate
-.git/
-
-# ignore Game files
-*.pfx.meta
-*.pfx
-Assets/Temp/
-save.json
+save\.json
