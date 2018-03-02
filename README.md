@@ -1,4 +1,4 @@
-# Lilly's Wonderful Adventures #
+# Lilly's Adventures #
 
 **A game made by thakyZ coded in using Unity3D.**   
 **This game is completely free.**   
@@ -14,4 +14,4 @@ Version: `v0.1.0-alpha`
 
 ## Info ##
 \- Repo Owner Contact   
-    - [voidinc@outlook.com](mailto:voidinc@outlook.com?subject=Regarding%20Lilly%27s%20Wonderful%20Adventures%20Repository)
+    - [contact@voidinc.net](mailto:contact@voidinc.net?subject=Regarding%20Lilly%27s%20Adventures%20Repository)
